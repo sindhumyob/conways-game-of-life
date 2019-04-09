@@ -24,10 +24,10 @@ namespace ConwaysGameOfLifeTests
             _gameGrid.GenerateInitialGrid(heightOfGrid, widthOfGrid);
 
             var expectedGrid = GenerateInitialTestGrid(heightOfGrid, widthOfGrid);
-            
+
             Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
         }
-        
+
         [Fact]
         public void Update_Game_Grid_With_Specified_Live_Cells()
         {
@@ -47,18 +47,37 @@ namespace ConwaysGameOfLifeTests
             };
             _gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
 
-            var expectedGrid = new[,] {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
+            var expectedGrid = new[,]
+            {
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live,
+                    (char) CellType.Live, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
             };
-            
+
             Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
         }
-        
+
         [Fact]
         public void Update_Game_Grid_With_Specified_Dead_Cells()
         {
@@ -77,7 +96,7 @@ namespace ConwaysGameOfLifeTests
                 new Coordinate {XCoordinate = 2, YCoordinate = 4}
             };
             _gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
-            
+
             var deadCellCoordinates = new List<Coordinate>
             {
                 new Coordinate {XCoordinate = 3, YCoordinate = 2},
@@ -87,15 +106,34 @@ namespace ConwaysGameOfLifeTests
             };
             _gameGrid.UpdateGameGridCells(deadCellCoordinates, CellType.Dead);
 
-            var expectedGrid = new[,] {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
+            var expectedGrid = new[,]
+            {
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Live, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
+                {
+                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
+                    (char) CellType.Dead, (char) CellType.Dead
+                },
             };
-            
+
             Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
         }
 
