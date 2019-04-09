@@ -2,7 +2,7 @@
 
 namespace ConwaysGameOfLife
 {
-    class Program
+    class ConwaysGameOfLife
     {
         static void Main(string[] args)
         {
