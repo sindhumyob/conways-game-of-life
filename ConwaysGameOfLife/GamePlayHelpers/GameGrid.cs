@@ -1,10 +1,12 @@
+using System.Collections.Generic;
+
 namespace ConwaysGameOfLife
 {
     public class GameGrid
     {
-        public char[,] CurrentGameGrid { get; set; }
+        public char[,] CurrentGameGrid { get; private set; }
         
-        public void GenerateGrid(int heightOfGrid, int widthOfGrid)
+        public void GenerateInitialGrid(int heightOfGrid, int widthOfGrid)
         {
             CurrentGameGrid = new char[heightOfGrid,widthOfGrid];
             
@@ -12,8 +14,16 @@ namespace ConwaysGameOfLife
             {
                 for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
                 {
-                    CurrentGameGrid[i, j] = '-';
+                    CurrentGameGrid[i, j] = (char) CellType.Dead;
                 }
+            }
+        }
+
+        public void UpdateGameGridCells(List<Coordinate> liveCellCoordinates, CellType cellType)
+        {
+            foreach (var coordinate in liveCellCoordinates)
+            {
+                CurrentGameGrid[coordinate.XCoordinate, coordinate.YCoordinate] = (char) cellType;
             }
         }
     }
