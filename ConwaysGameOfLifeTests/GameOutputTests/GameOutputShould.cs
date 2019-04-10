@@ -84,15 +84,17 @@ namespace ConwaysGameOfLifeTests
         [Fact]
         public void Return_Enter_X_Coordinate_Of_Cell_In_Seed_Message()
         {
-            Assert.Equal("Please enter the x coordinate of the cell in the seed or quit the game with 'q': ",
-                _gameOutput.EnterXCoordinateOfCellMessage());
+            var maxSizeOfCoordinate = 15;
+            Assert.Equal("Please enter the x coordinate between 1-15 of the cell in the seed or quit the game with 'q': ",
+                _gameOutput.EnterXCoordinateOfCellMessage(maxSizeOfCoordinate));
         }
 
         [Fact]
         public void Return_Enter_Y_Coordinate_Of_Cell_In_Seed_Message()
         {
-            Assert.Equal("Please enter the y coordinate of the cell in the seed or quit the game with 'q': ",
-                _gameOutput.EnterYCoordinateOfCellMessage());
+            var maxSizeOfCoordinate = 20;
+            Assert.Equal("Please enter the y coordinate between 1-20 of the cell in the seed or quit the game with 'q': ",
+                _gameOutput.EnterYCoordinateOfCellMessage(maxSizeOfCoordinate));
         }
 
         [Fact]

@@ -40,14 +40,14 @@ namespace ConwaysGameOfLife
             return "It's now time to add the seed of the system:\n";
         }
 
-        public string EnterXCoordinateOfCellMessage()
+        public string EnterXCoordinateOfCellMessage(int maxSizeOfCoordinate)
         {
-            return "Please enter the x coordinate of the cell in the seed or quit the game with 'q': ";
+            return "Please enter the x coordinate between 1-" + maxSizeOfCoordinate + " of the cell in the seed or quit the game with 'q': ";
         }
 
-        public string EnterYCoordinateOfCellMessage()
+        public string EnterYCoordinateOfCellMessage(int maxSizeOfCoordinate)
         {
-            return "Please enter the y coordinate of the cell in the seed or quit the game with 'q': ";
+            return "Please enter the y coordinate between 1-" + maxSizeOfCoordinate + " of the cell in the seed or quit the game with 'q': ";
         }
 
         public string AddMoreLiveCellsMessage()
