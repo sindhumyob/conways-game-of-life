@@ -25,7 +25,7 @@ namespace ConwaysGameOfLife.GameInput
 
             if (!int.TryParse(input, out var n)) return false;
 
-            return int.Parse(input) >= 0 && int.Parse(input) <= maxGridInputSize;
+            return int.Parse(input) > 0 && int.Parse(input) <= maxGridInputSize;
         }
 
         public bool IsAddMoreLiveCellsResponseValid(string input)

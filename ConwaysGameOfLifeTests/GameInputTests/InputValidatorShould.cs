@@ -37,7 +37,7 @@ namespace ConwaysGameOfLifeTests
         
         [Theory]
         [InlineData("3")]
-        [InlineData("0")]
+        [InlineData("1")]
         [InlineData("15")]
         [InlineData("q")]
         public void Return_True_When_Input_Coordinate_For_Cell_Is_Valid(string input)
@@ -51,6 +51,7 @@ namespace ConwaysGameOfLifeTests
         [InlineData("")]
         [InlineData("-15")]
         [InlineData("16")]
+        [InlineData("0")]
         [InlineData("quit")]
         [InlineData("$%#$#")]
         public void Return_False_When_Input_Coordinate_For_Cell_Is_Not_Valid(string input)
