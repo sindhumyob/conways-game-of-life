@@ -13,7 +13,7 @@ namespace ConwaysGameOfLife.GameInput
 
             if (!int.TryParse(input, out var n)) return false;
 
-            return int.Parse(input) > 0;
+            return int.Parse(input) >= 3 && int.Parse(input) <= 100 ;
         }
 
         public bool IsCoordinateResponseValid(string input, int maxGridInputSize)

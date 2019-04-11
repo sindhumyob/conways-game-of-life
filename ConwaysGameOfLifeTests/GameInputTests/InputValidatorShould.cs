@@ -13,8 +13,9 @@ namespace ConwaysGameOfLifeTests
         }
         
         [Theory]
-        [InlineData("10")]
+        [InlineData("100")]
         [InlineData("8")]
+        [InlineData("3")]
         [InlineData("q")]
         [InlineData("Q")]
         public void Return_True_When_Grid_Size_Response_Is_Valid(string input)
@@ -27,6 +28,8 @@ namespace ConwaysGameOfLifeTests
         [InlineData("")]
         [InlineData("-50")]
         [InlineData("0")]
+        [InlineData("2")]
+        [InlineData("101")]
         [InlineData("quit")]
         [InlineData("$%#$#")]
         public void Return_False_When_Grid_Size_Response_Is_Not_Valid(string input)
