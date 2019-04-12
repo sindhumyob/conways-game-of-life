@@ -19,9 +19,9 @@ namespace ConwaysGameOfLife
             }
         }
 
-        public void UpdateGameGridCells(List<Coordinate> liveCellCoordinates, CellType cellType)
+        public void UpdateGameGridCells(List<Coordinate> cellCoordinates, CellType cellType)
         {
-            foreach (var coordinate in liveCellCoordinates)
+            foreach (var coordinate in cellCoordinates)
             {
                 CurrentGameGrid[coordinate.XCoordinate, coordinate.YCoordinate] = (char) cellType;
             }
