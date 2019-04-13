@@ -1,7 +1,7 @@
 using ConwaysGameOfLife.GameInput;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests
+namespace ConwaysGameOfLifeTests.GameInputTests
 {
     public class InputValidatorShould
     {
@@ -11,7 +11,7 @@ namespace ConwaysGameOfLifeTests
         {
             _inputValidator = new InputValidator();
         }
-        
+
         [Theory]
         [InlineData("100")]
         [InlineData("8")]
@@ -23,7 +23,7 @@ namespace ConwaysGameOfLifeTests
             var returned = _inputValidator.IsGridSizeResponseValid(input);
             Assert.True(returned);
         }
-        
+
         [Theory]
         [InlineData("")]
         [InlineData("-50")]
@@ -37,7 +37,7 @@ namespace ConwaysGameOfLifeTests
             var returned = _inputValidator.IsGridSizeResponseValid(input);
             Assert.False(returned);
         }
-        
+
         [Theory]
         [InlineData("3")]
         [InlineData("1")]
@@ -45,11 +45,11 @@ namespace ConwaysGameOfLifeTests
         [InlineData("q")]
         public void Return_True_When_Input_Coordinate_For_Cell_Is_Valid(string input)
         {
-            var maxGridInputSize = 15;
-            var returned = _inputValidator.IsCoordinateResponseValid(input, maxGridInputSize);
+            var maxCoordinateValue = 15;
+            var returned = _inputValidator.IsCoordinateResponseValid(input, maxCoordinateValue);
             Assert.True(returned);
         }
-        
+
         [Theory]
         [InlineData("")]
         [InlineData("-15")]
@@ -59,11 +59,11 @@ namespace ConwaysGameOfLifeTests
         [InlineData("$%#$#")]
         public void Return_False_When_Input_Coordinate_For_Cell_Is_Not_Valid(string input)
         {
-            var maxGridInputSize = 15;
-            var returned = _inputValidator.IsCoordinateResponseValid(input, maxGridInputSize);
+            var maxCoordinateValue = 15;
+            var returned = _inputValidator.IsCoordinateResponseValid(input, maxCoordinateValue);
             Assert.False(returned);
         }
-        
+
         [Theory]
         [InlineData("y")]
         [InlineData("n")]
@@ -71,12 +71,12 @@ namespace ConwaysGameOfLifeTests
         [InlineData("N")]
         [InlineData("q")]
         [InlineData("Q")]
-        public void Return_True_When_Adding_More_Live_Cells_Input_Is_Valid(string input)
+        public void Return_True_When_Continue_Game_Input_Is_Valid(string input)
         {
             var returned = _inputValidator.IsContinueGameResponseValid(input);
             Assert.True(returned);
         }
-        
+
         [Theory]
         [InlineData("")]
         [InlineData("Yes")]
@@ -84,7 +84,7 @@ namespace ConwaysGameOfLifeTests
         [InlineData("quit")]
         [InlineData("$%#$#")]
         [InlineData("3")]
-        public void Return_False_When_Adding_More_Live_Cells_Input_Is_Not_Valid(string input)
+        public void Return_False_When_Continue_Game_Input_Is_Not_Valid(string input)
         {
             var returned = _inputValidator.IsContinueGameResponseValid(input);
             Assert.False(returned);

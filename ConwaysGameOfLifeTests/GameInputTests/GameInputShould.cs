@@ -1,10 +1,7 @@
-using ConwaysGameOfLife;
-using ConwaysGameOfLife.GameInput;
-using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
 using GameInput = ConwaysGameOfLifeTests.Stubs.GameInput;
 
-namespace ConwaysGameOfLifeTests
+namespace ConwaysGameOfLifeTests.GameInputTests
 {
     public class GameInputShould
     {

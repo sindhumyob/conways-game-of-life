@@ -3,7 +3,7 @@ using ConwaysGameOfLife.GameInput.Interfaces;
 
 namespace ConwaysGameOfLife.GameInput
 {
-    public class GameInput:IGameInput
+    public class GameInput : IGameInput
     {
         public string GetPlayerInput()
         {
