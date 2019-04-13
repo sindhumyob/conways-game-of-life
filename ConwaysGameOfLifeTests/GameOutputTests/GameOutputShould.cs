@@ -102,8 +102,8 @@ namespace ConwaysGameOfLifeTests
         {
             var heightOfBoard = 20;
             Assert.Equal(
-                "Please enter a valid coordinate input consisting of a number between 1 and 20\n",
-                _gameOutput.InvalidCoordinateMessage(heightOfBoard));
+                "Please enter valid coordinate inputs\n",
+                _gameOutput.InvalidCoordinateMessage());
         }
 
         [Fact]

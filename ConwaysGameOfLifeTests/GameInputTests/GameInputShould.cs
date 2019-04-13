@@ -1,3 +1,4 @@
+using ConwaysGameOfLife;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
@@ -11,7 +12,6 @@ namespace ConwaysGameOfLifeTests
 
         public GameInputShould()
         {
-            
             _gameInput = new GameInput();
         }
 
@@ -21,7 +21,7 @@ namespace ConwaysGameOfLifeTests
             _gameInput.PlayerInput = "10";
 
             var returnedPlayerInput = _gameInput.GetPlayerInput();
-            
+
             Assert.Equal("10", returnedPlayerInput);
         }
     }

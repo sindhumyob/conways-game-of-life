@@ -73,7 +73,7 @@ namespace ConwaysGameOfLifeTests
         [InlineData("Q")]
         public void Return_True_When_Adding_More_Live_Cells_Input_Is_Valid(string input)
         {
-            var returned = _inputValidator.IsAddMoreLiveCellsResponseValid(input);
+            var returned = _inputValidator.IsContinueGameResponseValid(input);
             Assert.True(returned);
         }
         
@@ -86,7 +86,7 @@ namespace ConwaysGameOfLifeTests
         [InlineData("3")]
         public void Return_False_When_Adding_More_Live_Cells_Input_Is_Not_Valid(string input)
         {
-            var returned = _inputValidator.IsAddMoreLiveCellsResponseValid(input);
+            var returned = _inputValidator.IsContinueGameResponseValid(input);
             Assert.False(returned);
         }
     }
