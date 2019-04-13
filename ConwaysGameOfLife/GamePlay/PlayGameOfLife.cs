@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ConwaysGameOfLife.GamePlayHelpers;
 
 namespace ConwaysGameOfLife
 {
@@ -16,21 +17,21 @@ namespace ConwaysGameOfLife
             _transitions = new Transitions();
         }
 
-        public string PlayGame(Universe universe)
+        public string PlayGame(GameGrid gameGrid)
         {
-            GetNextTransition(universe);
-            return _gameOutput.PrintNextGenerationGridMessage(universe.CurrentGameGrid);
+            GetNextTransition(gameGrid);
+            return _gameOutput.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid);
         }
 
-        public void GetNextTransition(Universe universe)
+        public void GetNextTransition(GameGrid gameGrid)
         {
             var liveCells = new List<Coordinate>();
             var deadCells = new List<Coordinate>();
-            for (var i = 0; i < universe.CurrentGameGrid.GetLength(0); i++)
+            for (var i = 0; i < gameGrid.CurrentGameGrid.GetLength(0); i++)
             {
-                for (var j = 0; j < universe.CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < gameGrid.CurrentGameGrid.GetLength(1); j++)
                 {
-                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(universe.CurrentGameGrid,
+                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(gameGrid.CurrentGameGrid,
                         new Coordinate() {XCoordinate = i, YCoordinate = j});
 
 
@@ -45,8 +46,8 @@ namespace ConwaysGameOfLife
                 }
             }
 
-            universe.UpdateGameGridCells(liveCells, CellType.Live);
-            universe.UpdateGameGridCells(deadCells, CellType.Dead);
+            gameGrid.UpdateGameGridCells(liveCells, CellType.Live);
+            gameGrid.UpdateGameGridCells(deadCells, CellType.Dead);
         }
     }
 }

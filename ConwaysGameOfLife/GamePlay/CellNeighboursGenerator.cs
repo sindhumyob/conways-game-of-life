@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using ConwaysGameOfLife.GamePlayHelpers;
 
 namespace ConwaysGameOfLife
 {

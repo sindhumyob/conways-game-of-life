@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife;
+using ConwaysGameOfLife.GamePlayHelpers;
 using Xunit;
 
 namespace ConwaysGameOfLifeTests

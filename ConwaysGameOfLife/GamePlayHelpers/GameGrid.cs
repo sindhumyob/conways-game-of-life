@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace ConwaysGameOfLife
+namespace ConwaysGameOfLife.GamePlayHelpers
 {
-    public class Universe
+    public class GameGrid
     {
         public char[,] CurrentGameGrid { get; set; }
 

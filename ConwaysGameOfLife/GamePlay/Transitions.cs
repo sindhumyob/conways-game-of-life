@@ -1,3 +1,5 @@
+using ConwaysGameOfLife.GamePlayHelpers;
+
 namespace ConwaysGameOfLife
 {
     public class Transitions

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
+using ConwaysGameOfLife.GamePlayHelpers;
 
 namespace ConwaysGameOfLife
 {
@@ -10,7 +11,7 @@ namespace ConwaysGameOfLife
     {
         private readonly GameOutput _gameOutput;
         private readonly InputValidator _inputValidator;
-        private readonly Universe _universe;
+        private readonly GameGrid _gameGrid;
         private readonly IGameInput _gameInput;
         private readonly PlayGameOfLife _playGameOfLife;
         private bool _validInput;
@@ -21,7 +22,7 @@ namespace ConwaysGameOfLife
         public StartGameOfLife(IGameInput gameInput)
         {
             _gameOutput = new GameOutput();
-            _universe = new Universe();
+            _gameGrid = new GameGrid();
             _playGameOfLife = new PlayGameOfLife();
             _inputValidator = new InputValidator();
             _gameInput = gameInput;
@@ -59,7 +60,7 @@ namespace ConwaysGameOfLife
                 while (!_endOfSeedInput && !_gameQuit)
                 {
                     Console.Write(
-                        _gameOutput.EnterXCoordinateOfCellMessage(_universe.CurrentGameGrid.GetLength(0) - 1));
+                        _gameOutput.EnterXCoordinateOfCellMessage(_gameGrid.CurrentGameGrid.GetLength(0) - 1));
                     var xCoordinateInput = _gameInput.GetPlayerInput();
                     if (xCoordinateInput == "q")
                     {
@@ -68,7 +69,7 @@ namespace ConwaysGameOfLife
                     }
 
                     Console.Write(
-                        _gameOutput.EnterYCoordinateOfCellMessage(_universe.CurrentGameGrid.GetLength(1) - 1));
+                        _gameOutput.EnterYCoordinateOfCellMessage(_gameGrid.CurrentGameGrid.GetLength(1) - 1));
                     var yCoordinateInput = _gameInput.GetPlayerInput();
                     if (yCoordinateInput == "q")
                     {
@@ -85,7 +86,7 @@ namespace ConwaysGameOfLife
 
                     while (!_gameEnd)
                     {
-                        Console.Write(_playGameOfLife.PlayGame(_universe));
+                        Console.Write(_playGameOfLife.PlayGame(_gameGrid));
 
                         while (true)
                         {
@@ -110,10 +111,10 @@ namespace ConwaysGameOfLife
         private void ObtainSeedCoordinates(string xCoordinateInput, string yCoordinateInput)
         {
             if (_inputValidator.IsCoordinateResponseValid(xCoordinateInput,
-                    _universe.CurrentGameGrid.GetLength(0) - 1) &&
-                _inputValidator.IsCoordinateResponseValid(yCoordinateInput, _universe.CurrentGameGrid.GetLength(1) - 1))
+                    _gameGrid.CurrentGameGrid.GetLength(0) - 1) &&
+                _inputValidator.IsCoordinateResponseValid(yCoordinateInput, _gameGrid.CurrentGameGrid.GetLength(1) - 1))
             {
-                _universe.UpdateGameGridCells(
+                _gameGrid.UpdateGameGridCells(
                     new List<Coordinate>()
                     {
                         new Coordinate()
@@ -121,7 +122,7 @@ namespace ConwaysGameOfLife
                             XCoordinate = int.Parse(xCoordinateInput) - 1, YCoordinate = int.Parse(yCoordinateInput) - 1
                         }
                     }, CellType.Live);
-                Console.WriteLine(_gameOutput.PrintGridMessage(_universe.CurrentGameGrid));
+                Console.WriteLine(_gameOutput.PrintGridMessage(_gameGrid.CurrentGameGrid));
 
 
                 while (true)
@@ -162,8 +163,8 @@ namespace ConwaysGameOfLife
                 _inputValidator.IsGridSizeResponseValid(gridWidthInput))
             {
                 _validInput = true;
-                _universe.GenerateInitialGrid(int.Parse(gridHeightInput), int.Parse(gridWidthInput));
-                return _gameOutput.PrintGridMessage(_universe.CurrentGameGrid);
+                _gameGrid.GenerateInitialGrid(int.Parse(gridHeightInput), int.Parse(gridWidthInput));
+                return _gameOutput.PrintGridMessage(_gameGrid.CurrentGameGrid);
             }
 
             return _gameOutput.InvalidGridSizeMessage();
