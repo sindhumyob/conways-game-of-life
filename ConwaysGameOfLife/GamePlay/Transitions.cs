@@ -1,6 +1,6 @@
 using ConwaysGameOfLife.GamePlayHelpers;
 
-namespace ConwaysGameOfLife
+namespace ConwaysGameOfLife.GamePlay
 {
     public class Transitions
     {
