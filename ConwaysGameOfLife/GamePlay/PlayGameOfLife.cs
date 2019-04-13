@@ -8,7 +8,6 @@ namespace ConwaysGameOfLife
         private readonly GameOutput _gameOutput;
         private readonly CellNeighboursGenerator _cellNeighboursGenerator;
         private readonly Transitions _transitions;
-        private bool _gameEnd;
 
         public PlayGameOfLife()
         {
@@ -27,9 +26,9 @@ namespace ConwaysGameOfLife
         {
             var liveCells = new List<Coordinate>();
             var deadCells = new List<Coordinate>();
-            for (int i = 0; i < universe.CurrentGameGrid.GetLength(0); i++)
+            for (var i = 0; i < universe.CurrentGameGrid.GetLength(0); i++)
             {
-                for (int j = 0; j < universe.CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < universe.CurrentGameGrid.GetLength(1); j++)
                 {
                     var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(universe.CurrentGameGrid,
                         new Coordinate() {XCoordinate = i, YCoordinate = j});

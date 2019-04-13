@@ -59,6 +59,12 @@ namespace ConwaysGameOfLife
             return
                 "Please enter a valid input consisting of either 'y' for adding more cells or 'n' for starting game or 'q' for quitting\n";
         }
+        
+        public string InvalidSeeMoreTransitionsMessage()
+        {
+            return
+                "Please enter a valid input consisting of either 'y' for seeing more generations or 'n' or 'q' for quitting\n";
+        }
 
         public string StartingGameOfLifeMessage()
         {
@@ -73,6 +79,10 @@ namespace ConwaysGameOfLife
         public string PrintEndGameMessage()
         {
             return "Thanks for Playing!";
+        }
+        public string PrintSeeNextTransitionMessage()
+        {
+            return "Would you like to see the next generation? (y/n) or quit the game with 'q': ";
         }
 
         private string PrintGrid(char[,] initialGrid)
@@ -93,9 +103,6 @@ namespace ConwaysGameOfLife
             return string.Join("\n", output) + "\n";
         }
 
-        public string PrintSeeNextTransitionMessage()
-        {
-            return "Would you like to see the next generation? (y/n) or quit the game with 'q': ";
-        }
+        
     }
 }

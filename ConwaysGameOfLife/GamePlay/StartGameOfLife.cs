@@ -91,14 +91,14 @@ namespace ConwaysGameOfLife
                         {
                             Console.Write(_gameOutput.PrintSeeNextTransitionMessage());
                             var seeNextTransitionPlayerInput = _gameInput.GetPlayerInput();
-                            if (_inputValidator.IsAddMoreLiveCellsResponseValid(seeNextTransitionPlayerInput))
+                            if (_inputValidator.IsContinueGameResponseValid(seeNextTransitionPlayerInput))
                             {
                                 if (seeNextTransitionPlayerInput != "n" && seeNextTransitionPlayerInput != "q") break;
                                 _gameEnd = true;
                                 break;
                             }
 
-                            Console.Write(_gameOutput.InvalidAddMoreLiveCellsMessage());
+                            Console.Write(_gameOutput.InvalidSeeMoreTransitionsMessage());
                         }
                     }
                 }
@@ -135,7 +135,7 @@ namespace ConwaysGameOfLife
                         return;
                     }
 
-                    if (!_inputValidator.IsAddMoreLiveCellsResponseValid(addMoreCellsInput))
+                    if (!_inputValidator.IsContinueGameResponseValid(addMoreCellsInput))
                     {
                         Console.Write(_gameOutput.InvalidAddMoreLiveCellsMessage());
                         continue;
