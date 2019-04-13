@@ -7,13 +7,13 @@ namespace ConwaysGameOfLife
 {
     public class PlayGameOfLife
     {
-        private readonly GameOutput _gameOutput;
+        private readonly GameOutput.GameOutput _gameOutput;
         private readonly CellNeighboursGenerator _cellNeighboursGenerator;
         private readonly Transitions _transitions;
 
         public PlayGameOfLife()
         {
-            _gameOutput = new GameOutput();
+            _gameOutput = new GameOutput.GameOutput();
             _cellNeighboursGenerator = new CellNeighboursGenerator();
             _transitions = new Transitions();
         }

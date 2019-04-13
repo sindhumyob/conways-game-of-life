@@ -9,7 +9,7 @@ namespace ConwaysGameOfLife
 {
     public class StartGameOfLife
     {
-        private readonly GameOutput _gameOutput;
+        private readonly GameOutput.GameOutput _gameOutput;
         private readonly InputValidator _inputValidator;
         private readonly GameGrid _gameGrid;
         private readonly IGameInput _gameInput;
@@ -21,7 +21,7 @@ namespace ConwaysGameOfLife
 
         public StartGameOfLife(IGameInput gameInput)
         {
-            _gameOutput = new GameOutput();
+            _gameOutput = new GameOutput.GameOutput();
             _gameGrid = new GameGrid();
             _playGameOfLife = new PlayGameOfLife();
             _inputValidator = new InputValidator();
@@ -90,7 +90,7 @@ namespace ConwaysGameOfLife
 
                         while (true)
                         {
-                            Console.Write(_gameOutput.PrintSeeNextTransitionMessage());
+                            Console.Write(_gameOutput.PrintSeeNextGenerationMessage());
                             var seeNextTransitionPlayerInput = _gameInput.GetPlayerInput();
                             if (_inputValidator.IsContinueGameResponseValid(seeNextTransitionPlayerInput))
                             {
@@ -99,7 +99,7 @@ namespace ConwaysGameOfLife
                                 break;
                             }
 
-                            Console.Write(_gameOutput.InvalidSeeMoreTransitionsMessage());
+                            Console.Write(_gameOutput.InvalidSeeMoreGenerationsMessage());
                         }
                     }
                 }
