@@ -1,12 +1,16 @@
-﻿using System;
+
 
 namespace ConwaysGameOfLife
 {
-    class ConwaysGameOfLife
+    public class ConwaysGameOfLife
     {
+        private static StartGameOfLife _startGameOfLife;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var gameInput = new GameInput.GameInput();
+            _startGameOfLife = new StartGameOfLife(gameInput);
+
+            _startGameOfLife.StartGame();
         }
     }
 }

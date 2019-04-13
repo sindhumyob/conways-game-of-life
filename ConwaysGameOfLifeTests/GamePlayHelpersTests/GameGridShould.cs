@@ -8,11 +8,11 @@ namespace ConwaysGameOfLifeTests
 {
     public class GameGridShould
     {
-        private readonly GameGrid _gameGrid;
+        private readonly Universe _universe;
 
         public GameGridShould()
         {
-            _gameGrid = new GameGrid();
+            _universe = new Universe();
         }
 
         [Fact]
@@ -21,11 +21,11 @@ namespace ConwaysGameOfLifeTests
             var heightOfGrid = 12;
             var widthOfGrid = 10;
 
-            _gameGrid.GenerateInitialGrid(heightOfGrid, widthOfGrid);
+            _universe.GenerateInitialGrid(heightOfGrid, widthOfGrid);
 
             var expectedGrid = GenerateInitialTestGrid(heightOfGrid, widthOfGrid);
 
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
+            Assert.Equal(expectedGrid, _universe.CurrentGameGrid);
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace ConwaysGameOfLifeTests
             var heightOfGrid = 6;
             var widthOfGrid = 6;
 
-            _gameGrid.GenerateInitialGrid(heightOfGrid, widthOfGrid);
+            _universe.GenerateInitialGrid(heightOfGrid, widthOfGrid);
 
             var liveCellCoordinates = new List<Coordinate>
             {
@@ -45,7 +45,7 @@ namespace ConwaysGameOfLifeTests
                 new Coordinate {XCoordinate = 2, YCoordinate = 3},
                 new Coordinate {XCoordinate = 2, YCoordinate = 4}
             };
-            _gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
+            _universe.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
 
             var expectedGrid = new[,]
             {
@@ -75,7 +75,7 @@ namespace ConwaysGameOfLifeTests
                 },
             };
 
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
+            Assert.Equal(expectedGrid, _universe.CurrentGameGrid);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace ConwaysGameOfLifeTests
             var heightOfGrid = 6;
             var widthOfGrid = 6;
 
-            _gameGrid.GenerateInitialGrid(heightOfGrid, widthOfGrid);
+            _universe.GenerateInitialGrid(heightOfGrid, widthOfGrid);
 
             var liveCellCoordinates = new List<Coordinate>
             {
@@ -95,7 +95,7 @@ namespace ConwaysGameOfLifeTests
                 new Coordinate {XCoordinate = 2, YCoordinate = 3},
                 new Coordinate {XCoordinate = 2, YCoordinate = 4}
             };
-            _gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
+            _universe.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
 
             var deadCellCoordinates = new List<Coordinate>
             {
@@ -104,7 +104,7 @@ namespace ConwaysGameOfLifeTests
                 new Coordinate {XCoordinate = 2, YCoordinate = 2},
                 new Coordinate {XCoordinate = 2, YCoordinate = 3}
             };
-            _gameGrid.UpdateGameGridCells(deadCellCoordinates, CellType.Dead);
+            _universe.UpdateGameGridCells(deadCellCoordinates, CellType.Dead);
 
             var expectedGrid = new[,]
             {
@@ -134,7 +134,7 @@ namespace ConwaysGameOfLifeTests
                 },
             };
 
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
+            Assert.Equal(expectedGrid, _universe.CurrentGameGrid);
         }
 
         private char[,] GenerateInitialTestGrid(int heightOfGrid, int widthOfGrid)

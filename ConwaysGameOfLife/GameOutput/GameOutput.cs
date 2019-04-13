@@ -29,10 +29,9 @@ namespace ConwaysGameOfLife
             return "Perfect, here is the grid:\n" + PrintGrid(grid);
         }
 
-        public string InvalidCoordinateMessage(int maxSizeOfCoordinate)
+        public string InvalidCoordinateMessage()
         {
-            return "Please enter a valid coordinate input consisting of a number between 1 and " + maxSizeOfCoordinate +
-                   "\n";
+            return "Please enter valid coordinate inputs\n";
         }
 
         public string AddInitialSeedMessage()
@@ -70,6 +69,11 @@ namespace ConwaysGameOfLife
         {
             return "Here's the next generation:\n" + PrintGrid(grid);
         }
+        
+        public string PrintEndGameMessage()
+        {
+            return "Thanks for Playing!";
+        }
 
         private string PrintGrid(char[,] initialGrid)
         {
@@ -87,6 +91,11 @@ namespace ConwaysGameOfLife
             }
 
             return string.Join("\n", output) + "\n";
+        }
+
+        public string PrintSeeNextTransitionMessage()
+        {
+            return "Would you like to see the next generation? (y/n) or quit the game with 'q': ";
         }
     }
 }

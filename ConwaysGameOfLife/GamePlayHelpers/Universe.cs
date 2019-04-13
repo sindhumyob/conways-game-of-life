@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace ConwaysGameOfLife
 {
-    public class GameGrid
+    public class Universe
     {
-        public char[,] CurrentGameGrid { get; private set; }
+        public char[,] CurrentGameGrid { get; set; }
 
         public void GenerateInitialGrid(int heightOfGrid, int widthOfGrid)
         {
