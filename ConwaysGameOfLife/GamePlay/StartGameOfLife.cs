@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
+using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.GamePlayHelpers;
 
@@ -10,33 +11,35 @@ namespace ConwaysGameOfLife
 {
     public class StartGameOfLife
     {
-        private readonly GameOutput.GameOutput _gameOutput;
+        private readonly GameOutputMessages _gameOutputMessages;
         private readonly InputValidator _inputValidator;
         private readonly GameGrid _gameGrid;
         private readonly IGameInput _gameInput;
+        private readonly IGameOutput _gameOutput;
         private readonly PlayGameOfLife _playGameOfLife;
         private bool _validInput;
         private bool _endOfSeedInput;
         private bool _gameQuit;
         private bool _gameEnd;
 
-        public StartGameOfLife(IGameInput gameInput)
+        public StartGameOfLife(IGameInput gameInput, IGameOutput gameOutput)
         {
-            _gameOutput = new GameOutput.GameOutput();
+            _gameOutputMessages = new GameOutputMessages();
             _gameGrid = new GameGrid();
             _playGameOfLife = new PlayGameOfLife();
             _inputValidator = new InputValidator();
             _gameInput = gameInput;
+            _gameOutput = gameOutput;
         }
 
 
         public void StartGame()
         {
-            Console.Write(_gameOutput.WelcomeMessage());
+            Console.Write(_gameOutputMessages.WelcomeMessage());
 
             while (!_validInput)
             {
-                Console.Write(_gameOutput.EnterGridHeightMessage());
+                Console.Write(_gameOutputMessages.EnterGridHeightMessage());
                 var gridHeightInput = _gameInput.GetPlayerInput();
                 if (gridHeightInput == "q")
                 {
@@ -44,7 +47,7 @@ namespace ConwaysGameOfLife
                     break;
                 }
 
-                Console.Write(_gameOutput.EnterGridWidthMessage());
+                Console.Write(_gameOutputMessages.EnterGridWidthMessage());
                 var gridWidthInput = _gameInput.GetPlayerInput();
                 if (gridWidthInput == "q")
                 {
@@ -57,11 +60,11 @@ namespace ConwaysGameOfLife
 
             if (!_gameQuit)
             {
-                Console.Write(_gameOutput.AddInitialSeedMessage());
+                Console.Write(_gameOutputMessages.AddInitialSeedMessage());
                 while (!_endOfSeedInput && !_gameQuit)
                 {
                     Console.Write(
-                        _gameOutput.EnterXCoordinateOfCellMessage(_gameGrid.CurrentGameGrid.GetLength(0) - 1));
+                        _gameOutputMessages.EnterXCoordinateOfCellMessage(_gameGrid.CurrentGameGrid.GetLength(0) - 1));
                     var xCoordinateInput = _gameInput.GetPlayerInput();
                     if (xCoordinateInput == "q")
                     {
@@ -70,7 +73,7 @@ namespace ConwaysGameOfLife
                     }
 
                     Console.Write(
-                        _gameOutput.EnterYCoordinateOfCellMessage(_gameGrid.CurrentGameGrid.GetLength(1) - 1));
+                        _gameOutputMessages.EnterYCoordinateOfCellMessage(_gameGrid.CurrentGameGrid.GetLength(1) - 1));
                     var yCoordinateInput = _gameInput.GetPlayerInput();
                     if (yCoordinateInput == "q")
                     {
@@ -83,7 +86,7 @@ namespace ConwaysGameOfLife
 
                 if (!_gameQuit && !_gameEnd)
                 {
-                    Console.Write(_gameOutput.StartingGameOfLifeMessage());
+                    Console.Write(_gameOutputMessages.StartingGameOfLifeMessage());
 
                     while (!_gameEnd)
                     {
@@ -91,7 +94,7 @@ namespace ConwaysGameOfLife
 
                         while (true)
                         {
-                            Console.Write(_gameOutput.PrintSeeNextGenerationMessage());
+                            Console.Write(_gameOutputMessages.PrintSeeNextGenerationMessage());
                             var seeNextTransitionPlayerInput = _gameInput.GetPlayerInput();
                             if (_inputValidator.IsContinueGameResponseValid(seeNextTransitionPlayerInput))
                             {
@@ -100,13 +103,13 @@ namespace ConwaysGameOfLife
                                 break;
                             }
 
-                            Console.Write(_gameOutput.InvalidSeeMoreGenerationsMessage());
+                            Console.Write(_gameOutputMessages.InvalidSeeMoreGenerationsMessage());
                         }
                     }
                 }
             }
 
-            Console.Write(_gameOutput.PrintEndGameMessage());
+            Console.Write(_gameOutputMessages.PrintEndGameMessage());
         }
 
         private void ObtainSeedCoordinates(string xCoordinateInput, string yCoordinateInput)
@@ -123,12 +126,12 @@ namespace ConwaysGameOfLife
                             XCoordinate = int.Parse(xCoordinateInput) - 1, YCoordinate = int.Parse(yCoordinateInput) - 1
                         }
                     }, CellType.Live);
-                Console.WriteLine(_gameOutput.PrintGridMessage(_gameGrid.CurrentGameGrid));
+                Console.WriteLine(_gameOutputMessages.PrintGridMessage(_gameGrid.CurrentGameGrid));
 
 
                 while (true)
                 {
-                    Console.Write(_gameOutput.AddMoreLiveCellsMessage());
+                    Console.Write(_gameOutputMessages.AddMoreLiveCellsMessage());
                     var addMoreCellsInput = _gameInput.GetPlayerInput();
 
                     if (addMoreCellsInput == "q")
@@ -139,7 +142,7 @@ namespace ConwaysGameOfLife
 
                     if (!_inputValidator.IsContinueGameResponseValid(addMoreCellsInput))
                     {
-                        Console.Write(_gameOutput.InvalidAddMoreLiveCellsMessage());
+                        Console.Write(_gameOutputMessages.InvalidAddMoreLiveCellsMessage());
                         continue;
                     }
 
@@ -155,7 +158,7 @@ namespace ConwaysGameOfLife
                 }
             }
 
-            Console.Write(_gameOutput.InvalidCoordinateMessage());
+            Console.Write(_gameOutputMessages.InvalidCoordinateMessage());
         }
 
         private string GenerateInitialGrid(string gridHeightInput, string gridWidthInput)
@@ -165,10 +168,10 @@ namespace ConwaysGameOfLife
             {
                 _validInput = true;
                 _gameGrid.GenerateInitialGrid(int.Parse(gridHeightInput), int.Parse(gridWidthInput));
-                return _gameOutput.PrintGridMessage(_gameGrid.CurrentGameGrid);
+                return _gameOutputMessages.PrintGridMessage(_gameGrid.CurrentGameGrid);
             }
 
-            return _gameOutput.InvalidGridSizeMessage();
+            return _gameOutputMessages.InvalidGridSizeMessage();
         }
     }
 }

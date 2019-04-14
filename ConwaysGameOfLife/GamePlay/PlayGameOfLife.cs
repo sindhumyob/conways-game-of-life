@@ -8,13 +8,13 @@ namespace ConwaysGameOfLife
 {
     public class PlayGameOfLife
     {
-        private readonly GameOutput.GameOutput _gameOutput;
+        private readonly GameOutput.GameOutputMessages _gameOutputMessages;
         private readonly CellNeighboursGenerator _cellNeighboursGenerator;
         private readonly Transitions _transitions;
 
         public PlayGameOfLife()
         {
-            _gameOutput = new GameOutput.GameOutput();
+            _gameOutputMessages = new GameOutput.GameOutputMessages();
             _cellNeighboursGenerator = new CellNeighboursGenerator();
             _transitions = new Transitions();
         }
@@ -22,7 +22,7 @@ namespace ConwaysGameOfLife
         public string PlayGame(GameGrid gameGrid)
         {
             GetNextTransition(gameGrid);
-            return _gameOutput.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid);
+            return _gameOutputMessages.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid);
         }
 
         public void GetNextTransition(GameGrid gameGrid)

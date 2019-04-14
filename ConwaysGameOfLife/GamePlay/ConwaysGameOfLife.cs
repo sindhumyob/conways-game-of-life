@@ -1,6 +1,6 @@
+using ConwaysGameOfLife.GameOutput;
 
-
-namespace ConwaysGameOfLife
+namespace ConwaysGameOfLife.GamePlay
 {
     public class ConwaysGameOfLife
     {
@@ -8,7 +8,8 @@ namespace ConwaysGameOfLife
         static void Main(string[] args)
         {
             var gameInput = new GameInput.GameInput();
-            _startGameOfLife = new StartGameOfLife(gameInput);
+            var gameOutput = new GameOutputter();
+            _startGameOfLife = new StartGameOfLife(gameInput, gameOutput);
 
             _startGameOfLife.StartGame();
         }

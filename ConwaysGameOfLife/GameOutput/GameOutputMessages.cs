@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace ConwaysGameOfLife.GameOutput
 {
-    public class GameOutput
+    public class GameOutputMessages
     {
         public string WelcomeMessage()
         {

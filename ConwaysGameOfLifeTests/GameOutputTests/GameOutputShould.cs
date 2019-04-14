@@ -8,38 +8,38 @@ namespace ConwaysGameOfLifeTests
 {
     public class GameOutputShould
     {
-        private readonly GameOutput _gameOutput;
+        private readonly GameOutputMessages _gameOutputMessages;
 
         public GameOutputShould()
         {
-            _gameOutput = new GameOutput();
+            _gameOutputMessages = new GameOutputMessages();
         }
 
         [Fact]
         public void Return_Game_Welcome_Message()
         {
-            Assert.Equal("Welcome to Conway's Game of Life!\n", _gameOutput.WelcomeMessage());
+            Assert.Equal("Welcome to Conway's Game of Life!\n", _gameOutputMessages.WelcomeMessage());
         }
 
         [Fact]
         public void Return_Enter_Grid_Height_Message()
         {
             Assert.Equal("Please enter the height of your game grid or quit the game with 'q': ",
-                _gameOutput.EnterGridHeightMessage());
+                _gameOutputMessages.EnterGridHeightMessage());
         }
 
         [Fact]
         public void Return_Enter_Grid_Width_Message()
         {
             Assert.Equal("Please enter the width of your game grid or quit the game with 'q': ",
-                _gameOutput.EnterGridWidthMessage());
+                _gameOutputMessages.EnterGridWidthMessage());
         }
 
         [Fact]
         public void Return_Invalid_Grid_Size_Message()
         {
             Assert.Equal("Please enter a valid grid size input consisting of a single positive whole number\n",
-                _gameOutput.InvalidGridSizeMessage());
+                _gameOutputMessages.InvalidGridSizeMessage());
         }
 
         [Fact]
@@ -65,13 +65,13 @@ namespace ConwaysGameOfLifeTests
                                   " \n" +
                                   (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                                   " \n";
-            Assert.Equal(expectedMessage, _gameOutput.PrintGridMessage(initialGrid));
+            Assert.Equal(expectedMessage, _gameOutputMessages.PrintGridMessage(initialGrid));
         }
 
         [Fact]
         public void Return_Adding_Initial_Seed_Message()
         {
-            Assert.Equal("It's now time to add the seed of the system:\n", _gameOutput.AddInitialSeedMessage());
+            Assert.Equal("It's now time to add the seed of the system:\n", _gameOutputMessages.AddInitialSeedMessage());
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace ConwaysGameOfLifeTests
             var maxSizeOfCoordinate = 15;
             Assert.Equal(
                 "Please enter the x coordinate between 1-15 of the cell in the seed or quit the game with 'q': ",
-                _gameOutput.EnterXCoordinateOfCellMessage(maxSizeOfCoordinate));
+                _gameOutputMessages.EnterXCoordinateOfCellMessage(maxSizeOfCoordinate));
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace ConwaysGameOfLifeTests
             var maxSizeOfCoordinate = 20;
             Assert.Equal(
                 "Please enter the y coordinate between 1-20 of the cell in the seed or quit the game with 'q': ",
-                _gameOutput.EnterYCoordinateOfCellMessage(maxSizeOfCoordinate));
+                _gameOutputMessages.EnterYCoordinateOfCellMessage(maxSizeOfCoordinate));
         }
 
         [Fact]
@@ -98,7 +98,7 @@ namespace ConwaysGameOfLifeTests
             var heightOfBoard = 20;
             Assert.Equal(
                 "Please enter valid coordinate inputs\n",
-                _gameOutput.InvalidCoordinateMessage());
+                _gameOutputMessages.InvalidCoordinateMessage());
         }
 
         [Fact]
@@ -106,7 +106,7 @@ namespace ConwaysGameOfLifeTests
         {
             Assert.Equal(
                 "Would you like to add more live cells? (y/n) or quit the game with 'q': ",
-                _gameOutput.AddMoreLiveCellsMessage());
+                _gameOutputMessages.AddMoreLiveCellsMessage());
         }
 
         [Fact]
@@ -114,7 +114,7 @@ namespace ConwaysGameOfLifeTests
         {
             Assert.Equal(
                 "Please enter a valid input consisting of either 'y' for adding more cells or 'n' for starting game or 'q' for quitting\n",
-                _gameOutput.InvalidAddMoreLiveCellsMessage());
+                _gameOutputMessages.InvalidAddMoreLiveCellsMessage());
         }
 
         [Fact]
@@ -122,7 +122,7 @@ namespace ConwaysGameOfLifeTests
         {
             Assert.Equal(
                 "It's now time to start the game of life!\n",
-                _gameOutput.StartingGameOfLifeMessage());
+                _gameOutputMessages.StartingGameOfLifeMessage());
         }
 
         [Fact]
@@ -130,7 +130,7 @@ namespace ConwaysGameOfLifeTests
         {
             Assert.Equal(
                 "Please enter a valid input consisting of either 'y' for seeing more generations or 'n' or 'q' for quitting\n",
-                _gameOutput.InvalidSeeMoreGenerationsMessage());
+                _gameOutputMessages.InvalidSeeMoreGenerationsMessage());
         }
 
         [Fact]
@@ -138,7 +138,7 @@ namespace ConwaysGameOfLifeTests
         {
             Assert.Equal(
                 "Thanks for Playing!",
-                _gameOutput.PrintEndGameMessage());
+                _gameOutputMessages.PrintEndGameMessage());
         }
 
         [Fact]
@@ -146,7 +146,7 @@ namespace ConwaysGameOfLifeTests
         {
             Assert.Equal(
                 "Would you like to see the next generation? (y/n) or quit the game with 'q': ",
-                _gameOutput.PrintSeeNextGenerationMessage());
+                _gameOutputMessages.PrintSeeNextGenerationMessage());
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace ConwaysGameOfLifeTests
                                   " \n" +
                                   (char) CellType.Dead + " " + (char) CellType.Live + " " + (char) CellType.Dead +
                                   " \n";
-            Assert.Equal(expectedMessage, _gameOutput.PrintNextGenerationGridMessage(grid));
+            Assert.Equal(expectedMessage, _gameOutputMessages.PrintNextGenerationGridMessage(grid));
         }
     }
 }
