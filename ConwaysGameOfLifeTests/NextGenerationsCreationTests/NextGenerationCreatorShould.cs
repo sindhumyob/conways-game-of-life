@@ -1,5 +1,4 @@
 using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.NextGenerationsCreation;
 using ConwaysGameOfLife.PlayGameOfLife;
 using Xunit;

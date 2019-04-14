@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.PlayGameOfLife;
 using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
@@ -9,10 +8,10 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
     public class PlayNextGenerationShould
     {
-        private readonly PlayNextGeneration _playNextGeneration;
         private readonly GameInput _gameInput;
         private readonly GameOutput _gameOutput;
         private readonly GameGrid _gameGrid;
+        private readonly PlayNextGeneration _playNextGeneration;
 
         public PlayNextGenerationShould()
         {
@@ -21,7 +20,6 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             _gameGrid = new GameGrid();
             _playNextGeneration = new PlayNextGeneration(_gameInput, _gameOutput);
         }
-
 
         [Fact]
         public void Generate_Output_For_Next_Generation_According_To_Player_Input()
@@ -40,7 +38,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             };
             _gameInput.PlayerInputs = new List<string> {"n"};
 
-            _playNextGeneration.PlayGame(_gameGrid);
+            _playNextGeneration.NextGeneration(_gameGrid);
             var output = _gameOutput.Output;
 
             Assert.Equal("Here's the next generation:\n" +
@@ -52,6 +50,5 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n\n" +
                          "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': \n", output);
         }
-
     }
 }

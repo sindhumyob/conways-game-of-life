@@ -1,17 +1,16 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.PlayGameOfLife;
 using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.GamePlayTests
+namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
     public class SetUpGameOfLifeShould
     {
-        private readonly SetUpGameOfLife _setUpGameOfLife;
         private readonly GameInput _gameInput;
         private readonly GameOutput _gameOutput;
+        private readonly SetUpGameOfLife _setUpGameOfLife;
 
         public SetUpGameOfLifeShould()
         {
@@ -25,7 +24,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3"};
-            _setUpGameOfLife.SetUpInitialGame();
+            _setUpGameOfLife.SetUpInitialGrid();
             var output = _gameOutput.Output;
 
             Assert.Equal("Please enter the height of your game grid or quit the game with 'q': \n" +
@@ -44,7 +43,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "1"};
-            _setUpGameOfLife.SetUpInitialGame();
+            _setUpGameOfLife.SetUpInitialGrid();
             _gameOutput.Output = string.Empty;
 
             _setUpGameOfLife.SetUpInitialSeed();

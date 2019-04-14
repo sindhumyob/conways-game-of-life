@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GamePlay;
+using ConwaysGameOfLife.PlayGameOfLife;
 using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
 
@@ -16,13 +16,14 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         {
             _gameInput = new GameInput();
             _gameOutput = new GameOutput();
-            _playGameOfLife = new PlayGameOfLife(_gameInput,_gameOutput);
+            _playGameOfLife = new PlayGameOfLife(_gameInput, _gameOutput);
         }
+
         [Fact]
-        public void Generate_Output_For_Entire_Start_Game()
+        public void Generate_Output_For_Entire_Play_Game_Scenario()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
-            _playGameOfLife.StartGame();
+            _playGameOfLife.PlayGame();
             var output = _gameOutput.Output;
 
             Assert.Equal("Welcome to Conway's Game of Life!\n\n" +

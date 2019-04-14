@@ -1,79 +1,65 @@
-using System;
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
-using ConwaysGameOfLife.PlayGameOfLife;
 
-namespace ConwaysGameOfLife.GamePlay
+namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class SetUpGameOfLife
     {
         private readonly GameOutputMessages _gameOutputMessages;
         private readonly GameInputValidator _gameInputValidator;
-        private readonly GameGrid _gameGrid;
+        private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
-        private readonly PlayerInputGetter _playerInputGetter;
+        private readonly GameGrid _gameGrid;
         private int _gridHeight;
         private int _gridWidth;
 
         public SetUpGameOfLife(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
         {
             _gameOutputMessages = new GameOutputMessages();
-            _gameGrid = gameGrid;
             _gameInputValidator = new GameInputValidator();
-            _playerInputGetter = new PlayerInputGetter(gameInput, gameOutput);
+            _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameOutput = gameOutput;
+            _gameGrid = gameGrid;
         }
 
-        public bool SetUpInitialGame()
+        public bool SetUpInitialGrid()
         {
-            var gridHeight = _playerInputGetter.GetPlayerInput(_gameOutputMessages.EnterGridHeightMessage(),
+            var gridHeight = _playerInput.GetPlayerInput(_gameOutputMessages.EnterGridHeightMessage(),
                 _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
-            if (gridHeight == "q")
-            {
-                return true;
-            }
+            if (gridHeight == GameConstants.QuitInput) return true;
+
+            var gridWidth = _playerInput.GetPlayerInput(_gameOutputMessages.EnterGridWidthMessage(),
+                _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
+            if (gridWidth == GameConstants.QuitInput) return true;
 
             _gridHeight = int.Parse(gridHeight);
-
-            var gridWidth = _playerInputGetter.GetPlayerInput(_gameOutputMessages.EnterGridWidthMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
-            if (gridWidth == "q")
-            {
-                return true;
-            }
-
             _gridWidth = int.Parse(gridWidth);
 
-            GenerateInitialGrid(int.Parse(gridHeight), int.Parse(gridWidth));
+            GenerateInitialGrid(_gridHeight, _gridWidth);
             _gameOutput.OutputGame(_gameOutputMessages.AddInitialSeedMessage());
+
             return false;
         }
 
         public bool SetUpInitialSeed()
         {
-            var xCoordinate = _playerInputGetter.GetPlayerCoordinateInput(
+            var xCoordinate = _playerInput.GetPlayerCoordinateInput(
                 _gameOutputMessages.EnterXCoordinateOfCellMessage(_gridHeight),
                 _gameOutputMessages.InvalidCoordinateMessage(), _gridHeight,
                 _gameInputValidator.IsCoordinateResponseValid);
-            if (xCoordinate == "q")
-            {
-                return true;
-            }
+            if (xCoordinate == GameConstants.QuitInput) return true;
 
-            var yCoordinate = _playerInputGetter.GetPlayerCoordinateInput(
+            var yCoordinate = _playerInput.GetPlayerCoordinateInput(
                 _gameOutputMessages.EnterYCoordinateOfCellMessage(_gridWidth),
                 _gameOutputMessages.InvalidCoordinateMessage(), _gridWidth,
                 _gameInputValidator.IsCoordinateResponseValid);
-            if (yCoordinate == "q")
-            {
-                return true;
-            }
+            if (yCoordinate == GameConstants.QuitInput) return true;
 
-            GenerateUpdatedGrid(int.Parse(xCoordinate), int.Parse(yCoordinate));
+            UpdateGrid(int.Parse(xCoordinate), int.Parse(yCoordinate));
             return false;
         }
 
@@ -83,7 +69,7 @@ namespace ConwaysGameOfLife.GamePlay
             _gameOutput.OutputGame(_gameOutputMessages.PrintGridMessage(_gameGrid.CurrentGameGrid));
         }
 
-        private void GenerateUpdatedGrid(int xCoordinateInput, int yCoordinateInput)
+        private void UpdateGrid(int xCoordinateInput, int yCoordinateInput)
         {
             _gameGrid.UpdateGameGridCells(
                 new List<Coordinate>()
