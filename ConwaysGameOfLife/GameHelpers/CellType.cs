@@ -1,4 +1,4 @@
-namespace ConwaysGameOfLife.GamePlayHelpers
+namespace ConwaysGameOfLife.GameHelpers
 {
     public enum CellType
     {

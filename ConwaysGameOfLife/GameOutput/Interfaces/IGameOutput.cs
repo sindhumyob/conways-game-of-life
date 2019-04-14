@@ -1,7 +1,7 @@
-namespace ConwaysGameOfLife.GameOutput
+namespace ConwaysGameOfLife.GameOutput.Interfaces
 {
     public interface IGameOutput
     {
-        void GameOutput(string outputString);
+        void OutputGame(string gameOutput);
     }
 }

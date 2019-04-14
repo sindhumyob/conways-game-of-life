@@ -1,25 +1,24 @@
+using ConwaysGameOfLife.GameHelpers;
+
 namespace ConwaysGameOfLife.GameInput
 {
-    public class InputValidator
+    public class GameInputValidator
     {
-        private const int MinGridSize = 3;
-        private const int MaxGridSize = 100;
-
         public bool IsGridSizeResponseValid(string input)
         {
-            if (input.ToLower() == "q")
+            if (input.ToLower() == GameConstants.QuitInput)
             {
                 return true;
             }
 
             if (!int.TryParse(input, out var n)) return false;
 
-            return int.Parse(input) >= MinGridSize && int.Parse(input) <= MaxGridSize;
+            return int.Parse(input) >= GameConstants.MinGridSize && int.Parse(input) <= GameConstants.MaxGridSize;
         }
 
         public bool IsCoordinateResponseValid(string input, int maxCoordinateValue)
         {
-            if (input.ToLower() == "q")
+            if (input.ToLower() == GameConstants.QuitInput)
             {
                 return true;
             }
@@ -31,7 +30,8 @@ namespace ConwaysGameOfLife.GameInput
 
         public bool IsContinueGameResponseValid(string input)
         {
-            return input.ToLower() == "q" || input.ToLower() == "y" || input.ToLower() == "n";
+            return input.ToLower() == GameConstants.QuitInput || input.ToLower() == GameConstants.YesInput ||
+                   input.ToLower() == GameConstants.NoInput;
         }
     }
 }

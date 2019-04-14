@@ -1,9 +1,9 @@
 using System.Collections.Generic;
-using ConwaysGameOfLife.GamePlay;
-using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.PlayGameOfLife;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.GamePlayHelpersTests
+namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
     public class GameGridShould
     {

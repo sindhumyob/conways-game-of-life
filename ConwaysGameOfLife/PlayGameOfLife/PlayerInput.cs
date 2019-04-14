@@ -1,35 +1,33 @@
 using System;
 using ConwaysGameOfLife.GameInput.Interfaces;
-using ConwaysGameOfLife.GameOutput;
+using ConwaysGameOfLife.GameOutput.Interfaces;
 
-namespace ConwaysGameOfLife.GamePlay
+namespace ConwaysGameOfLife.PlayGameOfLife
 {
-    public class PlayerInputGetter
+    public class PlayerInput
     {
-        
         private readonly IGameInput _gameInput;
         private readonly IGameOutput _gameOutput;
-        
-        public PlayerInputGetter(IGameInput gameInput, IGameOutput gameOutput)
-        {
 
+        public PlayerInput(IGameInput gameInput, IGameOutput gameOutput)
+        {
             _gameInput = gameInput;
             _gameOutput = gameOutput;
-
         }
+
         public string GetPlayerInput(string inputPromptMessage, string invalidInputMessage,
             Func<string, bool> validationFunction)
         {
             while (true)
             {
-                _gameOutput.GameOutput(inputPromptMessage);
+                _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
                 if (validationFunction(playerInput))
                 {
                     return playerInput;
                 }
 
-                _gameOutput.GameOutput(invalidInputMessage);
+                _gameOutput.OutputGame(invalidInputMessage);
             }
         }
 
@@ -39,14 +37,14 @@ namespace ConwaysGameOfLife.GamePlay
         {
             while (true)
             {
-                _gameOutput.GameOutput(inputPromptMessage);
+                _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
                 if (validationFunction(playerInput, maxCoordinateValue))
                 {
                     return playerInput;
                 }
 
-                _gameOutput.GameOutput(invalidInputMessage);
+                _gameOutput.OutputGame(invalidInputMessage);
             }
         }
     }

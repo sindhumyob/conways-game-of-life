@@ -1,16 +1,16 @@
-using ConwaysGameOfLife.GamePlay;
-using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.NextGenerationsCreation;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.GamePlayTests
+namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
 {
-    public class TransitionsShould
+    public class CellTransitionCheckerShould
     {
-        private readonly Transitions _transitions;
+        private readonly CellTransitionChecker _cellTransitionChecker;
 
-        public TransitionsShould()
+        public CellTransitionCheckerShould()
         {
-            _transitions = new Transitions();
+            _cellTransitionChecker = new CellTransitionChecker();
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead}
             };
 
-            Assert.True(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.True(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead}
             };
 
-            Assert.True(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.True(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead}
             };
 
-            Assert.True(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.True(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Live, (char) CellType.Live, (char) CellType.Dead}
             };
 
-            Assert.False(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
 
         [Fact]
@@ -80,7 +80,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead}
             };
 
-            Assert.False(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead}
             };
 
-            Assert.False(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
 
         [Fact]
@@ -108,7 +108,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
                 {(char) CellType.Live, (char) CellType.Live, (char) CellType.Dead}
             };
 
-            Assert.False(_transitions.IsCellLive(cellAndNeighbours));
+            Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
         }
     }
 }

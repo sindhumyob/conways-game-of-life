@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLife.GameHelpers;
 
-namespace ConwaysGameOfLife.GamePlay
+namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class GameGrid
     {
