@@ -1,10 +1,8 @@
-using ConwaysGameOfLife;
-using ConwaysGameOfLife.GameInput;
-using ConwaysGameOfLifeTests.Stubs;
+using System.Collections.Generic;
 using Xunit;
 using GameInput = ConwaysGameOfLifeTests.Stubs.GameInput;
 
-namespace ConwaysGameOfLifeTests
+namespace ConwaysGameOfLifeTests.GameInputTests
 {
     public class GameInputShould
     {
@@ -18,7 +16,7 @@ namespace ConwaysGameOfLifeTests
         [Fact]
         public void Return_Player_Input()
         {
-            _gameInput.PlayerInput = "10";
+            _gameInput.ListOfPlayerInputs = new List<string>{"10"};
 
             var returnedPlayerInput = _gameInput.GetPlayerInput();
 

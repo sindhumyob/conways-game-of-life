@@ -1,15 +1,17 @@
+using System.Collections.Generic;
 using ConwaysGameOfLife.GameInput.Interfaces;
 
 namespace ConwaysGameOfLifeTests.Stubs
 {
     public class GameInput : IGameInput
     {
-        public string PlayerInput { get; set; }
+        public List<string> ListOfPlayerInputs { get; set; }
+
         public string GetPlayerInput()
         {
-            return PlayerInput;
+            var input = ListOfPlayerInputs[0];
+            ListOfPlayerInputs.RemoveAt(0);
+            return input;
         }
-
-        
     }
 }

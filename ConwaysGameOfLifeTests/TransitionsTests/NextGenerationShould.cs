@@ -1,25 +1,24 @@
-using ConwaysGameOfLife;
-using ConwaysGameOfLifeTests.Stubs;
+using ConwaysGameOfLife.GamePlay;
+using ConwaysGameOfLife.GamePlayHelpers;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests
+namespace ConwaysGameOfLifeTests.GamePlayTests
 {
-    public class PlayGameOfLifeShould
+    public class NextGenerationShould
     {
-        private readonly PlayGameOfLife _playGameOfLife;
-        private readonly Universe _universe;
+        private readonly NextGeneration _nextGeneration;
+        private readonly GameGrid _gameGrid;
 
-        public PlayGameOfLifeShould()
+        public NextGenerationShould()
         {
-            _universe = new Universe();
-            _playGameOfLife = new PlayGameOfLife();
-            
+            _gameGrid = new GameGrid();
+            _nextGeneration = new NextGeneration();
         }
 
         [Fact]
-        public void Generate_The_Next_Transition_When_Live_Cells_In_Seed_Are_In_Middle_Of_Board()
+        public void Generate_The_Next_Generation_When_Live_Cells_In_Seed_Are_In_Middle_Of_Board()
         {
-            var gameGrid = new[,]
+            var testGameGrid = new[,]
             {
                 {
                     (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
@@ -46,12 +45,12 @@ namespace ConwaysGameOfLifeTests
                     (char) CellType.Dead, (char) CellType.Dead
                 },
             };
-            
-            _universe.CurrentGameGrid = gameGrid;
-            
-            _playGameOfLife.GetNextTransition(_universe);
-            
-            var expectedGameGrid =new[,]
+
+            _gameGrid.CurrentGameGrid = testGameGrid;
+
+            _nextGeneration.GetNextGeneration(_gameGrid);
+
+            var expectedGameGrid = new[,]
             {
                 {
                     (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
@@ -78,15 +77,14 @@ namespace ConwaysGameOfLifeTests
                     (char) CellType.Dead, (char) CellType.Dead
                 },
             };
-            
-            Assert.Equal(expectedGameGrid,_universe.CurrentGameGrid);
-            
+
+            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
         }
-        
+
         [Fact]
-        public void Generate_The_Next_Transition_When_Live_Cells_In_Seed_Have_Overlap()
+        public void Generate_The_Next_Generation_When_Live_Cells_In_Seed_Have_Overlap()
         {
-            var gameGrid = new[,]
+            var testGameGrid = new[,]
             {
                 {
                     (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
@@ -113,11 +111,11 @@ namespace ConwaysGameOfLifeTests
                     (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live
                 },
             };
-            _universe.CurrentGameGrid = gameGrid;
-            
-            _playGameOfLife.GetNextTransition(_universe);
-            
-            var expectedGameGrid =new[,]
+            _gameGrid.CurrentGameGrid = testGameGrid;
+
+            _nextGeneration.GetNextGeneration(_gameGrid);
+
+            var expectedGameGrid = new[,]
             {
                 {
                     (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
@@ -144,12 +142,12 @@ namespace ConwaysGameOfLifeTests
                     (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
                 },
             };
-            
-            Assert.Equal(expectedGameGrid,_universe.CurrentGameGrid);
-            
-            
-        }[Fact]
-        public void Generate_The_Next_Transition_For_Smallest_Grid_Size()
+
+            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
+        }
+
+        [Fact]
+        public void Generate_The_Next_Generation_For_Smallest_Grid_Size()
         {
             var gameGrid = new[,]
             {
@@ -163,11 +161,11 @@ namespace ConwaysGameOfLifeTests
                     (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
                 }
             };
-            _universe.CurrentGameGrid = gameGrid;
-            
-            _playGameOfLife.GetNextTransition(_universe);
-            
-            var expectedGameGrid =new[,]
+            _gameGrid.CurrentGameGrid = gameGrid;
+
+            _nextGeneration.GetNextGeneration(_gameGrid);
+
+            var expectedGameGrid = new[,]
             {
                 {
                     (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
@@ -179,10 +177,8 @@ namespace ConwaysGameOfLifeTests
                     (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
                 }
             };
-            
-            Assert.Equal(expectedGameGrid,_universe.CurrentGameGrid);
-            
-            
+
+            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
         }
     }
 }

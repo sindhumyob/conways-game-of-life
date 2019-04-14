@@ -1,9 +1,10 @@
-using System.Linq;
-
 namespace ConwaysGameOfLife.GameInput
 {
     public class InputValidator
     {
+        private const int MinGridSize = 3;
+        private const int MaxGridSize = 100;
+
         public bool IsGridSizeResponseValid(string input)
         {
             if (input.ToLower() == "q")
@@ -13,10 +14,10 @@ namespace ConwaysGameOfLife.GameInput
 
             if (!int.TryParse(input, out var n)) return false;
 
-            return int.Parse(input) >= 3 && int.Parse(input) <= 100 ;
+            return int.Parse(input) >= MinGridSize && int.Parse(input) <= MaxGridSize;
         }
 
-        public bool IsCoordinateResponseValid(string input, int maxGridInputSize)
+        public bool IsCoordinateResponseValid(string input, int maxCoordinateValue)
         {
             if (input.ToLower() == "q")
             {
@@ -25,12 +26,12 @@ namespace ConwaysGameOfLife.GameInput
 
             if (!int.TryParse(input, out var n)) return false;
 
-            return int.Parse(input) > 0 && int.Parse(input) <= maxGridInputSize;
+            return int.Parse(input) > 0 && int.Parse(input) <= maxCoordinateValue;
         }
 
         public bool IsContinueGameResponseValid(string input)
         {
-            return input.ToLower() == "q" || input.ToLower() == "y" ||input.ToLower() == "n";
+            return input.ToLower() == "q" || input.ToLower() == "y" || input.ToLower() == "n";
         }
     }
 }

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-namespace ConwaysGameOfLife
+namespace ConwaysGameOfLife.GameOutput
 {
-    public class GameOutput
+    public class GameOutputMessages
     {
         public string WelcomeMessage()
         {
@@ -41,12 +41,14 @@ namespace ConwaysGameOfLife
 
         public string EnterXCoordinateOfCellMessage(int maxSizeOfCoordinate)
         {
-            return "Please enter the x coordinate between 1-" + maxSizeOfCoordinate + " of the cell in the seed or quit the game with 'q': ";
+            return "Please enter the x coordinate between 1-" + maxSizeOfCoordinate +
+                   " of the cell in the seed or quit the game with 'q': ";
         }
 
         public string EnterYCoordinateOfCellMessage(int maxSizeOfCoordinate)
         {
-            return "Please enter the y coordinate between 1-" + maxSizeOfCoordinate + " of the cell in the seed or quit the game with 'q': ";
+            return "Please enter the y coordinate between 1-" + maxSizeOfCoordinate +
+                   " of the cell in the seed or quit the game with 'q': ";
         }
 
         public string AddMoreLiveCellsMessage()
@@ -59,8 +61,8 @@ namespace ConwaysGameOfLife
             return
                 "Please enter a valid input consisting of either 'y' for adding more cells or 'n' for starting game or 'q' for quitting\n";
         }
-        
-        public string InvalidSeeMoreTransitionsMessage()
+
+        public string InvalidSeeMoreGenerationsMessage()
         {
             return
                 "Please enter a valid input consisting of either 'y' for seeing more generations or 'n' or 'q' for quitting\n";
@@ -75,12 +77,13 @@ namespace ConwaysGameOfLife
         {
             return "Here's the next generation:\n" + PrintGrid(grid);
         }
-        
+
         public string PrintEndGameMessage()
         {
             return "Thanks for Playing!";
         }
-        public string PrintSeeNextTransitionMessage()
+
+        public string PrintSeeNextGenerationMessage()
         {
             return "Would you like to see the next generation? (y/n) or quit the game with 'q': ";
         }
@@ -102,7 +105,5 @@ namespace ConwaysGameOfLife
 
             return string.Join("\n", output) + "\n";
         }
-
-        
     }
 }

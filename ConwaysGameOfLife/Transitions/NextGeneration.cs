@@ -1,36 +1,29 @@
-using System;
 using System.Collections.Generic;
+using ConwaysGameOfLife.CellNeighboursGeneration;
+using ConwaysGameOfLife.GamePlayHelpers;
 
-namespace ConwaysGameOfLife
+namespace ConwaysGameOfLife.GamePlay
 {
-    public class PlayGameOfLife
+    public class NextGeneration
     {
-        private readonly GameOutput _gameOutput;
         private readonly CellNeighboursGenerator _cellNeighboursGenerator;
         private readonly Transitions _transitions;
 
-        public PlayGameOfLife()
+        public NextGeneration()
         {
-            _gameOutput = new GameOutput();
             _cellNeighboursGenerator = new CellNeighboursGenerator();
             _transitions = new Transitions();
         }
 
-        public string PlayGame(Universe universe)
-        {
-            GetNextTransition(universe);
-            return _gameOutput.PrintNextGenerationGridMessage(universe.CurrentGameGrid);
-        }
-
-        public void GetNextTransition(Universe universe)
+        public void GetNextGeneration(GameGrid gameGrid)
         {
             var liveCells = new List<Coordinate>();
             var deadCells = new List<Coordinate>();
-            for (var i = 0; i < universe.CurrentGameGrid.GetLength(0); i++)
+            for (var i = 0; i < gameGrid.CurrentGameGrid.GetLength(0); i++)
             {
-                for (var j = 0; j < universe.CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < gameGrid.CurrentGameGrid.GetLength(1); j++)
                 {
-                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(universe.CurrentGameGrid,
+                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(gameGrid.CurrentGameGrid,
                         new Coordinate() {XCoordinate = i, YCoordinate = j});
 
 
@@ -45,8 +38,8 @@ namespace ConwaysGameOfLife
                 }
             }
 
-            universe.UpdateGameGridCells(liveCells, CellType.Live);
-            universe.UpdateGameGridCells(deadCells, CellType.Dead);
+            gameGrid.UpdateGameGridCells(liveCells, CellType.Live);
+            gameGrid.UpdateGameGridCells(deadCells, CellType.Dead);
         }
     }
 }
