@@ -37,7 +37,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                     (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
                 }
             };
-            _gameInput.ListOfPlayerInputs = new List<string> {"n"};
+            _gameInput.PlayerInputs = new List<string> {"n"};
 
             _playNextGeneration.PlayGame(_gameGrid);
             var output = _gameOutputter.Output;

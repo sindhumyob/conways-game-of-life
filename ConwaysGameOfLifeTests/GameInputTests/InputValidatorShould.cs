@@ -43,7 +43,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [InlineData("1")]
         [InlineData("15")]
         [InlineData("q")]
-        public void Return_True_When_Input_Coordinate_For_Cell_Is_Valid(string input)
+        public void Return_True_When_Input_Coordinate_For_Cell_In_Seed_Is_Valid(string input)
         {
             var maxCoordinateValue = 15;
             var returned = _inputValidator.IsCoordinateResponseValid(input, maxCoordinateValue);
@@ -57,7 +57,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [InlineData("0")]
         [InlineData("quit")]
         [InlineData("$%#$#")]
-        public void Return_False_When_Input_Coordinate_For_Cell_Is_Not_Valid(string input)
+        public void Return_False_When_Input_Coordinate_For_Cell_In_Seed_Is_Not_Valid(string input)
         {
             var maxCoordinateValue = 15;
             var returned = _inputValidator.IsCoordinateResponseValid(input, maxCoordinateValue);

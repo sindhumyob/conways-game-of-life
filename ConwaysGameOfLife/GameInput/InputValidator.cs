@@ -4,10 +4,13 @@ namespace ConwaysGameOfLife.GameInput
     {
         private const int MinGridSize = 3;
         private const int MaxGridSize = 100;
+        private const string QuitInput = "q";
+        private const string YesInput = "y";
+        private const string NoInput = "n";
 
         public bool IsGridSizeResponseValid(string input)
         {
-            if (input.ToLower() == "q")
+            if (input.ToLower() == QuitInput)
             {
                 return true;
             }
@@ -19,7 +22,7 @@ namespace ConwaysGameOfLife.GameInput
 
         public bool IsCoordinateResponseValid(string input, int maxCoordinateValue)
         {
-            if (input.ToLower() == "q")
+            if (input.ToLower() == QuitInput)
             {
                 return true;
             }
@@ -31,7 +34,7 @@ namespace ConwaysGameOfLife.GameInput
 
         public bool IsContinueGameResponseValid(string input)
         {
-            return input.ToLower() == "q" || input.ToLower() == "y" || input.ToLower() == "n";
+            return input.ToLower() == QuitInput || input.ToLower() == YesInput || input.ToLower() == NoInput;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         [Fact]
         public void Generate_Output_For_Entire_Start_Game()
         {
-            _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
+            _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
             _playGameOfLife.StartGame();
             var output = _gameOutputter.Output;
 

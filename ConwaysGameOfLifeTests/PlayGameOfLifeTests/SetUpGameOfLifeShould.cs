@@ -23,7 +23,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         [Fact]
         public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
         {
-            _gameInput.ListOfPlayerInputs = new List<string> {"3", "3"};
+            _gameInput.PlayerInputs = new List<string> {"3", "3"};
             _setUpGameOfLife.SetUpInitialGame();
             var output = _gameOutputter.Output;
 
@@ -42,7 +42,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         [Fact]
         public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
         {
-            _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "1"};
+            _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "1"};
             _setUpGameOfLife.SetUpInitialGame();
             _gameOutputter.Output = string.Empty;
 
