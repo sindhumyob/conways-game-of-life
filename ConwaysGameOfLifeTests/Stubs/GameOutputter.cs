@@ -8,7 +8,7 @@ namespace ConwaysGameOfLifeTests.Stubs
         
         public void GameOutput(string outputString)
         {
-            Output = outputString;
+            Output += outputString +"\n";
         }
     }
 }
