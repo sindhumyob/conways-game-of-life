@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-using ConwaysGameOfLife;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GameOutput;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests
+namespace ConwaysGameOfLifeTests.GameOutputTests
 {
     public class GameOutputShould
     {
@@ -43,7 +41,7 @@ namespace ConwaysGameOfLifeTests
         }
 
         [Fact]
-        public void Return_Current_Grid_During_Player_Input_Message()
+        public void Return_Current_Grid_Message_When_Initial_Grid_Is_Generated()
         {
             var initialGrid = new[,]
             {
@@ -95,9 +93,8 @@ namespace ConwaysGameOfLifeTests
         [Fact]
         public void Return_Invalid_Coordinate_Message()
         {
-            var heightOfBoard = 20;
             Assert.Equal(
-                "Please enter valid coordinate inputs\n",
+                "Please enter a valid coordinate input\n",
                 _gameOutputMessages.InvalidCoordinateMessage());
         }
 
@@ -134,18 +131,10 @@ namespace ConwaysGameOfLifeTests
         }
 
         [Fact]
-        public void Return_End_Game_Message()
-        {
-            Assert.Equal(
-                "Thanks for Playing!",
-                _gameOutputMessages.PrintEndGameMessage());
-        }
-
-        [Fact]
         public void Return_See_Next_Generations_Message()
         {
             Assert.Equal(
-                "Would you like to see the next generation? (y/n) or quit the game with 'q': ",
+                "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': ",
                 _gameOutputMessages.PrintSeeNextGenerationMessage());
         }
 
@@ -173,6 +162,14 @@ namespace ConwaysGameOfLifeTests
                                   (char) CellType.Dead + " " + (char) CellType.Live + " " + (char) CellType.Dead +
                                   " \n";
             Assert.Equal(expectedMessage, _gameOutputMessages.PrintNextGenerationGridMessage(grid));
+        }
+
+        [Fact]
+        public void Return_Game_End_Message()
+        {
+            Assert.Equal(
+                "Thanks for Playing!",
+                _gameOutputMessages.PrintGameEndMessage());
         }
     }
 }

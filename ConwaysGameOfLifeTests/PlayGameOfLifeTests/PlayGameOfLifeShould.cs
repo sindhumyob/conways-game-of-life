@@ -9,21 +9,21 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
     public class PlayGameOfLifeShould
     {
         private readonly GameInput _gameInput;
-        private readonly GameOutputter _gameOutputter;
+        private readonly GameOutput _gameOutput;
         private readonly PlayGameOfLife _playGameOfLife;
 
         public PlayGameOfLifeShould()
         {
             _gameInput = new GameInput();
-            _gameOutputter = new GameOutputter();
-            _playGameOfLife = new PlayGameOfLife(_gameInput,_gameOutputter);
+            _gameOutput = new GameOutput();
+            _playGameOfLife = new PlayGameOfLife(_gameInput,_gameOutput);
         }
         [Fact]
         public void Generate_Output_For_Entire_Start_Game()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
             _playGameOfLife.StartGame();
-            var output = _gameOutputter.Output;
+            var output = _gameOutput.Output;
 
             Assert.Equal("Welcome to Conway's Game of Life!\n\n" +
                          "Please enter the height of your game grid or quit the game with 'q': \n" +
@@ -64,7 +64,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n\n" +
-                         "Would you like to see the next generation? (y/n) or quit the game with 'q': \n" +
+                         "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': \n" +
                          "Here's the next generation:\n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n" +
@@ -72,7 +72,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n\n" +
-                         "Would you like to see the next generation? (y/n) or quit the game with 'q': \n" +
+                         "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': \n" +
                          "Thanks for Playing!\n", output);
         }
     }

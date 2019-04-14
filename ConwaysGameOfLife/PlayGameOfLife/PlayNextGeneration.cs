@@ -1,6 +1,7 @@
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
+using ConwaysGameOfLife.GameOutput.Interfaces;
 
 namespace ConwaysGameOfLife.GamePlay
 {
@@ -25,7 +26,7 @@ namespace ConwaysGameOfLife.GamePlay
         public bool PlayGame(GameGrid gameGrid)
         {
             _nextGeneration.GetNextGeneration(gameGrid);
-            _gameOutput.GameOutput(_gameOutputMessages.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid));
+            _gameOutput.OutputGame(_gameOutputMessages.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid));
 
             var seeMoreTransitions =
                 _playerInputGetter.GetPlayerInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),

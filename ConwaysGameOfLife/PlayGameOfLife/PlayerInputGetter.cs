@@ -1,6 +1,7 @@
 using System;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
+using ConwaysGameOfLife.GameOutput.Interfaces;
 
 namespace ConwaysGameOfLife.GamePlay
 {
@@ -22,14 +23,14 @@ namespace ConwaysGameOfLife.GamePlay
         {
             while (true)
             {
-                _gameOutput.GameOutput(inputPromptMessage);
+                _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
                 if (validationFunction(playerInput))
                 {
                     return playerInput;
                 }
 
-                _gameOutput.GameOutput(invalidInputMessage);
+                _gameOutput.OutputGame(invalidInputMessage);
             }
         }
 
@@ -39,14 +40,14 @@ namespace ConwaysGameOfLife.GamePlay
         {
             while (true)
             {
-                _gameOutput.GameOutput(inputPromptMessage);
+                _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
                 if (validationFunction(playerInput, maxCoordinateValue))
                 {
                     return playerInput;
                 }
 
-                _gameOutput.GameOutput(invalidInputMessage);
+                _gameOutput.OutputGame(invalidInputMessage);
             }
         }
     }

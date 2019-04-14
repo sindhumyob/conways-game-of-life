@@ -1,6 +1,7 @@
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
+using ConwaysGameOfLife.GameOutput.Interfaces;
 
 namespace ConwaysGameOfLife.GamePlay
 {
@@ -40,14 +41,14 @@ namespace ConwaysGameOfLife.GamePlay
             }
             else if (addMoreSeedsInput == "n")
             {
-                _gameOutput.GameOutput(_gameOutputMessages.StartingGameOfLifeMessage());
+                _gameOutput.OutputGame(_gameOutputMessages.StartingGameOfLifeMessage());
                 _endOfSeedInput = true;
             }
         }
 
         public void StartGame()
         {
-            _gameOutput.GameOutput(_gameOutputMessages.WelcomeMessage());
+            _gameOutput.OutputGame(_gameOutputMessages.WelcomeMessage());
             if (!_gameEnd)
             {
                 _gameEnd = _setUpGameOfLife.SetUpInitialGame();
@@ -67,7 +68,7 @@ namespace ConwaysGameOfLife.GamePlay
                 _gameEnd = _playNextGeneration.PlayGame(_gameGrid);
             }
 
-            _gameOutput.GameOutput(_gameOutputMessages.PrintEndGameMessage());
+            _gameOutput.OutputGame(_gameOutputMessages.PrintGameEndMessage());
         }
     }
 }

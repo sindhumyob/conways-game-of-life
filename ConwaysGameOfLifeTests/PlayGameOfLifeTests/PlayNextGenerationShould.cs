@@ -10,15 +10,15 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
     {
         private readonly PlayNextGeneration _playNextGeneration;
         private readonly GameInput _gameInput;
-        private readonly GameOutputter _gameOutputter;
+        private readonly GameOutput _gameOutput;
         private readonly GameGrid _gameGrid;
 
         public PlayNextGenerationShould()
         {
             _gameInput = new GameInput();
-            _gameOutputter = new GameOutputter();
+            _gameOutput = new GameOutput();
             _gameGrid = new GameGrid();
-            _playNextGeneration = new PlayNextGeneration(_gameInput, _gameOutputter);
+            _playNextGeneration = new PlayNextGeneration(_gameInput, _gameOutput);
         }
 
 
@@ -40,7 +40,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             _gameInput.PlayerInputs = new List<string> {"n"};
 
             _playNextGeneration.PlayGame(_gameGrid);
-            var output = _gameOutputter.Output;
+            var output = _gameOutput.Output;
 
             Assert.Equal("Here's the next generation:\n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
@@ -49,7 +49,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n\n" +
-                         "Would you like to see the next generation? (y/n) or quit the game with 'q': \n", output);
+                         "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': \n", output);
         }
 
     }

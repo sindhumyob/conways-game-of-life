@@ -31,7 +31,7 @@ namespace ConwaysGameOfLife.GameOutput
 
         public string InvalidCoordinateMessage()
         {
-            return "Please enter valid coordinate inputs\n";
+            return "Please enter a valid coordinate input\n";
         }
 
         public string AddInitialSeedMessage()
@@ -78,25 +78,25 @@ namespace ConwaysGameOfLife.GameOutput
             return "Here's the next generation:\n" + PrintGrid(grid);
         }
 
-        public string PrintEndGameMessage()
+        public string PrintGameEndMessage()
         {
             return "Thanks for Playing!";
         }
 
         public string PrintSeeNextGenerationMessage()
         {
-            return "Would you like to see the next generation? (y/n) or quit the game with 'q': ";
+            return "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': ";
         }
 
-        private string PrintGrid(char[,] initialGrid)
+        private string PrintGrid(char[,] grid)
         {
             var output = new List<string>();
             var line = string.Empty;
-            for (var i = 0; i < initialGrid.GetLength(0); i++)
+            for (var i = 0; i < grid.GetLength(0); i++)
             {
-                for (var j = 0; j < initialGrid.GetLength(1); j++)
+                for (var j = 0; j < grid.GetLength(1); j++)
                 {
-                    line += initialGrid[i, j] + " ";
+                    line += grid[i, j] + " ";
                 }
 
                 output.Add(line);
