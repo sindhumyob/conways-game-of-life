@@ -1,184 +1,80 @@
+using System.Collections.Generic;
 using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.GamePlayTests
+namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
     public class PlayGameOfLifeShould
     {
-        private readonly NextGeneration _nextGeneration;
-        private readonly GameGrid _gameGrid;
+        private readonly PlayGameOfLife _playGameOfLife;
+        private readonly GameInput _gameInput;
+        private readonly GameOutputter _gameOutputter;
 
         public PlayGameOfLifeShould()
         {
-            _gameGrid = new GameGrid();
-            _nextGeneration = new NextGeneration();
+            _gameInput = new GameInput();
+            _gameOutputter = new GameOutputter();
+            _playGameOfLife = new PlayGameOfLife(_gameInput, _gameOutputter);
         }
 
         [Fact]
-        public void Generate_The_Next_Generation_When_Live_Cells_In_Seed_Are_In_Middle_Of_Board()
+        public void Generate_Output_For_Entire_Start_Game()
         {
-            var testGameGrid = new[,]
-            {
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-            };
+            _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
+            _playGameOfLife.StartGame();
+            var output = _gameOutputter.Output;
 
-            _gameGrid.CurrentGameGrid = testGameGrid;
-
-            _nextGeneration.GetNextGeneration(_gameGrid);
-
-            var expectedGameGrid = new[,]
-            {
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Live, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Live, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
-                },
-            };
-
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
-        }
-
-        [Fact]
-        public void Generate_The_Next_Generation_When_Live_Cells_In_Seed_Have_Overlap()
-        {
-            var testGameGrid = new[,]
-            {
-                {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live
-                },
-            };
-            _gameGrid.CurrentGameGrid = testGameGrid;
-
-            _nextGeneration.GetNextGeneration(_gameGrid);
-
-            var expectedGameGrid = new[,]
-            {
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
-                },
-            };
-
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
-        }
-
-        [Fact]
-        public void Generate_The_Next_Generation_For_Smallest_Grid_Size()
-        {
-            var gameGrid = new[,]
-            {
-                {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
-                }
-            };
-            _gameGrid.CurrentGameGrid = gameGrid;
-
-            _nextGeneration.GetNextGeneration(_gameGrid);
-
-            var expectedGameGrid = new[,]
-            {
-                {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
-                }
-            };
-
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
+            Assert.Equal("Welcome to Conway's Game of Life!\n\n" +
+                         "Please enter the height of your game grid or quit the game with 'q': \n" +
+                         "Please enter the width of your game grid or quit the game with 'q': \n" +
+                         "Perfect, here is the grid:\n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n\n" +
+                         "It's now time to add the seed of the system:\n\n" +
+                         "Please enter the x coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                         "Please enter the y coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                         "Perfect, here is the grid:\n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Live +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n\n" +
+                         "Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
+                         "Please enter the x coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                         "Please enter the y coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                         "Perfect, here is the grid:\n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Live +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Live +
+                         " \n\n" +
+                         "Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
+                         "It's now time to start the game of life!\n\n" +
+                         "Here's the next generation:\n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n\n" +
+                         "Would you like to see the next generation? (y/n) or quit the game with 'q': \n" +
+                         "Here's the next generation:\n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n" +
+                         (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
+                         " \n\n" +
+                         "Would you like to see the next generation? (y/n) or quit the game with 'q': \n" +
+                         "Thanks for Playing!\n", output);
         }
     }
 }
