@@ -1,5 +1,5 @@
+using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GamePlay;
-using ConwaysGameOfLife.GamePlayHelpers;
 using Xunit;
 
 namespace ConwaysGameOfLifeTests.GamePlayTests

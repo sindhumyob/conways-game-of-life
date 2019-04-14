@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
-using ConwaysGameOfLife.GamePlayHelpers;
 
 namespace ConwaysGameOfLife.GamePlay
 {

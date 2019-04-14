@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GamePlay;
-using ConwaysGameOfLife.GamePlayHelpers;
 using ConwaysGameOfLifeTests.Stubs;
 using Xunit;
 

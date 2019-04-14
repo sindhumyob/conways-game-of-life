@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife.CellNeighboursGeneration;
-using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLife.GameHelpers;
 
 namespace ConwaysGameOfLife.GamePlay
 {

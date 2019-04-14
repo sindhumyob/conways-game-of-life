@@ -1,5 +1,5 @@
 using ConwaysGameOfLife.CellNeighboursGeneration;
-using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLife.GameHelpers;
 using Xunit;
 
 namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests

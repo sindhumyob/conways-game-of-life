@@ -1,4 +1,4 @@
-using ConwaysGameOfLife.GamePlayHelpers;
+using ConwaysGameOfLife.GameHelpers;
 
 namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
