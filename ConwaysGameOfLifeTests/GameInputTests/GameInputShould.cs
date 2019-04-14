@@ -16,7 +16,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [Fact]
         public void Return_Player_Input()
         {
-            _gameInput.PlayerInput = new List<string>{"10"};
+            _gameInput.ListOfPlayerInputs = new List<string>{"10"};
 
             var returnedPlayerInput = _gameInput.GetPlayerInput();
 

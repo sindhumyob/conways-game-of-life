@@ -5,12 +5,12 @@ namespace ConwaysGameOfLifeTests.Stubs
 {
     public class GameInput : IGameInput
     {
-        public List<string> PlayerInput { get; set; }
+        public List<string> ListOfPlayerInputs { get; set; }
 
         public string GetPlayerInput()
         {
-            var input = PlayerInput[0];
-            PlayerInput.RemoveAt(0);
+            var input = ListOfPlayerInputs[0];
+            ListOfPlayerInputs.RemoveAt(0);
             return input;
         }
     }

@@ -94,6 +94,7 @@ namespace ConwaysGameOfLife.GamePlay
 
             if (addMoreSeedsInput == "n")
             {
+                _gameOutput.GameOutput(_gameOutputMessages.StartingGameOfLifeMessage());
                 _endOfSeedInput = true;
             }
         }
@@ -131,7 +132,7 @@ namespace ConwaysGameOfLife.GamePlay
                     InputForAddMoreSeeds();
                 }
             }
-            _gameOutput.GameOutput(_gameOutputMessages.StartingGameOfLifeMessage());
+           
             while (!_gameEnd)
             {
                 PlayGame();
