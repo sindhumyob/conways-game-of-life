@@ -90,7 +90,8 @@ namespace ConwaysGameOfLife
 
                     while (!_gameEnd)
                     {
-                        Console.Write(_playGameOfLife.PlayGame(_gameGrid));
+                        _playGameOfLife.GetNextGeneration(_gameGrid);
+                        Console.Write(_gameOutputMessages.PrintNextGenerationGridMessage(_gameGrid.CurrentGameGrid));
 
                         while (true)
                         {
