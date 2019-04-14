@@ -3,6 +3,7 @@ using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
 using ConwaysGameOfLife.NextGenerationsCreation;
+using ConwaysGameOfLife.PlayGameOfLife;
 
 namespace ConwaysGameOfLife.GamePlay
 {

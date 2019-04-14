@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ConwaysGameOfLife.CellNeighboursGeneration;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GamePlay;
+using ConwaysGameOfLife.PlayGameOfLife;
 
 namespace ConwaysGameOfLife.NextGenerationsCreation
 {

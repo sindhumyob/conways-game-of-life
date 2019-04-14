@@ -5,6 +5,7 @@ using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
+using ConwaysGameOfLife.PlayGameOfLife;
 
 namespace ConwaysGameOfLife.GamePlay
 {
