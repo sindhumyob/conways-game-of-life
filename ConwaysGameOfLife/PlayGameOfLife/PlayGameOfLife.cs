@@ -12,7 +12,7 @@ namespace ConwaysGameOfLife.GamePlay
         private readonly IGameOutput _gameOutput;
         private readonly GameOutputMessages _gameOutputMessages;
         private readonly PlayerInputGetter _playerInputGetter;
-        private readonly InputValidator _inputValidator;
+        private readonly GameInputValidator _gameInputValidator;
         private readonly SetUpGameOfLife _setUpGameOfLife;
         private bool _gameEnd;
         private bool _endOfSeedInput;
@@ -24,7 +24,7 @@ namespace ConwaysGameOfLife.GamePlay
             _gameOutput = gameOutput;
             _gameOutputMessages = new GameOutputMessages();
             _playerInputGetter = new PlayerInputGetter(gameInput, gameOutput);
-            _inputValidator = new InputValidator();
+            _gameInputValidator = new GameInputValidator();
             _setUpGameOfLife = new SetUpGameOfLife(gameInput, gameOutput, _gameGrid);
             _playNextGeneration = new PlayNextGeneration(gameInput,gameOutput);
         }
@@ -34,7 +34,7 @@ namespace ConwaysGameOfLife.GamePlay
             var addMoreSeedsInput =
                 _playerInputGetter.GetPlayerInput(_gameOutputMessages.AddMoreLiveCellsMessage(),
                     _gameOutputMessages.InvalidAddMoreLiveCellsMessage(),
-                    _inputValidator.IsContinueGameResponseValid);
+                    _gameInputValidator.IsContinueGameResponseValid);
             if (addMoreSeedsInput == "q")
             {
                 _gameEnd = true;

@@ -1,6 +1,6 @@
 namespace ConwaysGameOfLife.GameInput
 {
-    public class InputValidator
+    public class GameInputValidator
     {
         private const int MinGridSize = 3;
         private const int MaxGridSize = 100;

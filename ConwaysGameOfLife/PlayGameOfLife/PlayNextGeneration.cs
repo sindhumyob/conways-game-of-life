@@ -11,13 +11,13 @@ namespace ConwaysGameOfLife.GamePlay
         private readonly GameOutputMessages _gameOutputMessages;
         private readonly PlayerInputGetter _playerInputGetter;
         private readonly IGameOutput _gameOutput;
-        private readonly InputValidator _inputValidator;
+        private readonly GameInputValidator _gameInputValidator;
 
         public PlayNextGeneration(IGameInput gameInput, IGameOutput gameOutput)
         {
             _nextGeneration = new NextGeneration();
             _gameOutputMessages = new GameOutputMessages();
-            _inputValidator = new InputValidator();
+            _gameInputValidator = new GameInputValidator();
             _playerInputGetter = new PlayerInputGetter(gameInput, gameOutput);
             _gameOutput = gameOutput;
 
@@ -31,7 +31,7 @@ namespace ConwaysGameOfLife.GamePlay
             var seeMoreTransitions =
                 _playerInputGetter.GetPlayerInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),
                     _gameOutputMessages.InvalidSeeMoreGenerationsMessage(),
-                    _inputValidator.IsContinueGameResponseValid);
+                    _gameInputValidator.IsContinueGameResponseValid);
             return seeMoreTransitions == "q" || seeMoreTransitions == "n";
         }
     }

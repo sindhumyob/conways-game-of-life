@@ -11,7 +11,7 @@ namespace ConwaysGameOfLife.GamePlay
     public class SetUpGameOfLife
     {
         private readonly GameOutputMessages _gameOutputMessages;
-        private readonly InputValidator _inputValidator;
+        private readonly GameInputValidator _gameInputValidator;
         private readonly GameGrid _gameGrid;
         private readonly IGameOutput _gameOutput;
         private readonly PlayerInputGetter _playerInputGetter;
@@ -22,7 +22,7 @@ namespace ConwaysGameOfLife.GamePlay
         {
             _gameOutputMessages = new GameOutputMessages();
             _gameGrid = gameGrid;
-            _inputValidator = new InputValidator();
+            _gameInputValidator = new GameInputValidator();
             _playerInputGetter = new PlayerInputGetter(gameInput, gameOutput);
             _gameOutput = gameOutput;
         }
@@ -30,7 +30,7 @@ namespace ConwaysGameOfLife.GamePlay
         public bool SetUpInitialGame()
         {
             var gridHeight = _playerInputGetter.GetPlayerInput(_gameOutputMessages.EnterGridHeightMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), _inputValidator.IsGridSizeResponseValid);
+                _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
             if (gridHeight == "q")
             {
                 return true;
@@ -39,7 +39,7 @@ namespace ConwaysGameOfLife.GamePlay
             _gridHeight = int.Parse(gridHeight);
 
             var gridWidth = _playerInputGetter.GetPlayerInput(_gameOutputMessages.EnterGridWidthMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), _inputValidator.IsGridSizeResponseValid);
+                _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
             if (gridWidth == "q")
             {
                 return true;
@@ -57,7 +57,7 @@ namespace ConwaysGameOfLife.GamePlay
             var xCoordinate = _playerInputGetter.GetPlayerCoordinateInput(
                 _gameOutputMessages.EnterXCoordinateOfCellMessage(_gridHeight),
                 _gameOutputMessages.InvalidCoordinateMessage(), _gridHeight,
-                _inputValidator.IsCoordinateResponseValid);
+                _gameInputValidator.IsCoordinateResponseValid);
             if (xCoordinate == "q")
             {
                 return true;
@@ -66,7 +66,7 @@ namespace ConwaysGameOfLife.GamePlay
             var yCoordinate = _playerInputGetter.GetPlayerCoordinateInput(
                 _gameOutputMessages.EnterYCoordinateOfCellMessage(_gridWidth),
                 _gameOutputMessages.InvalidCoordinateMessage(), _gridWidth,
-                _inputValidator.IsCoordinateResponseValid);
+                _gameInputValidator.IsCoordinateResponseValid);
             if (yCoordinate == "q")
             {
                 return true;
