@@ -8,7 +8,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
 {
     public class StartGameShould
     {
-        private readonly StartGameOfLife _startGameOfLife;
+        private readonly PlayGameOfLife _playGameOfLife;
         private readonly GameInput _gameInput;
         private readonly GameOutputter _gameOutputter;
 
@@ -16,14 +16,14 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         {
             _gameInput = new GameInput();
             _gameOutputter = new GameOutputter();
-            _startGameOfLife = new StartGameOfLife(_gameInput, _gameOutputter);
+            _playGameOfLife = new PlayGameOfLife(_gameInput, _gameOutputter);
         }
 
         [Fact]
         public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
         {
             _gameInput.ListOfPlayerInputs = new List<string> {"3", "3"};
-            _startGameOfLife.InputForInitialGrid();
+            _playGameOfLife.SetUpInitialGame();
             var output = _gameOutputter.Output;
 
             Assert.Equal("Please enter the height of your game grid or quit the game with 'q': \n" +
@@ -42,10 +42,10 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
         {
             _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "1"};
-            _startGameOfLife.InputForInitialGrid();
+            _playGameOfLife.SetUpInitialGame();
             _gameOutputter.Output = string.Empty;
 
-            _startGameOfLife.InputForInitialSeed();
+            _playGameOfLife.SetUpInitialSeed();
             var output = _gameOutputter.Output;
 
             Assert.Equal(
@@ -64,14 +64,14 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         public void Generate_Output_When_More_Cells_Are_Added_To_Initial_Seed_According_To_Player_Input()
         {
             _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "1", "n"};
-            _startGameOfLife.InputForInitialGrid();
-            _startGameOfLife.InputForInitialSeed();
+            _playGameOfLife.SetUpInitialGame();
+            _playGameOfLife.SetUpInitialSeed();
             _gameOutputter.Output = string.Empty;
 
 
-            _startGameOfLife.InputForAddMoreSeeds();
-            _startGameOfLife.InputForInitialSeed();
-            _startGameOfLife.InputForAddMoreSeeds();
+            _playGameOfLife.InputForAddMoreSeeds();
+            _playGameOfLife.SetUpInitialSeed();
+            _playGameOfLife.InputForAddMoreSeeds();
             var output = _gameOutputter.Output;
 
             Assert.Equal("Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
@@ -92,11 +92,11 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         public void Generate_Output_For_Play_Game_According_To_Player_Input()
         {
             _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "3", "n"};
-            _startGameOfLife.InputForInitialGrid();
-            _startGameOfLife.InputForInitialSeed();
+            _playGameOfLife.SetUpInitialGame();
+            _playGameOfLife.SetUpInitialSeed();
             _gameOutputter.Output = string.Empty;
             
-            _startGameOfLife.PlayGame();
+            _playGameOfLife.PlayGame();
             var output = _gameOutputter.Output;
 
             Assert.Equal("Here's the next generation:\n" +
@@ -114,7 +114,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         public void Generate_Output_For_Entire_Start_Game()
         {
             _gameInput.ListOfPlayerInputs = new List<string> {"3", "3", "2", "3", "y","3", "3", "n","y","n"};
-            _startGameOfLife.StartGame();
+            _playGameOfLife.StartGame();
             var output = _gameOutputter.Output;
             
             Assert.Equal("Welcome to Conway's Game of Life!\n\n"+

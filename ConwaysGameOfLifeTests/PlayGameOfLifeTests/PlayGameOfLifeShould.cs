@@ -6,13 +6,13 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
 {
     public class PlayGameOfLifeShould
     {
-        private readonly PlayGameOfLife _playGameOfLife;
+        private readonly NextGeneration _nextGeneration;
         private readonly GameGrid _gameGrid;
 
         public PlayGameOfLifeShould()
         {
             _gameGrid = new GameGrid();
-            _playGameOfLife = new PlayGameOfLife();
+            _nextGeneration = new NextGeneration();
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
 
             _gameGrid.CurrentGameGrid = testGameGrid;
 
-            _playGameOfLife.GetNextGeneration(_gameGrid);
+            _nextGeneration.GetNextGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {
@@ -113,7 +113,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
             };
             _gameGrid.CurrentGameGrid = testGameGrid;
 
-            _playGameOfLife.GetNextGeneration(_gameGrid);
+            _nextGeneration.GetNextGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {
@@ -163,7 +163,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
             };
             _gameGrid.CurrentGameGrid = gameGrid;
 
-            _playGameOfLife.GetNextGeneration(_gameGrid);
+            _nextGeneration.GetNextGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {

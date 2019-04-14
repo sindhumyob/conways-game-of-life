@@ -4,14 +4,14 @@ namespace ConwaysGameOfLife.GamePlay
 {
     public class ConwaysGameOfLife
     {
-        private static StartGameOfLife _startGameOfLife;
+        private static PlayGameOfLife _playGameOfLife;
         static void Main(string[] args)
         {
             var gameInput = new GameInput.GameInput();
             var gameOutput = new GameOutputter();
-            _startGameOfLife = new StartGameOfLife(gameInput, gameOutput);
+            _playGameOfLife = new PlayGameOfLife(gameInput, gameOutput);
 
-            _startGameOfLife.StartGame();
+            _playGameOfLife.StartGame();
         }
     }
 }
