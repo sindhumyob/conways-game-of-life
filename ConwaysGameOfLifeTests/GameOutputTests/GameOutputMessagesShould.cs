@@ -4,11 +4,11 @@ using Xunit;
 
 namespace ConwaysGameOfLifeTests.GameOutputTests
 {
-    public class GameOutputShould
+    public class GameOutputMessagesShould
     {
         private readonly GameOutputMessages _gameOutputMessages;
 
-        public GameOutputShould()
+        public GameOutputMessagesShould()
         {
             _gameOutputMessages = new GameOutputMessages();
         }
