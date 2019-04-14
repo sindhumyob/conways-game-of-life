@@ -11,14 +11,13 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         private readonly SetUpGameOfLife _setUpGameOfLife;
         private readonly GameInput _gameInput;
         private readonly GameOutputter _gameOutputter;
-        private readonly GameGrid _gameGrid;
 
         public SetUpGameOfLifeShould()
         {
             _gameInput = new GameInput();
             _gameOutputter = new GameOutputter();
-            _gameGrid = new GameGrid();
-            _setUpGameOfLife = new SetUpGameOfLife(_gameInput, _gameOutputter, _gameGrid);
+            var gameGrid = new GameGrid();
+            _setUpGameOfLife = new SetUpGameOfLife(_gameInput, _gameOutputter, gameGrid);
         }
 
         [Fact]

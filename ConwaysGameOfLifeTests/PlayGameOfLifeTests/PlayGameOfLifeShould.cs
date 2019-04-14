@@ -8,17 +8,16 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
     public class PlayGameOfLifeShould
     {
-        private readonly PlayGameOfLife _playGameOfLife;
         private readonly GameInput _gameInput;
         private readonly GameOutputter _gameOutputter;
+        private readonly PlayGameOfLife _playGameOfLife;
 
         public PlayGameOfLifeShould()
         {
             _gameInput = new GameInput();
             _gameOutputter = new GameOutputter();
-            _playGameOfLife = new PlayGameOfLife(_gameInput, _gameOutputter);
+            _playGameOfLife = new PlayGameOfLife(_gameInput,_gameOutputter);
         }
-
         [Fact]
         public void Generate_Output_For_Entire_Start_Game()
         {

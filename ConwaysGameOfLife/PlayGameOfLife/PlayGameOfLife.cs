@@ -6,10 +6,8 @@ namespace ConwaysGameOfLife.GamePlay
 {
     public class PlayGameOfLife
     {
-        private readonly NextGeneration _nextGeneration;
-
         private readonly GameGrid _gameGrid;
-
+        private readonly PlayNextGeneration _playNextGeneration;
         private readonly IGameOutput _gameOutput;
         private readonly GameOutputMessages _gameOutputMessages;
         private readonly PlayerInputGetter _playerInputGetter;
@@ -20,13 +18,14 @@ namespace ConwaysGameOfLife.GamePlay
 
         public PlayGameOfLife(IGameInput gameInput, IGameOutput gameOutput)
         {
-            _nextGeneration = new NextGeneration();
+            
             _gameGrid = new GameGrid();
             _gameOutput = gameOutput;
             _gameOutputMessages = new GameOutputMessages();
             _playerInputGetter = new PlayerInputGetter(gameInput, gameOutput);
             _inputValidator = new InputValidator();
             _setUpGameOfLife = new SetUpGameOfLife(gameInput, gameOutput, _gameGrid);
+            _playNextGeneration = new PlayNextGeneration(gameInput,gameOutput);
         }
 
         private void AddMoreSeeds()
@@ -43,21 +42,6 @@ namespace ConwaysGameOfLife.GamePlay
             {
                 _gameOutput.GameOutput(_gameOutputMessages.StartingGameOfLifeMessage());
                 _endOfSeedInput = true;
-            }
-        }
-
-        private void PlayGame()
-        {
-            _nextGeneration.GetNextGeneration(_gameGrid);
-            _gameOutput.GameOutput(_gameOutputMessages.PrintNextGenerationGridMessage(_gameGrid.CurrentGameGrid));
-
-            var seeMoreTransitions =
-                _playerInputGetter.GetPlayerInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),
-                    _gameOutputMessages.InvalidSeeMoreGenerationsMessage(),
-                    _inputValidator.IsContinueGameResponseValid);
-            if (seeMoreTransitions == "q" || seeMoreTransitions == "n")
-            {
-                _gameEnd = true;
             }
         }
 
@@ -80,7 +64,7 @@ namespace ConwaysGameOfLife.GamePlay
 
             while (!_gameEnd && _endOfSeedInput)
             {
-                PlayGame();
+                _gameEnd = _playNextGeneration.PlayGame(_gameGrid);
             }
 
             _gameOutput.GameOutput(_gameOutputMessages.PrintEndGameMessage());
