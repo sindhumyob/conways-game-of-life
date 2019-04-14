@@ -1,4 +1,5 @@
 using ConwaysGameOfLife;
+using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.GamePlayHelpers;
 using ConwaysGameOfLifeTests.Stubs;
 using Xunit;

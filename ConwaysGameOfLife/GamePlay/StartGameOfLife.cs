@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
+using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.GamePlayHelpers;
 
 namespace ConwaysGameOfLife

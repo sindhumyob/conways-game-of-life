@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using ConwaysGameOfLife.CellNeighboursGeneration;
 using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.GamePlayHelpers;
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ConwaysGameOfLife.GamePlay;
 using ConwaysGameOfLife.GamePlayHelpers;
 using Xunit;
 
