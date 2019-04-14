@@ -1,8 +1,8 @@
 using ConwaysGameOfLife.GameHelpers;
 
-namespace ConwaysGameOfLife.GamePlay
+namespace ConwaysGameOfLife.NextGenerationsCreation
 {
-    public class Transitions
+    public class CellTransitionChecker
     {
         public bool IsCellLive(char[,] cellAndNeighbours)
         {

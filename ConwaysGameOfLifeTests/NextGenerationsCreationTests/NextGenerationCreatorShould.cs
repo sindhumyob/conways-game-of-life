@@ -1,22 +1,23 @@
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GamePlay;
+using ConwaysGameOfLife.NextGenerationsCreation;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.GamePlayTests
+namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
 {
-    public class NextGenerationShould
+    public class NextGenerationCreatorShould
     {
-        private readonly NextGeneration _nextGeneration;
+        private readonly NextGenerationCreator _nextGenerationCreator;
         private readonly GameGrid _gameGrid;
 
-        public NextGenerationShould()
+        public NextGenerationCreatorShould()
         {
             _gameGrid = new GameGrid();
-            _nextGeneration = new NextGeneration();
+            _nextGenerationCreator = new NextGenerationCreator();
         }
 
         [Fact]
-        public void Generate_The_Next_Generation_When_Live_Cells_In_Seed_Are_In_Middle_Of_Board()
+        public void Create_The_Next_Generation_When_Live_Cells_In_Seed_Are_In_Middle_Of_Grid_With_No_Overlap()
         {
             var testGameGrid = new[,]
             {
@@ -48,7 +49,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
 
             _gameGrid.CurrentGameGrid = testGameGrid;
 
-            _nextGeneration.GetNextGeneration(_gameGrid);
+            _nextGenerationCreator.CreateNextGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {
@@ -82,7 +83,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         }
 
         [Fact]
-        public void Generate_The_Next_Generation_When_Live_Cells_In_Seed_Have_Overlap()
+        public void Create_The_Next_Generation_When_Live_Cells_In_Seed_Have_Grid_Overlap()
         {
             var testGameGrid = new[,]
             {
@@ -113,7 +114,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
             };
             _gameGrid.CurrentGameGrid = testGameGrid;
 
-            _nextGeneration.GetNextGeneration(_gameGrid);
+            _nextGenerationCreator.CreateNextGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {
@@ -147,7 +148,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
         }
 
         [Fact]
-        public void Generate_The_Next_Generation_For_Smallest_Grid_Size()
+        public void Create_The_Next_Generation_For_Smallest_Grid_Size()
         {
             var gameGrid = new[,]
             {
@@ -163,7 +164,7 @@ namespace ConwaysGameOfLifeTests.GamePlayTests
             };
             _gameGrid.CurrentGameGrid = gameGrid;
 
-            _nextGeneration.GetNextGeneration(_gameGrid);
+            _nextGenerationCreator.CreateNextGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {

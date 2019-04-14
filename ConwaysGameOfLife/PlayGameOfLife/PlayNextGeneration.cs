@@ -2,12 +2,13 @@ using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
+using ConwaysGameOfLife.NextGenerationsCreation;
 
 namespace ConwaysGameOfLife.GamePlay
 {
     public class PlayNextGeneration
     {
-        private readonly NextGeneration _nextGeneration;
+        private readonly NextGenerationCreator _nextGenerationCreator;
         private readonly GameOutputMessages _gameOutputMessages;
         private readonly PlayerInputGetter _playerInputGetter;
         private readonly IGameOutput _gameOutput;
@@ -15,7 +16,7 @@ namespace ConwaysGameOfLife.GamePlay
 
         public PlayNextGeneration(IGameInput gameInput, IGameOutput gameOutput)
         {
-            _nextGeneration = new NextGeneration();
+            _nextGenerationCreator = new NextGenerationCreator();
             _gameOutputMessages = new GameOutputMessages();
             _gameInputValidator = new GameInputValidator();
             _playerInputGetter = new PlayerInputGetter(gameInput, gameOutput);
@@ -25,7 +26,7 @@ namespace ConwaysGameOfLife.GamePlay
 
         public bool PlayGame(GameGrid gameGrid)
         {
-            _nextGeneration.GetNextGeneration(gameGrid);
+            _nextGenerationCreator.CreateNextGeneration(gameGrid);
             _gameOutput.OutputGame(_gameOutputMessages.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid));
 
             var seeMoreTransitions =
