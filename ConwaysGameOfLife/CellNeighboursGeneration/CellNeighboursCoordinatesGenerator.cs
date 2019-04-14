@@ -16,7 +16,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             _noOverlapCoordinates = new NoOverlapCoordinates();
         }
 
-        public Coordinate[] GetCornerOverlapCoordinates(int rowCoord, int colCoord, int maxRowCoord,
+        public Coordinate[] GenerateCornerOverlapCoordinates(int rowCoord, int colCoord, int maxRowCoord,
             int maxColumnCoord)
         {
             var neighboursCoordinates = new Coordinate[] { };
@@ -44,7 +44,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             return neighboursCoordinates;
         }
 
-        public Coordinate[] GetBordersOverlapCoordinates(int rowCoord, int colCoord, int maxRowCoord,
+        public Coordinate[] GenerateBordersOverlapCoordinates(int rowCoord, int colCoord, int maxRowCoord,
             int maxColumnCoord)
         {
             var neighboursCoordinates = new Coordinate[] { };
@@ -70,7 +70,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             return neighboursCoordinates;
         }
 
-        public Coordinate[] GetNoOverlapCoordinates(int rowCoord, int colCoord)
+        public Coordinate[] GenerateNoOverlapCoordinates(int rowCoord, int colCoord)
         {
             return _noOverlapCoordinates.GetGridNoOverlapCoordinates(rowCoord, colCoord);
         }

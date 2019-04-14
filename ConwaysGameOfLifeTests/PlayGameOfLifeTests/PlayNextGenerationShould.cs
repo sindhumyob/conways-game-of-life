@@ -23,7 +23,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 
 
         [Fact]
-        public void Generate_Output_For_Play_Game_According_To_Player_Input()
+        public void Generate_Output_For_Next_Generation_According_To_Player_Input()
         {
             _gameGrid.CurrentGameGrid = new[,]
             {
@@ -52,6 +52,5 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          "Would you like to see the next generation? (y/n) or quit the game with 'q': \n", output);
         }
 
-        
     }
 }

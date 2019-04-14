@@ -63,7 +63,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Top_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Top_Border_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 0, YCoordinate = 1});
 
@@ -84,7 +84,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Bottom_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Bottom_Border_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 5, YCoordinate = 2});
 
@@ -105,7 +105,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Left_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Left_Border_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 2, YCoordinate = 0});
 
@@ -126,7 +126,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Right_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Right_Border_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 2, YCoordinate = 5});
 
@@ -147,7 +147,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Top_Left_Cell_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Top_Left_Corner_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 0, YCoordinate = 0});
 
@@ -168,7 +168,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Bottom_Left_Cell_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Bottom_Left_Corner_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 5, YCoordinate = 0});
 
@@ -189,7 +189,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
         }
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Top_Right_Cell_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Top_Right_Corner_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 0, YCoordinate = 5});
 
@@ -211,7 +211,7 @@ namespace ConwaysGameOfLifeTests.CellNeighboursGenerationTests
 
 
         [Fact]
-        public void Return_Neighbours_Of_Selected_Cell_For_Bottom_Right_Cell_Overlap()
+        public void Return_Neighbours_Of_Selected_Cell_For_Bottom_Right_Corner_Overlap()
         {
             var returnedCellAndNeighbours = GetCellNeighbours(new Coordinate {XCoordinate = 5, YCoordinate = 5});
 
