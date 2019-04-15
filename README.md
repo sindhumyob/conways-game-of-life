@@ -12,7 +12,7 @@ The universe of the Game of Life is a two-dimensional orthogonal grid of square 
 
 If the cell is on the fringe of the grid it laps over to the other side:
 
-
+![alt text](https://github.com/sindhumyob/conways-game-of-life/blob/master/cell-overlap.png)
 
 At each step in time, the following transitions occur:
 
@@ -23,6 +23,8 @@ At each step in time, the following transitions occur:
 
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed. Births and deaths happen simultaneously, and the discrete moment at which this happens is sometimes called a tick. The rules continue to be applied repeatedly to create further generations.
 
+![alt text](https://github.com/sindhumyob/conways-game-of-life/blob/master/Game_of_life_toad.gif)
+
 # Task
 * Visualize the game (you can decide in what medium)
 * Be able to define how big the world/grid is (10x10, 50x80, etc.)
@@ -30,4 +32,4 @@ The initial pattern constitutes the seed of the system. The first generation is 
 
 # My Requirements
 * It is a console version of the game
-* The minimum grid height and width is 3 and the maximum grid height and width is 100. (ie. minimum grid size is 3x3 and maximum grid size is 100x100)
+* The minimum grid height and width is 3 and the maximum grid height and width is 100. (ie. minimum grid size is 3x3 and maximum grid size is 100x100).
