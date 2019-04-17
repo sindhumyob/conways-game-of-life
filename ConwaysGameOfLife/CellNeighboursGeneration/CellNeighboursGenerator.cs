@@ -14,6 +14,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
 
         public char[,] GenerateCellNeighbours(char[,] gameGrid, Coordinate currentCellCoordinates)
         {
+            // abstraction of data types with game grid dimensions
             var neighboursCoordinates = GetCellNeighboursCoordinates(currentCellCoordinates.XCoordinate,
                 currentCellCoordinates.YCoordinate, gameGrid.GetLength(0) - 1,
                 gameGrid.GetLength(1) - 1);

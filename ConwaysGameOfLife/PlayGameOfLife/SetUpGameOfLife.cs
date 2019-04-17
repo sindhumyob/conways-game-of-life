@@ -10,7 +10,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     public class SetUpGameOfLife
     {
         private readonly GameOutputMessages _gameOutputMessages;
-        private readonly GameInputValidator _gameInputValidator;
         private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
         private readonly GameGrid _gameGrid;
@@ -20,7 +19,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public SetUpGameOfLife(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
         {
             _gameOutputMessages = new GameOutputMessages();
-            _gameInputValidator = new GameInputValidator();
             _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameOutput = gameOutput;
             _gameGrid = gameGrid;
@@ -28,12 +26,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public bool SetUpInitialGrid()
         {
-            var gridHeight = _playerInput.GetPlayerInput(_gameOutputMessages.EnterGridHeightMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
+            var gridHeight = _playerInput.GetPlayerGridSetUpInput(_gameOutputMessages.EnterGridHeightMessage(),
+                _gameOutputMessages.InvalidGridSizeMessage(), GameConstants.MinGridSize, GameConstants.MaxGridSize);
             if (gridHeight == GameConstants.QuitInput) return true;
 
-            var gridWidth = _playerInput.GetPlayerInput(_gameOutputMessages.EnterGridWidthMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), _gameInputValidator.IsGridSizeResponseValid);
+            var gridWidth = _playerInput.GetPlayerGridSetUpInput(_gameOutputMessages.EnterGridWidthMessage(),
+                _gameOutputMessages.InvalidGridSizeMessage(), GameConstants.MinGridSize, GameConstants.MaxGridSize) ;
             if (gridWidth == GameConstants.QuitInput) return true;
 
             _gridHeight = int.Parse(gridHeight);
@@ -47,16 +45,16 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public bool SetUpInitialSeed()
         {
-            var xCoordinate = _playerInput.GetPlayerCoordinateInput(
+            var xCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 _gameOutputMessages.EnterXCoordinateOfCellMessage(_gridHeight),
-                _gameOutputMessages.InvalidCoordinateMessage(), _gridHeight,
-                _gameInputValidator.IsCoordinateResponseValid);
+                _gameOutputMessages.InvalidCoordinateMessage(), GameConstants.MinCoordinateInputValue,
+                _gridHeight);
             if (xCoordinate == GameConstants.QuitInput) return true;
 
-            var yCoordinate = _playerInput.GetPlayerCoordinateInput(
+            var yCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 _gameOutputMessages.EnterYCoordinateOfCellMessage(_gridWidth),
-                _gameOutputMessages.InvalidCoordinateMessage(), _gridWidth,
-                _gameInputValidator.IsCoordinateResponseValid);
+                _gameOutputMessages.InvalidCoordinateMessage(), GameConstants.MinCoordinateInputValue,
+                _gridWidth);
             if (yCoordinate == GameConstants.QuitInput) return true;
 
             UpdateGrid(int.Parse(xCoordinate), int.Parse(yCoordinate));

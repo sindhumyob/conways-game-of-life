@@ -7,5 +7,6 @@ namespace ConwaysGameOfLife.GameHelpers
         public static string NoInput => "n";
         public static int MinGridSize => 3;
         public static int MaxGridSize => 100;
+        public static int MinCoordinateInputValue => 1;
     }
 }

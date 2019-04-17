@@ -1,4 +1,5 @@
 using System;
+using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput.Interfaces;
 
@@ -8,21 +9,23 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     {
         private readonly IGameInput _gameInput;
         private readonly IGameOutput _gameOutput;
+        private readonly GameInputValidator _gameInputValidator;
 
         public PlayerInput(IGameInput gameInput, IGameOutput gameOutput)
         {
             _gameInput = gameInput;
             _gameOutput = gameOutput;
+            _gameInputValidator = new GameInputValidator();
         }
 
-        public string GetPlayerInput(string inputPromptMessage, string invalidInputMessage,
-            Func<string, bool> validationFunction)
+        public string GetPlayerContinueGameInput(string inputPromptMessage, string invalidInputMessage)
         {
             while (true)
             {
                 _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
-                if (validationFunction(playerInput))
+
+                if (_gameInputValidator.IsContinueGameInputValid(playerInput))
                 {
                     return playerInput;
                 }
@@ -31,15 +34,15 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
         }
 
-        public string GetPlayerCoordinateInput(string inputPromptMessage, string invalidInputMessage,
-            int maxCoordinateValue,
-            Func<string, int, bool> validationFunction)
+        public string GetPlayerGridSetUpInput(string inputPromptMessage, string invalidInputMessage, int minValue,
+            int maxValue)
         {
             while (true)
             {
                 _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
-                if (validationFunction(playerInput, maxCoordinateValue))
+
+                if (_gameInputValidator.IsGridSetUpInputValid(playerInput, minValue, maxValue))
                 {
                     return playerInput;
                 }

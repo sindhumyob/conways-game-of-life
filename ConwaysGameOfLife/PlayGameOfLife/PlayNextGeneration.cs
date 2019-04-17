@@ -10,7 +10,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     public class PlayNextGeneration
     {
         private readonly NextGenerationCreator _nextGenerationCreator;
-        private readonly GameInputValidator _gameInputValidator;
         private readonly GameOutputMessages _gameOutputMessages;
         private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
@@ -18,7 +17,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public PlayNextGeneration(IGameInput gameInput, IGameOutput gameOutput)
         {
             _nextGenerationCreator = new NextGenerationCreator();
-            _gameInputValidator = new GameInputValidator();
             _gameOutputMessages = new GameOutputMessages();
             _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameOutput = gameOutput;
@@ -30,9 +28,8 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameOutput.OutputGame(_gameOutputMessages.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid));
 
             var seeMoreTransitions =
-                _playerInput.GetPlayerInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),
-                    _gameOutputMessages.InvalidSeeMoreGenerationsMessage(),
-                    _gameInputValidator.IsContinueGameResponseValid);
+                _playerInput.GetPlayerContinueGameInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),
+                    _gameOutputMessages.InvalidSeeMoreGenerationsMessage());
             return seeMoreTransitions == GameConstants.QuitInput || seeMoreTransitions == GameConstants.NoInput;
         }
     }
