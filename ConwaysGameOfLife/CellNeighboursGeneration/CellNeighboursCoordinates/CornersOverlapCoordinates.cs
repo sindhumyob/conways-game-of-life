@@ -9,15 +9,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
         {
             return new[]
             {
-                new Coordinate {XCoordinate = maxRowCoord, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = maxRowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = maxRowCoord, YCoordinate = colCoord + 1},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord + 1},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord + 1}
+                new Coordinate {X = maxRowCoord, Y = maxColumnCoord},
+                new Coordinate {X = maxRowCoord, Y = colCoord},
+                new Coordinate {X = maxRowCoord, Y = colCoord + 1},
+                new Coordinate {X = rowCoord, Y = maxColumnCoord},
+                new Coordinate {X = rowCoord, Y = colCoord},
+                new Coordinate {X = rowCoord, Y = colCoord + 1},
+                new Coordinate {X = rowCoord + 1, Y = maxColumnCoord},
+                new Coordinate {X = rowCoord + 1, Y = colCoord},
+                new Coordinate {X = rowCoord + 1, Y = colCoord + 1}
             };
         }
 
@@ -27,15 +27,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
         {
             return new[]
             {
-                new Coordinate {XCoordinate = maxRowCoord, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = maxRowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = maxRowCoord, YCoordinate = 0},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = 0}
+                new Coordinate {X = maxRowCoord, Y = colCoord - 1},
+                new Coordinate {X = maxRowCoord, Y = colCoord},
+                new Coordinate {X = maxRowCoord, Y = 0},
+                new Coordinate {X = rowCoord, Y = colCoord - 1},
+                new Coordinate {X = rowCoord, Y = colCoord},
+                new Coordinate {X = rowCoord, Y = maxColumnCoord},
+                new Coordinate {X = rowCoord + 1, Y = colCoord - 1},
+                new Coordinate {X = rowCoord + 1, Y = colCoord},
+                new Coordinate {X = rowCoord + 1, Y = 0}
             };
         }
 
@@ -43,15 +43,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
         {
             return new[]
             {
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord + 1},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord + 1},
-                new Coordinate {XCoordinate = 0, YCoordinate = maxColumnCoord},
-                new Coordinate {XCoordinate = 0, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = 0, YCoordinate = colCoord + 1}
+                new Coordinate {X = rowCoord - 1, Y = maxColumnCoord},
+                new Coordinate {X = rowCoord - 1, Y = colCoord},
+                new Coordinate {X = rowCoord - 1, Y = colCoord + 1},
+                new Coordinate {X = rowCoord, Y = maxColumnCoord},
+                new Coordinate {X = rowCoord, Y = colCoord},
+                new Coordinate {X = rowCoord, Y = colCoord + 1},
+                new Coordinate {X = 0, Y = maxColumnCoord},
+                new Coordinate {X = 0, Y = colCoord},
+                new Coordinate {X = 0, Y = colCoord + 1}
             };
         }
 
@@ -59,15 +59,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
         {
             return new[]
             {
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = 0},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = 0},
-                new Coordinate {XCoordinate = 0, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = 0, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = 0, YCoordinate = 0}
+                new Coordinate {X = rowCoord - 1, Y = colCoord - 1},
+                new Coordinate {X = rowCoord - 1, Y = colCoord},
+                new Coordinate {X = rowCoord - 1, Y = 0},
+                new Coordinate {X = rowCoord, Y = colCoord - 1},
+                new Coordinate {X = rowCoord, Y = colCoord},
+                new Coordinate {X = rowCoord, Y = 0},
+                new Coordinate {X = 0, Y = colCoord - 1},
+                new Coordinate {X = 0, Y = colCoord},
+                new Coordinate {X = 0, Y = 0}
             };
         }
     }

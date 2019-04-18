@@ -56,7 +56,10 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 _gridWidth);
             if (yCoordinate == ContinueGameInputConstants.QuitInput) return true;
 
-            UpdateGrid(int.Parse(xCoordinate), int.Parse(yCoordinate));
+            UpdateGrid( new Coordinate()
+            {
+                X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)      
+            });
             return false;
         }
 
@@ -66,15 +69,13 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameOutput.OutputGame(OutputMessages.PrintGrid + _gameGrid.ConvertGridToOutput());
         }
 
-        private void UpdateGrid(int xCoordinateInput, int yCoordinateInput)
+        private void UpdateGrid(Coordinate inputCoordinate)
         {
+            var coordinate = _gameGrid.ConvertInputCoordinateToGridCoordinate(inputCoordinate);
             _gameGrid.UpdateGameGridCells(
                 new List<Coordinate>()
                 {
-                    new Coordinate()
-                    {
-                        XCoordinate = xCoordinateInput - 1, YCoordinate = yCoordinateInput - 1
-                    }
+                    coordinate
                 }, CellType.Live);
             _gameOutput.OutputGame(OutputMessages.PrintGrid + _gameGrid.ConvertGridToOutput());
         }

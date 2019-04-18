@@ -1,4 +1,5 @@
 using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.PlayGameOfLife;
 
 namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
@@ -12,12 +13,13 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             _cellNeighboursCoordinatesGenerator = new CellNeighboursCoordinatesGenerator();
         }
 
-        public char[,] GenerateCellNeighbours(char[,] gameGrid, Coordinate currentCellCoordinates)
+        public char[,] GenerateCellNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
         {
             // abstraction of data types with game grid dimensions
-            var neighboursCoordinates = GetCellNeighboursCoordinates(currentCellCoordinates.XCoordinate,
-                currentCellCoordinates.YCoordinate, gameGrid.GetLength(0) - 1,
-                gameGrid.GetLength(1) - 1);
+            var gridSizeCoordinates = gameGrid.GetMaxGridSizeCoordinates();
+            var maxGridSizeCoordinates = new Coordinate()
+                {X = gridSizeCoordinates.Item1, Y = gridSizeCoordinates.Item2};
+            var neighboursCoordinates = GetCellNeighboursCoordinates(cellCoordinates, maxGridSizeCoordinates);
 
             var neighbours = new char[CellNeighboursArraySize, CellNeighboursArraySize];
             var rowCount = 0;
@@ -25,7 +27,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             foreach (var neighbourCoordinate in neighboursCoordinates)
             {
                 neighbours[rowCount, columnCount] =
-                    gameGrid[neighbourCoordinate.XCoordinate, neighbourCoordinate.YCoordinate];
+                    gameGrid.CurrentGameGrid[neighbourCoordinate.X, neighbourCoordinate.Y];
                 columnCount++;
 
                 if (columnCount != 3) continue;
@@ -36,33 +38,37 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             return neighbours;
         }
 
-        private Coordinate[] GetCellNeighboursCoordinates(int rowCoord, int colCoord, int maxRowCoord,
-            int maxColumnCoord)
+        private Coordinate[] GetCellNeighboursCoordinates(Coordinate cellCoordinates,
+            Coordinate maxGridSizeCoordinates)
         {
             Coordinate[] neighboursCoordinates;
 
-            if (rowCoord == 0 || colCoord == 0 || rowCoord == maxRowCoord || colCoord == maxColumnCoord)
+            if (cellCoordinates.X == 0 || cellCoordinates.Y == 0 ||
+                cellCoordinates.X == maxGridSizeCoordinates.X ||
+                cellCoordinates.Y == maxGridSizeCoordinates.Y)
             {
-                neighboursCoordinates = IsCornerCoordinate(rowCoord, colCoord, maxRowCoord, maxColumnCoord)
-                    ? _cellNeighboursCoordinatesGenerator.GenerateCornerOverlapCoordinates(rowCoord, colCoord,
-                        maxRowCoord, maxColumnCoord)
-                    : _cellNeighboursCoordinatesGenerator.GenerateBordersOverlapCoordinates(rowCoord, colCoord,
-                        maxRowCoord, maxColumnCoord);
+                neighboursCoordinates = IsCornerCoordinate(cellCoordinates, maxGridSizeCoordinates)
+                    ? _cellNeighboursCoordinatesGenerator.GenerateCornerOverlapCoordinates(cellCoordinates,
+                        maxGridSizeCoordinates)
+                    : _cellNeighboursCoordinatesGenerator.GenerateBordersOverlapCoordinates(cellCoordinates,
+                        maxGridSizeCoordinates);
             }
             else
             {
                 neighboursCoordinates =
-                    _cellNeighboursCoordinatesGenerator.GenerateNoOverlapCoordinates(rowCoord, colCoord);
+                    _cellNeighboursCoordinatesGenerator.GenerateNoOverlapCoordinates(cellCoordinates);
             }
 
             return neighboursCoordinates;
         }
 
-        private bool IsCornerCoordinate(int rowCoord, int colCoord, int maxRowCoord, int maxColumnCoord)
+        private bool IsCornerCoordinate(Coordinate cellCoordinates,
+            Coordinate maxGridCoordinates)
         {
-            return (rowCoord == 0 && colCoord == 0) || (rowCoord == maxRowCoord && colCoord == maxColumnCoord)
-                                                    || (rowCoord == 0 && colCoord == maxColumnCoord) ||
-                                                    (rowCoord == maxRowCoord && colCoord == 0);
+            return (cellCoordinates.X == 0 && cellCoordinates.Y == 0) || 
+                   (cellCoordinates.X == maxGridCoordinates.X && cellCoordinates.Y == maxGridCoordinates.Y) || 
+                   (cellCoordinates.X == 0 && cellCoordinates.Y == maxGridCoordinates.Y) ||
+                   (cellCoordinates.X == maxGridCoordinates.X && cellCoordinates.Y == 0);
         }
     }
 }

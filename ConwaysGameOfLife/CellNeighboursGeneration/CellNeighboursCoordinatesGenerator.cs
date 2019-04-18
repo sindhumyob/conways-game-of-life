@@ -16,9 +16,14 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             _noOverlapCoordinates = new NoOverlapCoordinates();
         }
 
-        public Coordinate[] GenerateCornerOverlapCoordinates(int rowCoord, int colCoord, int maxRowCoord,
-            int maxColumnCoord)
+        public Coordinate[] GenerateCornerOverlapCoordinates(Coordinate cellCoordinates,
+            Coordinate maxGridSizeCoordinates)
         {
+            // change this TODO
+            var rowCoord = cellCoordinates.X;
+            var colCoord = cellCoordinates.Y;
+            var maxRowCoord = maxGridSizeCoordinates.X;
+            var maxColumnCoord = maxGridSizeCoordinates.Y;
             var neighboursCoordinates = new Coordinate[] { };
             if (rowCoord == 0 && colCoord == 0)
             {
@@ -44,9 +49,14 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             return neighboursCoordinates;
         }
 
-        public Coordinate[] GenerateBordersOverlapCoordinates(int rowCoord, int colCoord, int maxRowCoord,
-            int maxColumnCoord)
+        public Coordinate[] GenerateBordersOverlapCoordinates(Coordinate cellCoordinates,
+            Coordinate maxGridSizeCoordinates)
         {
+            //change this TODO
+            var rowCoord = cellCoordinates.X;
+            var colCoord = cellCoordinates.Y;
+            var maxRowCoord = maxGridSizeCoordinates.X;
+            var maxColumnCoord = maxGridSizeCoordinates.Y;
             var neighboursCoordinates = new Coordinate[] { };
             if (rowCoord == 0)
             {
@@ -70,9 +80,9 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             return neighboursCoordinates;
         }
 
-        public Coordinate[] GenerateNoOverlapCoordinates(int rowCoord, int colCoord)
+        public Coordinate[] GenerateNoOverlapCoordinates(Coordinate cellCoordinates)
         {
-            return _noOverlapCoordinates.GetGridNoOverlapCoordinates(rowCoord, colCoord);
+            return _noOverlapCoordinates.GetGridNoOverlapCoordinates(cellCoordinates.X, cellCoordinates.Y);
         }
     }
 }

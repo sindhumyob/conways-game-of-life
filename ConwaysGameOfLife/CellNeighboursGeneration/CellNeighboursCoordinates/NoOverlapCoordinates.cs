@@ -8,15 +8,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
         {
             return new[]
             {
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord - 1, YCoordinate = colCoord + 1},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord, YCoordinate = colCoord + 1},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord - 1},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord},
-                new Coordinate {XCoordinate = rowCoord + 1, YCoordinate = colCoord + 1}
+                new Coordinate {X = rowCoord - 1, Y = colCoord - 1},
+                new Coordinate {X = rowCoord - 1, Y = colCoord},
+                new Coordinate {X = rowCoord - 1, Y = colCoord + 1},
+                new Coordinate {X = rowCoord, Y = colCoord - 1},
+                new Coordinate {X = rowCoord, Y = colCoord},
+                new Coordinate {X = rowCoord, Y = colCoord + 1},
+                new Coordinate {X = rowCoord + 1, Y = colCoord - 1},
+                new Coordinate {X = rowCoord + 1, Y = colCoord},
+                new Coordinate {X = rowCoord + 1, Y = colCoord + 1}
             };
         }
     }

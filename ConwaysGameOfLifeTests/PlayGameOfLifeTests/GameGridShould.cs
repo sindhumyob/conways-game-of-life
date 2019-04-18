@@ -48,21 +48,21 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 
             var liveCellCoordinates = new List<Coordinate>
             {
-                new Coordinate {XCoordinate = 3, YCoordinate = 1},
-                new Coordinate {XCoordinate = 3, YCoordinate = 2},
-                new Coordinate {XCoordinate = 3, YCoordinate = 3},
-                new Coordinate {XCoordinate = 2, YCoordinate = 2},
-                new Coordinate {XCoordinate = 2, YCoordinate = 3},
-                new Coordinate {XCoordinate = 2, YCoordinate = 4}
+                new Coordinate {X = 3, Y = 1},
+                new Coordinate {X = 3, Y = 2},
+                new Coordinate {X = 3, Y = 3},
+                new Coordinate {X = 2, Y = 2},
+                new Coordinate {X = 2, Y = 3},
+                new Coordinate {X = 2, Y = 4}
             };
             _gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
 
             var deadCellCoordinates = new List<Coordinate>
             {
-                new Coordinate {XCoordinate = 3, YCoordinate = 2},
-                new Coordinate {XCoordinate = 3, YCoordinate = 3},
-                new Coordinate {XCoordinate = 2, YCoordinate = 2},
-                new Coordinate {XCoordinate = 2, YCoordinate = 3}
+                new Coordinate {X = 3, Y = 2},
+                new Coordinate {X = 3, Y = 3},
+                new Coordinate {X = 2, Y = 2},
+                new Coordinate {X = 2, Y = 3}
             };
             _gameGrid.UpdateGameGridCells(deadCellCoordinates, CellType.Dead);
 

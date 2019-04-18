@@ -24,7 +24,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             foreach (var coordinate in cellCoordinates)
             {
-                CurrentGameGrid[coordinate.XCoordinate, coordinate.YCoordinate] = (char) cellType;
+                CurrentGameGrid[coordinate.X, coordinate.Y] = (char) cellType;
             }
         }
         
@@ -44,6 +44,18 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
 
             return string.Join("\n", output) + "\n";
+        }
+
+        public (int,int) GetMaxGridSizeCoordinates()
+        {
+            return (CurrentGameGrid.GetLength(0)-1,CurrentGameGrid.GetLength(1)-1);
+        }
+
+        public Coordinate ConvertInputCoordinateToGridCoordinate(Coordinate coordinate)
+        {
+            coordinate.X += - 1;
+            coordinate.Y += - 1;
+            return coordinate;
         }
     }
 }

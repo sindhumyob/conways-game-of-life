@@ -24,16 +24,16 @@ namespace ConwaysGameOfLife.NextGenerationsCreation
             {
                 for (var j = 0; j < gameGrid.CurrentGameGrid.GetLength(1); j++)
                 {
-                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(gameGrid.CurrentGameGrid,
-                        new Coordinate() {XCoordinate = i, YCoordinate = j});
+                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(gameGrid,
+                        new Coordinate() {X = i, Y = j});
 
                     if (_cellTransitionChecker.IsCellLive(neighbours))
                     {
-                        liveCellCoordinates.Add(new Coordinate {XCoordinate = i, YCoordinate = j});
+                        liveCellCoordinates.Add(new Coordinate {X = i, Y = j});
                     }
                     else
                     {
-                        deadCellCoordinates.Add(new Coordinate {XCoordinate = i, YCoordinate = j});
+                        deadCellCoordinates.Add(new Coordinate {X = i, Y = j});
                     }
                 }
             }
