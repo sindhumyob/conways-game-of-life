@@ -1,4 +1,5 @@
 using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.GameHelpers.GameConstants;
 
 namespace ConwaysGameOfLife.GameInput
 {
@@ -6,7 +7,7 @@ namespace ConwaysGameOfLife.GameInput
     {
         public bool IsGridSetUpInputValid(string input, int minValue, int maxValue)
         {
-            if (input.ToLower() == GameConstants.QuitInput) return true;
+            if (input.ToLower() == ContinueGameInputConstants.QuitInput) return true;
 
             if (!int.TryParse(input, out var n)) return false;
 
@@ -15,8 +16,8 @@ namespace ConwaysGameOfLife.GameInput
 
         public bool IsContinueGameInputValid(string input)
         {
-            return input.ToLower() == GameConstants.QuitInput || input.ToLower() == GameConstants.YesInput ||
-                   input.ToLower() == GameConstants.NoInput;
+            return input.ToLower() == ContinueGameInputConstants.QuitInput || input.ToLower() == ContinueGameInputConstants.YesInput ||
+                   input.ToLower() == ContinueGameInputConstants.NoInput;
         }
     }
 }

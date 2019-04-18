@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
@@ -27,12 +28,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public bool SetUpInitialGrid()
         {
             var gridHeight = _playerInput.GetPlayerGridSetUpInput(_gameOutputMessages.EnterGridHeightMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), GameConstants.MinGridSize, GameConstants.MaxGridSize);
-            if (gridHeight == GameConstants.QuitInput) return true;
+                _gameOutputMessages.InvalidGridSizeMessage(), GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
+            if (gridHeight == ContinueGameInputConstants.QuitInput) return true;
 
             var gridWidth = _playerInput.GetPlayerGridSetUpInput(_gameOutputMessages.EnterGridWidthMessage(),
-                _gameOutputMessages.InvalidGridSizeMessage(), GameConstants.MinGridSize, GameConstants.MaxGridSize) ;
-            if (gridWidth == GameConstants.QuitInput) return true;
+                _gameOutputMessages.InvalidGridSizeMessage(), GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize) ;
+            if (gridWidth == ContinueGameInputConstants.QuitInput) return true;
 
             _gridHeight = int.Parse(gridHeight);
             _gridWidth = int.Parse(gridWidth);
@@ -47,15 +48,15 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var xCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 _gameOutputMessages.EnterXCoordinateOfCellMessage(_gridHeight),
-                _gameOutputMessages.InvalidCoordinateMessage(), GameConstants.MinCoordinateInputValue,
+                _gameOutputMessages.InvalidCoordinateMessage(), GridInputConstants.MinCoordinateInputValue,
                 _gridHeight);
-            if (xCoordinate == GameConstants.QuitInput) return true;
+            if (xCoordinate == ContinueGameInputConstants.QuitInput) return true;
 
             var yCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 _gameOutputMessages.EnterYCoordinateOfCellMessage(_gridWidth),
-                _gameOutputMessages.InvalidCoordinateMessage(), GameConstants.MinCoordinateInputValue,
+                _gameOutputMessages.InvalidCoordinateMessage(), GridInputConstants.MinCoordinateInputValue,
                 _gridWidth);
-            if (yCoordinate == GameConstants.QuitInput) return true;
+            if (yCoordinate == ContinueGameInputConstants.QuitInput) return true;
 
             UpdateGrid(int.Parse(xCoordinate), int.Parse(yCoordinate));
             return false;

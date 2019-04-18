@@ -1,4 +1,5 @@
 using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
@@ -30,7 +31,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var seeMoreTransitions =
                 _playerInput.GetPlayerContinueGameInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),
                     _gameOutputMessages.InvalidSeeMoreGenerationsMessage());
-            return seeMoreTransitions == GameConstants.QuitInput || seeMoreTransitions == GameConstants.NoInput;
+            return seeMoreTransitions == ContinueGameInputConstants.QuitInput || seeMoreTransitions == ContinueGameInputConstants.NoInput;
         }
     }
 }

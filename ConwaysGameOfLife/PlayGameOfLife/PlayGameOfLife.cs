@@ -1,4 +1,5 @@
 using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
@@ -32,11 +33,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var addMoreSeedsInput =
                 _playerInput.GetPlayerContinueGameInput(_gameOutputMessages.AddMoreLiveCellsMessage(),
                     _gameOutputMessages.InvalidAddMoreLiveCellsMessage());
-            if (addMoreSeedsInput == GameConstants.QuitInput)
+            if (addMoreSeedsInput == ContinueGameInputConstants.QuitInput)
             {
                 _gameEnd = true;
             }
-            else if (addMoreSeedsInput == GameConstants.NoInput)
+            else if (addMoreSeedsInput == ContinueGameInputConstants.NoInput)
             {
                 _gameOutput.OutputGame(_gameOutputMessages.StartingGameOfLifeMessage());
                 _endOfSeedInput = true;
