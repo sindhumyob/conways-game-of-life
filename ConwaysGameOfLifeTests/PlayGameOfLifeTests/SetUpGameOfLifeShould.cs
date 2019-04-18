@@ -50,8 +50,8 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             var output = _gameOutput.Output;
 
             Assert.Equal(
-                "Please enter the x coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
-                "Please enter the y coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': \n" +
+                "Please enter the Y coordinate of the cell in the seed between 1 and max grid width or quit the game with 'q': \n" +
                 "Perfect, here is the grid:\n" +
                 (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                 " \n" +

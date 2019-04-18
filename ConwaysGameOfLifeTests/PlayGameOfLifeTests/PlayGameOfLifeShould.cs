@@ -37,8 +37,8 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n\n" +
                          "It's now time to add the seed of the system:\n\n" +
-                         "Please enter the x coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
-                         "Please enter the y coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                         "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': \n" +
+                         "Please enter the Y coordinate of the cell in the seed between 1 and max grid width or quit the game with 'q': \n" +
                          "Perfect, here is the grid:\n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n" +
@@ -47,8 +47,8 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n\n" +
                          "Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
-                         "Please enter the x coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
-                         "Please enter the y coordinate between 1-3 of the cell in the seed or quit the game with 'q': \n" +
+                         "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': \n" +
+                         "Please enter the Y coordinate of the cell in the seed between 1 and max grid width or quit the game with 'q': \n" +
                          "Perfect, here is the grid:\n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +
                          " \n" +

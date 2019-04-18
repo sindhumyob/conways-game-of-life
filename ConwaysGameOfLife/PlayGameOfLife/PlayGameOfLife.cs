@@ -10,7 +10,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     public class PlayGameOfLife
     {
         private readonly GameGrid _gameGrid;
-        private readonly GameOutputMessages _gameOutputMessages;
         private readonly PlayerInput _playerInput;
         private readonly SetUpGameOfLife _setUpGameOfLife;
         private readonly PlayNextGeneration _playNextGeneration;
@@ -21,7 +20,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public PlayGameOfLife(IGameInput gameInput, IGameOutput gameOutput)
         {
             _gameGrid = new GameGrid();
-            _gameOutputMessages = new GameOutputMessages();
             _playerInput = new PlayerInput(gameInput, gameOutput);
             _setUpGameOfLife = new SetUpGameOfLife(gameInput, gameOutput, _gameGrid);
             _playNextGeneration = new PlayNextGeneration(gameInput, gameOutput);
@@ -31,22 +29,22 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         private void AddMoreSeeds()
         {
             var addMoreSeedsInput =
-                _playerInput.GetPlayerContinueGameInput(_gameOutputMessages.AddMoreLiveCellsMessage(),
-                    _gameOutputMessages.InvalidAddMoreLiveCellsMessage());
+                _playerInput.GetPlayerContinueGameInput(OutputMessages.AddMoreLiveCells,
+                    OutputMessages.InvalidAddMoreLiveCells);
             if (addMoreSeedsInput == ContinueGameInputConstants.QuitInput)
             {
                 _gameEnd = true;
             }
             else if (addMoreSeedsInput == ContinueGameInputConstants.NoInput)
             {
-                _gameOutput.OutputGame(_gameOutputMessages.StartingGameOfLifeMessage());
+                _gameOutput.OutputGame(OutputMessages.StartingGameOfLife);
                 _endOfSeedInput = true;
             }
         }
 
         public void PlayGame()
         {
-            _gameOutput.OutputGame(_gameOutputMessages.WelcomeMessage());
+            _gameOutput.OutputGame(OutputMessages.Welcome);
 
             _gameEnd = _setUpGameOfLife.SetUpInitialGrid();
 
@@ -64,7 +62,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 _gameEnd = _playNextGeneration.NextGeneration(_gameGrid);
             }
 
-            _gameOutput.OutputGame(_gameOutputMessages.PrintGameEndMessage());
+            _gameOutput.OutputGame(OutputMessages.PrintGameEnd);
         }
     }
 }

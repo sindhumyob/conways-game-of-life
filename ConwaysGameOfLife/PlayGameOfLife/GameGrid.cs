@@ -27,5 +27,23 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 CurrentGameGrid[coordinate.XCoordinate, coordinate.YCoordinate] = (char) cellType;
             }
         }
+        
+        public string ConvertGridToOutput()
+        {
+            var output = new List<string>();
+            var line = string.Empty;
+            for (var i = 0; i < CurrentGameGrid.GetLength(0); i++)
+            {
+                for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
+                {
+                    line += CurrentGameGrid[i, j] + " ";
+                }
+
+                output.Add(line);
+                line = string.Empty;
+            }
+
+            return string.Join("\n", output) + "\n";
+        }
     }
 }
