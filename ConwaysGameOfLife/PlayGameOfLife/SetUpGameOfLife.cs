@@ -23,7 +23,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameGrid = gameGrid;
         }
 
-        public bool SetUpInitialGrid()
+        public bool SetUpInitialGridGameStatus()
         {
             var gridHeight = _playerInput.GetPlayerGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
@@ -42,7 +42,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return false;
         }
 
-        public bool SetUpInitialSeed()
+        public bool SetUpInitialSeedGameStatus()
         {
             var xCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 OutputMessages.EnterXCoordinateOfCell,

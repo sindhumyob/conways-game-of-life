@@ -14,8 +14,6 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         private readonly SetUpGameOfLife _setUpGameOfLife;
         private readonly PlayNextGeneration _playNextGeneration;
         private readonly IGameOutput _gameOutput;
-        private bool _gameEnd;
-        private bool _endOfSeedInput;
 
         public PlayGameOfLife(IGameInput gameInput, IGameOutput gameOutput)
         {
@@ -26,40 +24,45 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameOutput = gameOutput;
         }
 
-        private void AddMoreSeeds()
+        private (bool,bool) AddMoreLiveCellsGameStatus()
         {
+            var gameEnd = false;
+            var endOfSeedInput = false;
             var addMoreSeedsInput =
                 _playerInput.GetPlayerContinueGameInput(OutputMessages.AddMoreLiveCells,
                     OutputMessages.InvalidAddMoreLiveCells);
+            
             if (addMoreSeedsInput == ContinueGameInputConstants.QuitInput)
             {
-                _gameEnd = true;
+                gameEnd = true;
             }
             else if (addMoreSeedsInput == ContinueGameInputConstants.NoInput)
             {
                 _gameOutput.OutputGame(OutputMessages.StartingGameOfLife);
-                _endOfSeedInput = true;
+                endOfSeedInput = true;
             }
+
+            return (gameEnd, endOfSeedInput);
         }
 
         public void PlayGame()
         {
+            var endOfSeedInput = false;
             _gameOutput.OutputGame(OutputMessages.Welcome);
 
-            _gameEnd = _setUpGameOfLife.SetUpInitialGrid();
+            var gameEnd = _setUpGameOfLife.SetUpInitialGridGameStatus();
 
-            while (!_endOfSeedInput && !_gameEnd)
+            while (!endOfSeedInput && !gameEnd)
             {
-                _gameEnd = _setUpGameOfLife.SetUpInitialSeed();
-                if (!_gameEnd)
-                {
-                    AddMoreSeeds();
-                }
+                gameEnd = _setUpGameOfLife.SetUpInitialSeedGameStatus();
+                if (gameEnd) continue;
+
+                (gameEnd, endOfSeedInput) = AddMoreLiveCellsGameStatus();
             }
 
-            while (!_gameEnd && _endOfSeedInput)
+            while (!gameEnd)
             {
-                _gameEnd = _playNextGeneration.NextGeneration(_gameGrid);
+                gameEnd = _playNextGeneration.NextGenerationGameStatus(_gameGrid);
             }
 
             _gameOutput.OutputGame(OutputMessages.PrintGameEnd);
