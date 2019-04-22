@@ -15,10 +15,8 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
 
         public CellType[,] GenerateCellNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
         {
-            // abstraction of data types with game grid dimensions TODO
             var (maxXCoordinate, maxYCoordinate) = gameGrid.GetMaxGridSizeCoordinates();
-            var maxGridSizeCoordinates = new Coordinate()
-                {X = maxXCoordinate, Y = maxYCoordinate};
+            var maxGridSizeCoordinates = new Coordinate {X = maxXCoordinate, Y = maxYCoordinate};
             var neighboursCoordinates = GetCellNeighboursCoordinates(cellCoordinates, maxGridSizeCoordinates);
 
             var neighbours = new CellType[CellNeighboursArraySize, CellNeighboursArraySize];
