@@ -4,69 +4,70 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
 {
     public class CornersOverlapCoordinates
     {
-        public Coordinate[] GetGridTopLeftCornerOverlapCoordinates(int maxRowCoord, int maxColumnCoord, int rowCoord,
-            int colCoord)
+        public Coordinate[] GetGridTopLeftCornerOverlapCoordinates(Coordinate cellCoordinates,
+            Coordinate maxGridSizeCoordinates)
         {
             return new[]
             {
-                new Coordinate {X = maxRowCoord, Y = maxColumnCoord},
-                new Coordinate {X = maxRowCoord, Y = colCoord},
-                new Coordinate {X = maxRowCoord, Y = colCoord + 1},
-                new Coordinate {X = rowCoord, Y = maxColumnCoord},
-                new Coordinate {X = rowCoord, Y = colCoord},
-                new Coordinate {X = rowCoord, Y = colCoord + 1},
-                new Coordinate {X = rowCoord + 1, Y = maxColumnCoord},
-                new Coordinate {X = rowCoord + 1, Y = colCoord},
-                new Coordinate {X = rowCoord + 1, Y = colCoord + 1}
+                new Coordinate {X = maxGridSizeCoordinates.X, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = maxGridSizeCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = maxGridSizeCoordinates.X, Y = cellCoordinates.Y + 1},
+                new Coordinate {X = cellCoordinates.X, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y + 1},
+                new Coordinate {X = cellCoordinates.X + 1, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y + 1}
             };
         }
 
 
-        public Coordinate[] GetGridTopRightCornerOverlapCoordinates(int maxRowCoord, int maxColumnCoord, int rowCoord,
-            int colCoord)
+        public Coordinate[] GetGridTopRightCornerOverlapCoordinates(Coordinate cellCoordinates,
+            Coordinate maxGridSizeCoordinates)
         {
             return new[]
             {
-                new Coordinate {X = maxRowCoord, Y = colCoord - 1},
-                new Coordinate {X = maxRowCoord, Y = colCoord},
-                new Coordinate {X = maxRowCoord, Y = 0},
-                new Coordinate {X = rowCoord, Y = colCoord - 1},
-                new Coordinate {X = rowCoord, Y = colCoord},
-                new Coordinate {X = rowCoord, Y = maxColumnCoord},
-                new Coordinate {X = rowCoord + 1, Y = colCoord - 1},
-                new Coordinate {X = rowCoord + 1, Y = colCoord},
-                new Coordinate {X = rowCoord + 1, Y = 0}
+                new Coordinate {X = maxGridSizeCoordinates.X, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = maxGridSizeCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = maxGridSizeCoordinates.X, Y = 0},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X + 1, Y = 0}
             };
         }
 
-        public Coordinate[] GetGridBottomLeftCornerOverlapCoordinates(int maxColumnCoord, int rowCoord, int colCoord)
+        public Coordinate[] GetGridBottomLeftCornerOverlapCoordinates(Coordinate cellCoordinates,
+            Coordinate maxGridSizeCoordinates)
         {
             return new[]
             {
-                new Coordinate {X = rowCoord - 1, Y = maxColumnCoord},
-                new Coordinate {X = rowCoord - 1, Y = colCoord},
-                new Coordinate {X = rowCoord - 1, Y = colCoord + 1},
-                new Coordinate {X = rowCoord, Y = maxColumnCoord},
-                new Coordinate {X = rowCoord, Y = colCoord},
-                new Coordinate {X = rowCoord, Y = colCoord + 1},
-                new Coordinate {X = 0, Y = maxColumnCoord},
-                new Coordinate {X = 0, Y = colCoord},
-                new Coordinate {X = 0, Y = colCoord + 1}
+                new Coordinate {X = cellCoordinates.X - 1, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y + 1},
+                new Coordinate {X = cellCoordinates.X, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y + 1},
+                new Coordinate {X = 0, Y = maxGridSizeCoordinates.Y},
+                new Coordinate {X = 0, Y = cellCoordinates.Y},
+                new Coordinate {X = 0, Y = cellCoordinates.Y + 1}
             };
         }
 
-        public Coordinate[] GetGridBottomRightCornerOverlapCoordinates(int rowCoord, int colCoord)
+        public Coordinate[] GetGridBottomRightCornerOverlapCoordinates(Coordinate cellCoordinates)
         {
             return new[]
             {
-                new Coordinate {X = rowCoord - 1, Y = colCoord - 1},
-                new Coordinate {X = rowCoord - 1, Y = colCoord},
-                new Coordinate {X = rowCoord - 1, Y = 0},
-                new Coordinate {X = rowCoord, Y = colCoord - 1},
-                new Coordinate {X = rowCoord, Y = colCoord},
-                new Coordinate {X = rowCoord, Y = 0},
-                new Coordinate {X = 0, Y = colCoord - 1},
-                new Coordinate {X = 0, Y = colCoord},
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X - 1, Y = 0},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = 0},
+                new Coordinate {X = 0, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = 0, Y = cellCoordinates.Y},
                 new Coordinate {X = 0, Y = 0}
             };
         }

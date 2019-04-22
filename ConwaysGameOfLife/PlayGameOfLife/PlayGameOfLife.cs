@@ -24,14 +24,14 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameOutput = gameOutput;
         }
 
-        private (bool,bool) AddMoreLiveCellsGameStatus()
+        private (bool, bool) AddMoreLiveCellsGameStatus()
         {
             var gameEnd = false;
             var endOfSeedInput = false;
             var addMoreSeedsInput =
                 _playerInput.GetPlayerContinueGameInput(OutputMessages.AddMoreLiveCells,
                     OutputMessages.InvalidAddMoreLiveCells);
-            
+
             if (addMoreSeedsInput == ContinueGameInputConstants.QuitInput)
             {
                 gameEnd = true;
@@ -50,11 +50,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var endOfSeedInput = false;
             _gameOutput.OutputGame(OutputMessages.Welcome);
 
-            var gameEnd = _setUpGameOfLife.SetUpInitialGridGameStatus();
+            var gameEnd = _setUpGameOfLife.InitialGridGameStatus();
 
             while (!endOfSeedInput && !gameEnd)
             {
-                gameEnd = _setUpGameOfLife.SetUpInitialSeedGameStatus();
+                gameEnd = _setUpGameOfLife.InitialSeedGameStatus();
                 if (gameEnd) continue;
 
                 (gameEnd, endOfSeedInput) = AddMoreLiveCellsGameStatus();

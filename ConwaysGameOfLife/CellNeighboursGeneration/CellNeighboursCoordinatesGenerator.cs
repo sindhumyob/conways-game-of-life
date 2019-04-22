@@ -19,31 +19,27 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
         public Coordinate[] GenerateCornerOverlapCoordinates(Coordinate cellCoordinates,
             Coordinate maxGridSizeCoordinates)
         {
-            // change this TODO
-            var rowCoord = cellCoordinates.X;
-            var colCoord = cellCoordinates.Y;
-            var maxRowCoord = maxGridSizeCoordinates.X;
-            var maxColumnCoord = maxGridSizeCoordinates.Y;
             var neighboursCoordinates = new Coordinate[] { };
-            if (rowCoord == 0 && colCoord == 0)
-            {
-                neighboursCoordinates = _cornersOverlapCoordinates.GetGridTopLeftCornerOverlapCoordinates(maxRowCoord,
-                    maxColumnCoord, rowCoord, colCoord);
-            }
-            else if (rowCoord == 0 && colCoord == maxColumnCoord)
-            {
-                neighboursCoordinates = _cornersOverlapCoordinates.GetGridTopRightCornerOverlapCoordinates(
-                    maxRowCoord, maxColumnCoord, rowCoord, colCoord);
-            }
-            else if (rowCoord == maxRowCoord && colCoord == 0)
-            {
-                neighboursCoordinates = _cornersOverlapCoordinates.GetGridBottomLeftCornerOverlapCoordinates(
-                    maxColumnCoord, rowCoord, colCoord);
-            }
-            else if (rowCoord == maxRowCoord && colCoord == maxColumnCoord)
+            if (cellCoordinates.X == 0 && cellCoordinates.Y == 0)
             {
                 neighboursCoordinates =
-                    _cornersOverlapCoordinates.GetGridBottomRightCornerOverlapCoordinates(rowCoord, colCoord);
+                    _cornersOverlapCoordinates.GetGridTopLeftCornerOverlapCoordinates(cellCoordinates,
+                        maxGridSizeCoordinates);
+            }
+            else if (cellCoordinates.X == 0 && cellCoordinates.Y == maxGridSizeCoordinates.Y)
+            {
+                neighboursCoordinates = _cornersOverlapCoordinates.GetGridTopRightCornerOverlapCoordinates(
+                    cellCoordinates, maxGridSizeCoordinates);
+            }
+            else if (cellCoordinates.X == maxGridSizeCoordinates.X && cellCoordinates.Y == 0)
+            {
+                neighboursCoordinates = _cornersOverlapCoordinates.GetGridBottomLeftCornerOverlapCoordinates(
+                    cellCoordinates, maxGridSizeCoordinates);
+            }
+            else if (cellCoordinates.X == maxGridSizeCoordinates.X && cellCoordinates.Y == maxGridSizeCoordinates.Y)
+            {
+                neighboursCoordinates =
+                    _cornersOverlapCoordinates.GetGridBottomRightCornerOverlapCoordinates(cellCoordinates);
             }
 
             return neighboursCoordinates;
@@ -52,29 +48,24 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
         public Coordinate[] GenerateBordersOverlapCoordinates(Coordinate cellCoordinates,
             Coordinate maxGridSizeCoordinates)
         {
-            //change this TODO
-            var rowCoord = cellCoordinates.X;
-            var colCoord = cellCoordinates.Y;
-            var maxRowCoord = maxGridSizeCoordinates.X;
-            var maxColumnCoord = maxGridSizeCoordinates.Y;
             var neighboursCoordinates = new Coordinate[] { };
-            if (rowCoord == 0)
+            if (cellCoordinates.X == 0)
             {
-                neighboursCoordinates = _bordersOverlapCoordinates.GetGridTopOverlapCoordinates(maxRowCoord, rowCoord,
-                    colCoord);
+                neighboursCoordinates =
+                    _bordersOverlapCoordinates.GetGridTopOverlapCoordinates(cellCoordinates, maxGridSizeCoordinates);
             }
-            else if (rowCoord == maxRowCoord)
+            else if (cellCoordinates.X == maxGridSizeCoordinates.X)
             {
-                neighboursCoordinates = _bordersOverlapCoordinates.GetGridBottomOverlapCoordinates(rowCoord, colCoord);
+                neighboursCoordinates = _bordersOverlapCoordinates.GetGridBottomOverlapCoordinates(cellCoordinates);
             }
-            else if (colCoord == 0)
+            else if (cellCoordinates.Y == 0)
             {
-                neighboursCoordinates = _bordersOverlapCoordinates.GetGridLeftOverlapCoordinates(maxColumnCoord,
-                    rowCoord, colCoord);
+                neighboursCoordinates =
+                    _bordersOverlapCoordinates.GetGridLeftOverlapCoordinates(cellCoordinates, maxGridSizeCoordinates);
             }
-            else if (colCoord == maxColumnCoord)
+            else if (cellCoordinates.Y == maxGridSizeCoordinates.Y)
             {
-                neighboursCoordinates = _bordersOverlapCoordinates.GetGridRightOverlapCoordinates(rowCoord, colCoord);
+                neighboursCoordinates = _bordersOverlapCoordinates.GetGridRightOverlapCoordinates(cellCoordinates);
             }
 
             return neighboursCoordinates;
@@ -82,7 +73,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
 
         public Coordinate[] GenerateNoOverlapCoordinates(Coordinate cellCoordinates)
         {
-            return _noOverlapCoordinates.GetGridNoOverlapCoordinates(cellCoordinates.X, cellCoordinates.Y);
+            return _noOverlapCoordinates.GetGridNoOverlapCoordinates(cellCoordinates);
         }
     }
 }
