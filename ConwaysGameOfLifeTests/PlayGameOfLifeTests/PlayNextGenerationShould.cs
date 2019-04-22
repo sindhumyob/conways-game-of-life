@@ -27,13 +27,13 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             _gameGrid.CurrentGameGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 }
             };
             _gameInput.PlayerInputs = new List<string> {"n"};

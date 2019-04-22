@@ -13,15 +13,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             _cellNeighboursCoordinatesGenerator = new CellNeighboursCoordinatesGenerator();
         }
 
-        public char[,] GenerateCellNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
+        public CellType[,] GenerateCellNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
         {
             // abstraction of data types with game grid dimensions
-            var (maxXCoordinate, maxYCoordinate) =  gameGrid.GetMaxGridSizeCoordinates();
+            var (maxXCoordinate, maxYCoordinate) = gameGrid.GetMaxGridSizeCoordinates();
             var maxGridSizeCoordinates = new Coordinate()
                 {X = maxXCoordinate, Y = maxYCoordinate};
             var neighboursCoordinates = GetCellNeighboursCoordinates(cellCoordinates, maxGridSizeCoordinates);
 
-            var neighbours = new char[CellNeighboursArraySize, CellNeighboursArraySize];
+            var neighbours = new CellType[CellNeighboursArraySize, CellNeighboursArraySize];
             var rowCount = 0;
             var columnCount = 0;
             foreach (var neighbourCoordinate in neighboursCoordinates)
@@ -65,8 +65,8 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
         private bool IsCornerCoordinate(Coordinate cellCoordinates,
             Coordinate maxGridCoordinates)
         {
-            return (cellCoordinates.X == 0 && cellCoordinates.Y == 0) || 
-                   (cellCoordinates.X == maxGridCoordinates.X && cellCoordinates.Y == maxGridCoordinates.Y) || 
+            return (cellCoordinates.X == 0 && cellCoordinates.Y == 0) ||
+                   (cellCoordinates.X == maxGridCoordinates.X && cellCoordinates.Y == maxGridCoordinates.Y) ||
                    (cellCoordinates.X == 0 && cellCoordinates.Y == maxGridCoordinates.Y) ||
                    (cellCoordinates.X == maxGridCoordinates.X && cellCoordinates.Y == 0);
         }

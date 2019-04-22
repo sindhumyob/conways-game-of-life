@@ -4,16 +4,16 @@ namespace ConwaysGameOfLife.NextGenerationsCreation
 {
     public class CellTransitionChecker
     {
-        public bool IsCellLive(char[,] cellAndNeighbours)
+        public bool IsCellLive(CellType[,] cellAndNeighbours)
         {
             var cellIsLive = false;
 
             var cell = cellAndNeighbours[1, 1];
             var numberOfLiveNeighbours = GetNumberOfLiveNeighbours(cellAndNeighbours);
 
-            if ((cell == (char) CellType.Live && numberOfLiveNeighbours == 2) ||
-                (cell == (char) CellType.Live && numberOfLiveNeighbours == 3) ||
-                (cell == (char) CellType.Dead && numberOfLiveNeighbours == 3))
+            if ((cell == CellType.Live && numberOfLiveNeighbours == 2) ||
+                (cell == CellType.Live && numberOfLiveNeighbours == 3) ||
+                (cell == CellType.Dead && numberOfLiveNeighbours == 3))
             {
                 cellIsLive = true;
             }
@@ -21,7 +21,7 @@ namespace ConwaysGameOfLife.NextGenerationsCreation
             return cellIsLive;
         }
 
-        private int GetNumberOfLiveNeighbours(char[,] cellAndNeighbours)
+        private int GetNumberOfLiveNeighbours(CellType[,] cellAndNeighbours)
         {
             var liveNeighboursCount = 0;
             for (var i = 0; i < cellAndNeighbours.GetLength(0); i++)
@@ -33,7 +33,7 @@ namespace ConwaysGameOfLife.NextGenerationsCreation
                         continue;
                     }
 
-                    if (cellAndNeighbours[i, j] == (char) CellType.Live)
+                    if (cellAndNeighbours[i, j] == CellType.Live)
                     {
                         liveNeighboursCount++;
                     }

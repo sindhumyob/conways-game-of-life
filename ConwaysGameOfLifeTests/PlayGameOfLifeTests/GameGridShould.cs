@@ -25,13 +25,13 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             var expectedGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 }
             };
 
@@ -69,28 +69,28 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             var expectedGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
             };
 

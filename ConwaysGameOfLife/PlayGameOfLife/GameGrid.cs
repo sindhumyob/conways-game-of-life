@@ -5,17 +5,17 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class GameGrid
     {
-        public char[,] CurrentGameGrid { get; set; }
+        public CellType[,] CurrentGameGrid { get; set; }
 
         public void GenerateInitialGrid(int heightOfGrid, int widthOfGrid)
         {
-            CurrentGameGrid = new char[heightOfGrid, widthOfGrid];
+            CurrentGameGrid = new CellType[heightOfGrid, widthOfGrid];
 
             for (var i = 0; i < CurrentGameGrid.GetLength(0); i++)
             {
                 for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
                 {
-                    CurrentGameGrid[i, j] = (char) CellType.Dead;
+                    CurrentGameGrid[i, j] = CellType.Dead;
                 }
             }
         }
@@ -24,10 +24,10 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             foreach (var coordinate in cellCoordinates)
             {
-                CurrentGameGrid[coordinate.X, coordinate.Y] = (char) cellType;
+                CurrentGameGrid[coordinate.X, coordinate.Y] = cellType;
             }
         }
-        
+
         public string ConvertGridToOutput()
         {
             var output = new List<string>();
@@ -36,7 +36,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             {
                 for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
                 {
-                    line += CurrentGameGrid[i, j] + " ";
+                    line += (char) CurrentGameGrid[i, j] + " ";
                 }
 
                 output.Add(line);
@@ -46,15 +46,15 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return string.Join("\n", output) + "\n";
         }
 
-        public (int,int) GetMaxGridSizeCoordinates()
+        public (int, int) GetMaxGridSizeCoordinates()
         {
-            return (CurrentGameGrid.GetLength(0)-1,CurrentGameGrid.GetLength(1)-1);
+            return (CurrentGameGrid.GetLength(0) - 1, CurrentGameGrid.GetLength(1) - 1);
         }
 
         public Coordinate ConvertInputCoordinateToGridCoordinate(Coordinate coordinate)
         {
-            coordinate.X += - 1;
-            coordinate.Y += - 1;
+            coordinate.X += -1;
+            coordinate.Y += -1;
             return coordinate;
         }
     }

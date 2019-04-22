@@ -22,28 +22,28 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             var testGameGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Live, CellType.Live,
+                    CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Live, CellType.Live,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
             };
 
@@ -54,28 +54,28 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             var expectedGameGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Live,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Live, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
             };
 
@@ -88,28 +88,28 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             var testGameGrid = new[,]
             {
                 {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live
+                    CellType.Live, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Live, CellType.Live
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
+                    CellType.Live, CellType.Dead, CellType.Dead, CellType.Live,
+                    CellType.Live, CellType.Live, CellType.Live
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Live
+                    CellType.Dead, CellType.Dead, CellType.Live, CellType.Live,
+                    CellType.Live, CellType.Dead, CellType.Live
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live
+                    CellType.Live, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Live, CellType.Live
                 },
             };
             _gameGrid.CurrentGameGrid = testGameGrid;
@@ -119,28 +119,28 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             var expectedGameGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live
+                    CellType.Live, CellType.Dead, CellType.Live, CellType.Dead,
+                    CellType.Dead, CellType.Dead, CellType.Live
                 },
                 {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live
+                    CellType.Live, CellType.Dead, CellType.Live, CellType.Dead,
+                    CellType.Dead, CellType.Dead, CellType.Live
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Live, (char) CellType.Live,
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Live, CellType.Live,
+                    CellType.Live, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Live, CellType.Dead
                 },
             };
 
@@ -153,13 +153,13 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             var gameGrid = new[,]
             {
                 {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
+                    CellType.Live, CellType.Live, CellType.Live
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Live, CellType.Dead, CellType.Dead
                 }
             };
             _gameGrid.CurrentGameGrid = gameGrid;
@@ -169,13 +169,13 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             var expectedGameGrid = new[,]
             {
                 {
-                    (char) CellType.Live, (char) CellType.Live, (char) CellType.Live
+                    CellType.Live, CellType.Live, CellType.Live
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Live, CellType.Dead, CellType.Dead
                 }
             };
 

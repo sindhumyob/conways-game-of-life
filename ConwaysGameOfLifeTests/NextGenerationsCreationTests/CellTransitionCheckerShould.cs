@@ -19,9 +19,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Live, CellType.Live},
+                {CellType.Dead, CellType.Dead, CellType.Dead}
             };
 
             Assert.True(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
@@ -33,9 +33,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Live, CellType.Live},
+                {CellType.Dead, CellType.Live, CellType.Dead}
             };
 
             Assert.True(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
@@ -47,9 +47,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Live, CellType.Dead}
             };
 
             Assert.True(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
@@ -61,9 +61,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Live},
-                {(char) CellType.Live, (char) CellType.Live, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Live, CellType.Live},
+                {CellType.Live, CellType.Live, CellType.Dead}
             };
 
             Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
@@ -75,9 +75,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead},
-                {(char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead},
-                {(char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Dead},
+                {CellType.Dead, CellType.Live, CellType.Dead},
+                {CellType.Live, CellType.Dead, CellType.Dead}
             };
 
             Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
@@ -89,9 +89,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Dead, CellType.Dead}
             };
 
             Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
@@ -103,9 +103,9 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Dead, (char) CellType.Dead, (char) CellType.Live},
-                {(char) CellType.Live, (char) CellType.Live, (char) CellType.Dead}
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Dead, CellType.Dead, CellType.Live},
+                {CellType.Live, CellType.Live, CellType.Dead}
             };
 
             Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));
