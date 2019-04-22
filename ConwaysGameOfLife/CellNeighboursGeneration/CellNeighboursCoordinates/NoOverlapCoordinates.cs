@@ -4,7 +4,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
 {
     public class NoOverlapCoordinates
     {
-        public Coordinate[] GetGridNoOverlapCoordinates(Coordinate cellCoordinates)
+        public Coordinate[] GetNoOverlapCoordinates(Coordinate cellCoordinates)
         {
             return new[]
             {

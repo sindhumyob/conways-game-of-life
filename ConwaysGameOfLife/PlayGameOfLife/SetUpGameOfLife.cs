@@ -23,7 +23,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameGrid = gameGrid;
         }
 
-        public bool InitialGridGameStatus()
+        public bool GridGenerationGameStatus()
         {
             var gridHeight = _playerInput.GetPlayerGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
@@ -42,7 +42,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return false;
         }
 
-        public bool InitialSeedGameStatus()
+        public bool SeedGenerationGameStatus()
         {
             var xCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 OutputMessages.EnterXCoordinateOfCell,
@@ -56,10 +56,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 _gridWidth);
             if (yCoordinate == ContinueGameInputConstants.QuitInput) return true;
 
-            UpdateGrid(new Coordinate()
-            {
-                X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)
-            });
+            UpdateGrid(new Coordinate {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
             return false;
         }
 

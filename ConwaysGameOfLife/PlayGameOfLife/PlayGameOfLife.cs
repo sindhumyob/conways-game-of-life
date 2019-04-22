@@ -50,12 +50,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var endOfSeedInput = false;
             _gameOutput.OutputGame(OutputMessages.Welcome);
 
-            var gameEnd = _setUpGameOfLife.InitialGridGameStatus();
+            var gameEnd = _setUpGameOfLife.GridGenerationGameStatus();
 
             while (!endOfSeedInput && !gameEnd)
             {
-                gameEnd = _setUpGameOfLife.InitialSeedGameStatus();
-                if (gameEnd) continue;
+                gameEnd = _setUpGameOfLife.SeedGenerationGameStatus();
+                if (gameEnd) break;
 
                 (gameEnd, endOfSeedInput) = AddMoreLiveCellsGameStatus();
             }

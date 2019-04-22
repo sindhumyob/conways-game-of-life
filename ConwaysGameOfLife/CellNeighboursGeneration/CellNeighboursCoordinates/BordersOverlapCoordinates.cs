@@ -4,7 +4,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
 {
     public class BordersOverlapCoordinates
     {
-        public Coordinate[] GetGridTopOverlapCoordinates(Coordinate cellCoordinates, Coordinate maxGridSizeCoordinates)
+        public Coordinate[] GetTopOverlapCoordinates(Coordinate cellCoordinates, Coordinate maxGridSizeCoordinates)
         {
             return new[]
             {
@@ -20,7 +20,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
             };
         }
 
-        public Coordinate[] GetGridBottomOverlapCoordinates(Coordinate cellCoordinates)
+        public Coordinate[] GetBottomOverlapCoordinates(Coordinate cellCoordinates)
         {
             return new[]
             {
@@ -36,7 +36,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
             };
         }
 
-        public Coordinate[] GetGridLeftOverlapCoordinates(Coordinate cellCoordinates, Coordinate maxGridSizeCoordinates)
+        public Coordinate[] GetLeftOverlapCoordinates(Coordinate cellCoordinates, Coordinate maxGridSizeCoordinates)
         {
             return new[]
             {
@@ -52,7 +52,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates
             };
         }
 
-        public Coordinate[] GetGridRightOverlapCoordinates(Coordinate cellCoordinates)
+        public Coordinate[] GetRightOverlapCoordinates(Coordinate cellCoordinates)
         {
             return new[]
             {

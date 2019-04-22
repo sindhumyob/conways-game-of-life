@@ -1,3 +1,4 @@
+using ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.PlayGameOfLife;
 
@@ -6,14 +7,17 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
     public class CellNeighboursGenerator
     {
         private readonly CellNeighboursCoordinatesGenerator _cellNeighboursCoordinatesGenerator;
+        private readonly NoOverlapCoordinates _noOverlapCoordinates;
         private const int CellNeighboursArraySize = 3;
 
         public CellNeighboursGenerator()
         {
             _cellNeighboursCoordinatesGenerator = new CellNeighboursCoordinatesGenerator();
+
+            _noOverlapCoordinates = new NoOverlapCoordinates();
         }
 
-        public CellType[,] GenerateCellNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
+        public CellType[,] GetCellNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
         {
             var (maxXCoordinate, maxYCoordinate) = gameGrid.GetMaxGridSizeCoordinates();
             var maxGridSizeCoordinates = new Coordinate {X = maxXCoordinate, Y = maxYCoordinate};
@@ -46,15 +50,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
                 cellCoordinates.Y == maxGridSizeCoordinates.Y)
             {
                 neighboursCoordinates = IsCornerCoordinate(cellCoordinates, maxGridSizeCoordinates)
-                    ? _cellNeighboursCoordinatesGenerator.GenerateCornerOverlapCoordinates(cellCoordinates,
+                    ? _cellNeighboursCoordinatesGenerator.GetCornerOverlapCoordinates(cellCoordinates,
                         maxGridSizeCoordinates)
-                    : _cellNeighboursCoordinatesGenerator.GenerateBordersOverlapCoordinates(cellCoordinates,
+                    : _cellNeighboursCoordinatesGenerator.GetBordersOverlapCoordinates(cellCoordinates,
                         maxGridSizeCoordinates);
             }
             else
             {
                 neighboursCoordinates =
-                    _cellNeighboursCoordinatesGenerator.GenerateNoOverlapCoordinates(cellCoordinates);
+                    _noOverlapCoordinates.GetNoOverlapCoordinates(cellCoordinates);
             }
 
             return neighboursCoordinates;

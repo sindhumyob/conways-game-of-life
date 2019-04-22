@@ -25,7 +25,7 @@ namespace ConwaysGameOfLife.NextGenerationsCreation
                 for (var j = 0; j < gameGrid.CurrentGameGrid.GetLength(1); j++)
                 {
                     var currentCellCoordinates = new Coordinate {X = i, Y = j};
-                    var neighbours = _cellNeighboursGenerator.GenerateCellNeighbours(gameGrid, currentCellCoordinates);
+                    var neighbours = _cellNeighboursGenerator.GetCellNeighbours(gameGrid, currentCellCoordinates);
 
                     if (_cellTransitionChecker.IsCellLive(neighbours))
                     {
