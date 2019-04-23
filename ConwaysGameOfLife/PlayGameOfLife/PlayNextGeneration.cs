@@ -21,15 +21,15 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameOutput = gameOutput;
         }
 
-        public bool NextGenerationGameStatus(GameGrid gameGrid)
+        public bool SeeGenerationStatus(GameGrid gameGrid)
         {
             _nextGenerationCreator.CreateNextGeneration(gameGrid);
-            _gameOutput.OutputGame(OutputMessages.PrintNextGeneration + gameGrid.ConvertGridToOutput());
+            _gameOutput.Output(OutputMessages.PrintNextGeneration + gameGrid.ConvertGridToOutput());
 
-            var seeMoreTransitions =
-                _playerInput.GetPlayerContinueGameInput(OutputMessages.PrintSeeNextGeneration,
+            var seeMoreGenerations =
+                _playerInput.GetContinueGameInput(OutputMessages.PrintSeeNextGeneration,
                     OutputMessages.InvalidSeeMoreGenerations);
-            return seeMoreTransitions == ContinueGameInputConstants.Quit || seeMoreTransitions == ContinueGameInputConstants.No;
+            return seeMoreGenerations == ContinueGameInputConstants.Quit || seeMoreGenerations == ContinueGameInputConstants.No;
         }
     }
 }

@@ -7,29 +7,29 @@ using ConwaysGameOfLife.GameOutput.Interfaces;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
-    public class PlayGameOfLife
+    public class PlayGame
     {
         private readonly GameGrid _gameGrid;
         private readonly PlayerInput _playerInput;
-        private readonly SetUpGameOfLife _setUpGameOfLife;
+        private readonly SetUpGame _setUpGame;
         private readonly PlayNextGeneration _playNextGeneration;
         private readonly IGameOutput _gameOutput;
 
-        public PlayGameOfLife(IGameInput gameInput, IGameOutput gameOutput)
+        public PlayGame(IGameInput gameInput, IGameOutput gameOutput)
         {
             _gameGrid = new GameGrid();
             _playerInput = new PlayerInput(gameInput, gameOutput);
-            _setUpGameOfLife = new SetUpGameOfLife(gameInput, gameOutput, _gameGrid);
+            _setUpGame = new SetUpGame(gameInput, gameOutput, _gameGrid);
             _playNextGeneration = new PlayNextGeneration(gameInput, gameOutput);
             _gameOutput = gameOutput;
         }
 
-        private (bool, bool) AddMoreLiveCellsGameStatus()
+        private (bool, bool) AddLiveCellsGameStatus()
         {
             var gameEnd = false;
             var endOfSeedInput = false;
             var addMoreSeedsInput =
-                _playerInput.GetPlayerContinueGameInput(OutputMessages.AddMoreLiveCells,
+                _playerInput.GetContinueGameInput(OutputMessages.AddMoreLiveCells,
                     OutputMessages.InvalidAddMoreLiveCells);
 
             if (addMoreSeedsInput == ContinueGameInputConstants.Quit)
@@ -38,26 +38,26 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
             else if (addMoreSeedsInput == ContinueGameInputConstants.No)
             {
-                _gameOutput.OutputGame(OutputMessages.StartingGameOfLife);
+                _gameOutput.Output(OutputMessages.StartingGameOfLife);
                 endOfSeedInput = true;
             }
 
             return (gameEnd, endOfSeedInput);
         }
 
-        public void PlayGame()
+        public void Play()
         {
             var endOfSeedInput = false;
-            _gameOutput.OutputGame(OutputMessages.Welcome);
+            _gameOutput.Output(OutputMessages.Welcome);
 
-            var gameEnd = _setUpGameOfLife.GridGenerationGameStatus();
+            var gameEnd = _setUpGame.GridGenerationGameStatus();
 
             while (!endOfSeedInput && !gameEnd)
             {
-                gameEnd = _setUpGameOfLife.SeedGenerationGameStatus();
+                gameEnd = _setUpGame.SeedGenerationGameStatus();
                 if (gameEnd) break;
 
-                (gameEnd, endOfSeedInput) = AddMoreLiveCellsGameStatus();
+                (gameEnd, endOfSeedInput) = AddLiveCellsGameStatus();
             }
 
             while (!gameEnd)
@@ -65,7 +65,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 gameEnd = _playNextGeneration.NextGenerationGameStatus(_gameGrid);
             }
 
-            _gameOutput.OutputGame(OutputMessages.PrintGameEnd);
+            _gameOutput.Output(OutputMessages.PrintGameEnd);
         }
     }
 }

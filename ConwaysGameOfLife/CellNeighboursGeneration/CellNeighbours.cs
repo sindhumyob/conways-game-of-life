@@ -4,12 +4,12 @@ using ConwaysGameOfLife.PlayGameOfLife;
 
 namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
-    public class CellNeighboursGenerator
+    public class CellNeighbours
     {
         private readonly NeighboursCoordinatesGenerator _neighboursCoordinatesGenerator;
         private const int CellNeighboursArraySize = 3;
 
-        public CellNeighboursGenerator()
+        public CellNeighbours()
         {
             _neighboursCoordinatesGenerator = new NeighboursCoordinatesGenerator();
         }

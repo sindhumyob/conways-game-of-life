@@ -3,7 +3,7 @@ using ConwaysGameOfLife.GameHelpers;
 
 namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
-    public class NeighboursCoordinatesGenerator
+    public class NeighboursCoordinates
     {
         public List<Coordinate> GetCoordinates(Coordinate cellCoordinates, int gridHeight,
             int gridWidth)

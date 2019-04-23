@@ -3,20 +3,20 @@ using ConwaysGameOfLife.CellNeighboursGeneration;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.PlayGameOfLife;
 
-namespace ConwaysGameOfLife.NextGenerationsCreation
+namespace ConwaysGameOfLife.NextGenerationCreation
 {
-    public class NextGenerationCreator
+    public class NextGeneration
     {
         private readonly CellNeighboursGenerator _cellNeighboursGenerator;
         private readonly CellTransitionChecker _cellTransitionChecker;
 
-        public NextGenerationCreator()
+        public NextGeneration()
         {
             _cellNeighboursGenerator = new CellNeighboursGenerator();
             _cellTransitionChecker = new CellTransitionChecker();
         }
 
-        public void CreateNextGeneration(GameGrid gameGrid)
+        public void CreateGeneration(GameGrid gameGrid)
         {
             var liveCellCoordinates = new List<Coordinate>();
             var deadCellCoordinates = new List<Coordinate>();
@@ -38,8 +38,8 @@ namespace ConwaysGameOfLife.NextGenerationsCreation
                 }
             }
 
-            gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
-            gameGrid.UpdateGameGridCells(deadCellCoordinates, CellType.Dead);
+            gameGrid.UpdateGrid(liveCellCoordinates, CellType.Live);
+            gameGrid.UpdateGrid(deadCellCoordinates, CellType.Dead);
         }
     }
 }
