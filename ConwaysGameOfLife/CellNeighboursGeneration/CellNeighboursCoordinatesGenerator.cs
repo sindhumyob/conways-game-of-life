@@ -1,73 +1,42 @@
-using ConwaysGameOfLife.CellNeighboursGeneration.CellNeighboursCoordinates;
+using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 
 namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
     public class CellNeighboursCoordinatesGenerator
     {
-        private readonly BordersOverlapCoordinates _bordersOverlapCoordinates;
-        private readonly CornersOverlapCoordinates _cornersOverlapCoordinates;
-
-
-        public CellNeighboursCoordinatesGenerator()
+        public List<Coordinate> GetCellNeighboursCoordinates(Coordinate cellCoordinates, int gridHeight,
+            int gridWidth)
         {
-            _bordersOverlapCoordinates = new BordersOverlapCoordinates();
-            _cornersOverlapCoordinates = new CornersOverlapCoordinates();
-        }
+            var neighboursCoordinates = new List<Coordinate> { };
 
-        public Coordinate[] GetCornerOverlapCoordinates(Coordinate cellCoordinates,
-            Coordinate maxGridSizeCoordinates)
-        {
-            var neighboursCoordinates = new Coordinate[] { };
-            if (cellCoordinates.X == 0 && cellCoordinates.Y == 0)
+            var coordinatesToGenerate = new[]
             {
-                neighboursCoordinates =
-                    _cornersOverlapCoordinates.GetTopLeftCornerOverlapCoordinates(cellCoordinates,
-                        maxGridSizeCoordinates);
-            }
-            else if (cellCoordinates.X == 0 && cellCoordinates.Y == maxGridSizeCoordinates.Y)
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y + 1},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X, Y = cellCoordinates.Y + 1},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y - 1},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y},
+                new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y + 1}
+            };
+
+            foreach (var coordinate in coordinatesToGenerate)
             {
-                neighboursCoordinates = _cornersOverlapCoordinates.GetTopRightCornerOverlapCoordinates(
-                    cellCoordinates, maxGridSizeCoordinates);
-            }
-            else if (cellCoordinates.X == maxGridSizeCoordinates.X && cellCoordinates.Y == 0)
-            {
-                neighboursCoordinates = _cornersOverlapCoordinates.GetBottomLeftCornerOverlapCoordinates(
-                    cellCoordinates, maxGridSizeCoordinates);
-            }
-            else if (cellCoordinates.X == maxGridSizeCoordinates.X && cellCoordinates.Y == maxGridSizeCoordinates.Y)
-            {
-                neighboursCoordinates =
-                    _cornersOverlapCoordinates.GetBottomRightCornerOverlapCoordinates(cellCoordinates);
+                neighboursCoordinates.Add(GetNeighbourCoordinate(coordinate, gridHeight, gridWidth));
             }
 
             return neighboursCoordinates;
         }
 
-        public Coordinate[] GetBordersOverlapCoordinates(Coordinate cellCoordinates,
-            Coordinate maxGridSizeCoordinates)
+        private Coordinate GetNeighbourCoordinate(Coordinate coordinate, int gridHeight, int gridWidth)
         {
-            var neighboursCoordinates = new Coordinate[] { };
-            if (cellCoordinates.X == 0)
+            return new Coordinate
             {
-                neighboursCoordinates =
-                    _bordersOverlapCoordinates.GetTopOverlapCoordinates(cellCoordinates, maxGridSizeCoordinates);
-            }
-            else if (cellCoordinates.X == maxGridSizeCoordinates.X)
-            {
-                neighboursCoordinates = _bordersOverlapCoordinates.GetBottomOverlapCoordinates(cellCoordinates);
-            }
-            else if (cellCoordinates.Y == 0)
-            {
-                neighboursCoordinates =
-                    _bordersOverlapCoordinates.GetLeftOverlapCoordinates(cellCoordinates, maxGridSizeCoordinates);
-            }
-            else if (cellCoordinates.Y == maxGridSizeCoordinates.Y)
-            {
-                neighboursCoordinates = _bordersOverlapCoordinates.GetRightOverlapCoordinates(cellCoordinates);
-            }
-
-            return neighboursCoordinates;
+                X = (coordinate.X + gridHeight) % gridHeight, Y = (coordinate.Y + gridWidth) % gridWidth
+            };
         }
     }
 }

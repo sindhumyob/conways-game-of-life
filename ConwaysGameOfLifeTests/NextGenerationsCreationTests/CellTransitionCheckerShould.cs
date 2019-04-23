@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.NextGenerationsCreation;
 using Xunit;
@@ -89,9 +90,11 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
         {
             var cellAndNeighbours = new[,]
             {
-                {CellType.Dead, CellType.Dead, CellType.Live},
-                {CellType.Dead, CellType.Dead, CellType.Live},
-                {CellType.Dead, CellType.Dead, CellType.Dead}
+                
+                {CellType.Dead,CellType.Dead,CellType.Live},
+                {CellType.Dead,CellType.Dead,CellType.Live},
+                {CellType.Dead,CellType.Dead,CellType.Dead}
+                
             };
 
             Assert.False(_cellTransitionChecker.IsCellLive(cellAndNeighbours));

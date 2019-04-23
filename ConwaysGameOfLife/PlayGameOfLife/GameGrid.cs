@@ -45,10 +45,10 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
             return string.Join("\n", output) + "\n";
         }
-
-        public (int, int) GetMaxGridSizeCoordinates()
+        
+        public (int, int) GetGridSize()
         {
-            return (CurrentGameGrid.GetLength(0) - 1, CurrentGameGrid.GetLength(1) - 1);
+            return (CurrentGameGrid.GetLength(0), CurrentGameGrid.GetLength(1));
         }
 
         public Coordinate ConvertInputCoordinateToGridCoordinate(Coordinate coordinate)
