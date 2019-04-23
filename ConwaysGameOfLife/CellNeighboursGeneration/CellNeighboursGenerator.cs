@@ -18,15 +18,15 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
         {
             var (gridHeight, gridWidth) = gameGrid.GetGridSize();
             var neighboursCoordinates =
-                _cellNeighboursCoordinatesGenerator.GetCellNeighboursCoordinates(cellCoordinates, gridHeight,
+                _cellNeighboursCoordinatesGenerator.GetNeighboursCoordinates(cellCoordinates, gridHeight,
                     gridWidth);
 
-            var neighbours = new CellType[CellNeighboursArraySize,CellNeighboursArraySize];
+            var cellAndNeighbours = new CellType[CellNeighboursArraySize,CellNeighboursArraySize];
             var rowIndex = 0;
             var columnIndex = 0;
             foreach (var neighbourCoordinate in neighboursCoordinates)
             {
-                neighbours[rowIndex,columnIndex]=gameGrid.CurrentGameGrid[neighbourCoordinate.X, neighbourCoordinate.Y];
+                cellAndNeighbours[rowIndex,columnIndex]=gameGrid.CurrentGameGrid[neighbourCoordinate.X, neighbourCoordinate.Y];
                 columnIndex++;
 
                 if (columnIndex != 3) continue;
@@ -34,7 +34,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
                 rowIndex++;
             }
 
-            return neighbours;
+            return cellAndNeighbours;
         }
     }
 }
