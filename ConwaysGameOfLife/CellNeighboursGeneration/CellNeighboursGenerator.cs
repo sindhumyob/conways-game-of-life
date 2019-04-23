@@ -6,19 +6,19 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
     public class CellNeighboursGenerator
     {
-        private readonly CellNeighboursCoordinatesGenerator _cellNeighboursCoordinatesGenerator;
+        private readonly NeighboursCoordinatesGenerator _neighboursCoordinatesGenerator;
         private const int CellNeighboursArraySize = 3;
 
         public CellNeighboursGenerator()
         {
-            _cellNeighboursCoordinatesGenerator = new CellNeighboursCoordinatesGenerator();
+            _neighboursCoordinatesGenerator = new NeighboursCoordinatesGenerator();
         }
 
         public CellType[,] GetNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
         {
             var (gridHeight, gridWidth) = gameGrid.GetSize();
             var neighboursCoordinates =
-                _cellNeighboursCoordinatesGenerator.GetCoordinates(cellCoordinates, gridHeight,
+                _neighboursCoordinatesGenerator.GetCoordinates(cellCoordinates, gridHeight,
                     gridWidth);
 
             var cellAndNeighbours = new CellType[CellNeighboursArraySize, CellNeighboursArraySize];
