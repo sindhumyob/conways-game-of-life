@@ -8,7 +8,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     {
         public CellType[,] CurrentGameGrid { get; set; }
 
-        public void GenerateInitialGrid(int heightOfGrid, int widthOfGrid)
+        public void GenerateGrid(int heightOfGrid, int widthOfGrid)
         {
             CurrentGameGrid = new CellType[heightOfGrid, widthOfGrid];
             
@@ -21,7 +21,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
         }
 
-        public void UpdateGameGridCells(List<Coordinate> cellCoordinates, CellType cellType)
+        public void UpdateGrid(List<Coordinate> cellCoordinates, CellType cellType)
         {
             foreach (var coordinate in cellCoordinates)
             {
@@ -52,7 +52,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return (CurrentGameGrid.GetLength(0), CurrentGameGrid.GetLength(1));
         }
 
-        public Coordinate ConvertInputCoordinateToGridCoordinate(Coordinate coordinate)
+        public Coordinate GetGridCoordinate(Coordinate coordinate)
         {
             coordinate.X += -1;
             coordinate.Y += -1;

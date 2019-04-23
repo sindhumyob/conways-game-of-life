@@ -18,36 +18,36 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _inputValidator = new InputValidator();
         }
 
-        public string GetPlayerContinueGameInput(string inputPromptMessage, string invalidInputMessage)
+        public string GetContinueGameInput(string inputPromptMessage, string invalidInputMessage)
         {
             while (true)
             {
-                _gameOutput.OutputGame(inputPromptMessage);
-                var playerInput = _gameInput.GetPlayerInput();
+                _gameOutput.Output(inputPromptMessage);
+                var playerInput = _gameInput.GetInput();
 
                 if (_inputValidator.IsContinueGameInputValid(playerInput))
                 {
                     return playerInput;
                 }
 
-                _gameOutput.OutputGame(invalidInputMessage);
+                _gameOutput.Output(invalidInputMessage);
             }
         }
 
-        public string GetPlayerGridSetUpInput(string inputPromptMessage, string invalidInputMessage, int minValue,
+        public string GetGridSetUpInput(string inputPromptMessage, string invalidInputMessage, int minValue,
             int maxValue)
         {
             while (true)
             {
-                _gameOutput.OutputGame(inputPromptMessage);
-                var playerInput = _gameInput.GetPlayerInput();
+                _gameOutput.Output(inputPromptMessage);
+                var playerInput = _gameInput.GetInput();
 
                 if (_inputValidator.IsGridSetUpInputValid(playerInput, minValue, maxValue))
                 {
                     return playerInput;
                 }
 
-                _gameOutput.OutputGame(invalidInputMessage);
+                _gameOutput.Output(invalidInputMessage);
             }
         }
     }

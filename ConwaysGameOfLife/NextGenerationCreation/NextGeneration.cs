@@ -7,13 +7,13 @@ namespace ConwaysGameOfLife.NextGenerationCreation
 {
     public class NextGeneration
     {
-        private readonly CellNeighboursGenerator _cellNeighboursGenerator;
-        private readonly CellTransitionChecker _cellTransitionChecker;
+        private readonly CellNeighbours _cellNeighbours;
+        private readonly CellTransition _cellTransition;
 
         public NextGeneration()
         {
-            _cellNeighboursGenerator = new CellNeighboursGenerator();
-            _cellTransitionChecker = new CellTransitionChecker();
+            _cellNeighbours = new CellNeighbours();
+            _cellTransition = new CellTransition();
         }
 
         public void CreateGeneration(GameGrid gameGrid)
@@ -25,9 +25,9 @@ namespace ConwaysGameOfLife.NextGenerationCreation
                 for (var j = 0; j < gameGrid.CurrentGameGrid.GetLength(1); j++)
                 {
                     var currentCellCoordinates = new Coordinate {X = i, Y = j};
-                    var cellAndNeighbours = _cellNeighboursGenerator.GetNeighbours(gameGrid, currentCellCoordinates);
+                    var cellAndNeighbours = _cellNeighbours.GetNeighbours(gameGrid, currentCellCoordinates);
 
-                    if (_cellTransitionChecker.IsCellLive(cellAndNeighbours))
+                    if (_cellTransition.IsCellLive(cellAndNeighbours))
                     {
                         liveCellCoordinates.Add(currentCellCoordinates);
                     }

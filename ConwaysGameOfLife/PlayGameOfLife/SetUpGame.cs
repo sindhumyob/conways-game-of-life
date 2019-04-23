@@ -23,7 +23,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameGrid = gameGrid;
         }
 
-        public bool GridGenerationGameStatus()
+        public bool IsGridGenerationCompleted()
         {
             var gridHeight = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
@@ -42,18 +42,14 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return false;
         }
 
-        public bool SeedGenerationGameStatus()
+        public bool IsAddLiveCellCompleted()
         {
-            var xCoordinate = _playerInput.GetGridSetUpInput(
-                OutputMessages.EnterXCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue,
-                _gridHeight);
+            var xCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterXCoordinateOfCell,
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridHeight);
             if (xCoordinate == ContinueGameInputConstants.Quit) return true;
 
-            var yCoordinate = _playerInput.GetGridSetUpInput(
-                OutputMessages.EnterYCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue,
-                _gridWidth);
+            var yCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterYCoordinateOfCell,
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridWidth);
             if (yCoordinate == ContinueGameInputConstants.Quit) return true;
 
             UpdateGrid(new Coordinate {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
@@ -69,11 +65,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         private void UpdateGrid(Coordinate inputCoordinate)
         {
             var coordinate = _gameGrid.GetGridCoordinate(inputCoordinate);
-            _gameGrid.UpdateGrid(
-                new List<Coordinate>()
-                {
-                    coordinate
-                }, CellType.Live);
+            _gameGrid.UpdateGrid(new List<Coordinate> {coordinate}, CellType.Live);
             _gameOutput.Output(OutputMessages.PrintGrid + _gameGrid.ConvertGridToOutput());
         }
     }

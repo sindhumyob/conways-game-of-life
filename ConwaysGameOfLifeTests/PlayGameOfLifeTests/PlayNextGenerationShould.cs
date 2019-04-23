@@ -38,8 +38,8 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             };
             _gameInput.PlayerInputs = new List<string> {"n"};
 
-            _playNextGeneration.NextGenerationGameStatus(_gameGrid);
-            var output = _gameOutput.Output;
+            _playNextGeneration.SeeGenerationStatus(_gameGrid);
+            var output = _gameOutput.OutputMessage;
 
             Assert.Equal("Here's the next generation:\n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +

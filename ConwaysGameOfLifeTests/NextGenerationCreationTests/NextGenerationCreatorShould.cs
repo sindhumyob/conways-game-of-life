@@ -1,5 +1,5 @@
 using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.NextGenerationsCreation;
+using ConwaysGameOfLife.NextGenerationCreation;
 using ConwaysGameOfLife.PlayGameOfLife;
 using Xunit;
 
@@ -7,13 +7,13 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
 {
     public class NextGenerationCreatorShould
     {
-        private readonly NextGenerationCreator _nextGenerationCreator;
+        private readonly NextGeneration _nextGeneration;
         private readonly GameGrid _gameGrid;
 
         public NextGenerationCreatorShould()
         {
             _gameGrid = new GameGrid();
-            _nextGenerationCreator = new NextGenerationCreator();
+            _nextGeneration = new NextGeneration();
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
 
             _gameGrid.CurrentGameGrid = testGameGrid;
 
-            _nextGenerationCreator.CreateNextGeneration(_gameGrid);
+            _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {
@@ -114,7 +114,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             };
             _gameGrid.CurrentGameGrid = testGameGrid;
 
-            _nextGenerationCreator.CreateNextGeneration(_gameGrid);
+            _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {
@@ -164,7 +164,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
             };
             _gameGrid.CurrentGameGrid = gameGrid;
 
-            _nextGenerationCreator.CreateNextGeneration(_gameGrid);
+            _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
             {

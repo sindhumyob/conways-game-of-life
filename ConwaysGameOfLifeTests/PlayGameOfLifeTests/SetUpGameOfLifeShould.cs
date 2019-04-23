@@ -10,22 +10,22 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
     {
         private readonly GameInput _gameInput;
         private readonly GameOutput _gameOutput;
-        private readonly SetUpGameOfLife _setUpGameOfLife;
+        private readonly SetUpGame _setUpGame;
 
         public SetUpGameOfLifeShould()
         {
             _gameInput = new GameInput();
             _gameOutput = new GameOutput();
             var gameGrid = new GameGrid();
-            _setUpGameOfLife = new SetUpGameOfLife(_gameInput, _gameOutput, gameGrid);
+            _setUpGame = new SetUpGame(_gameInput, _gameOutput, gameGrid);
         }
 
         [Fact]
         public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3"};
-            _setUpGameOfLife.GridGenerationGameStatus();
-            var output = _gameOutput.Output;
+            _setUpGame.IsGridGenerationCompleted();
+            var output = _gameOutput.OutputMessage;
 
             Assert.Equal("Please enter the height of your game grid or quit the game with 'q': \n" +
                          "Please enter the width of your game grid or quit the game with 'q': \n" +
@@ -43,11 +43,11 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "1"};
-            _setUpGameOfLife.GridGenerationGameStatus();
-            _gameOutput.Output = string.Empty;
+            _setUpGame.IsGridGenerationCompleted();
+            _gameOutput.OutputMessage = string.Empty;
 
-            _setUpGameOfLife.SeedGenerationGameStatus();
-            var output = _gameOutput.Output;
+            _setUpGame.IsAddLiveCellCompleted();
+            var output = _gameOutput.OutputMessage;
 
             Assert.Equal(
                 "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': \n" +
