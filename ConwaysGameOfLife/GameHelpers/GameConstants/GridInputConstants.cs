@@ -4,6 +4,6 @@ namespace ConwaysGameOfLife.GameHelpers.GameConstants
     {
         public static int MinGridSize => 3;
         public static int MaxGridSize => 100;
-        public static int MinCoordinateInputValue => 1;
+        public static int MinCoordinateValue => 1;
     }
 }

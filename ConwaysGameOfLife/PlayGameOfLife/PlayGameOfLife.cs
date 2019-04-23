@@ -32,11 +32,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 _playerInput.GetPlayerContinueGameInput(OutputMessages.AddMoreLiveCells,
                     OutputMessages.InvalidAddMoreLiveCells);
 
-            if (addMoreSeedsInput == ContinueGameInputConstants.QuitInput)
+            if (addMoreSeedsInput == ContinueGameInputConstants.Quit)
             {
                 gameEnd = true;
             }
-            else if (addMoreSeedsInput == ContinueGameInputConstants.NoInput)
+            else if (addMoreSeedsInput == ContinueGameInputConstants.No)
             {
                 _gameOutput.OutputGame(OutputMessages.StartingGameOfLife);
                 endOfSeedInput = true;

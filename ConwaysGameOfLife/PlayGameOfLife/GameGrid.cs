@@ -46,7 +46,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return string.Join("\n", output) + "\n";
         }
         
-        public (int, int) GetGridSize()
+        public (int, int) GetSize()
         {
             return (CurrentGameGrid.GetLength(0), CurrentGameGrid.GetLength(1));
         }

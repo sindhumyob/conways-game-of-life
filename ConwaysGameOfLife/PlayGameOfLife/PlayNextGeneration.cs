@@ -29,7 +29,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var seeMoreTransitions =
                 _playerInput.GetPlayerContinueGameInput(OutputMessages.PrintSeeNextGeneration,
                     OutputMessages.InvalidSeeMoreGenerations);
-            return seeMoreTransitions == ContinueGameInputConstants.QuitInput || seeMoreTransitions == ContinueGameInputConstants.NoInput;
+            return seeMoreTransitions == ContinueGameInputConstants.Quit || seeMoreTransitions == ContinueGameInputConstants.No;
         }
     }
 }

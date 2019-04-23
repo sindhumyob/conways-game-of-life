@@ -27,11 +27,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var gridHeight = _playerInput.GetPlayerGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
-            if (gridHeight == ContinueGameInputConstants.QuitInput) return true;
+            if (gridHeight == ContinueGameInputConstants.Quit) return true;
 
             var gridWidth = _playerInput.GetPlayerGridSetUpInput(OutputMessages.EnterGridWidth,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
-            if (gridWidth == ContinueGameInputConstants.QuitInput) return true;
+            if (gridWidth == ContinueGameInputConstants.Quit) return true;
 
             _gridHeight = int.Parse(gridHeight);
             _gridWidth = int.Parse(gridWidth);
@@ -46,15 +46,15 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var xCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 OutputMessages.EnterXCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateInputValue,
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue,
                 _gridHeight);
-            if (xCoordinate == ContinueGameInputConstants.QuitInput) return true;
+            if (xCoordinate == ContinueGameInputConstants.Quit) return true;
 
             var yCoordinate = _playerInput.GetPlayerGridSetUpInput(
                 OutputMessages.EnterYCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateInputValue,
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue,
                 _gridWidth);
-            if (yCoordinate == ContinueGameInputConstants.QuitInput) return true;
+            if (yCoordinate == ContinueGameInputConstants.Quit) return true;
 
             UpdateGrid(new Coordinate {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
             return false;
