@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 
@@ -10,7 +11,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public void GenerateInitialGrid(int heightOfGrid, int widthOfGrid)
         {
             CurrentGameGrid = new CellType[heightOfGrid, widthOfGrid];
-
+            
             for (var i = 0; i < CurrentGameGrid.GetLength(0); i++)
             {
                 for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)

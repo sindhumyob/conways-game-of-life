@@ -9,13 +9,13 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     {
         private readonly IGameInput _gameInput;
         private readonly IGameOutput _gameOutput;
-        private readonly GameInputValidator _gameInputValidator;
+        private readonly InputValidator _inputValidator;
 
         public PlayerInput(IGameInput gameInput, IGameOutput gameOutput)
         {
             _gameInput = gameInput;
             _gameOutput = gameOutput;
-            _gameInputValidator = new GameInputValidator();
+            _inputValidator = new InputValidator();
         }
 
         public string GetPlayerContinueGameInput(string inputPromptMessage, string invalidInputMessage)
@@ -25,7 +25,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
 
-                if (_gameInputValidator.IsContinueGameInputValid(playerInput))
+                if (_inputValidator.IsContinueGameInputValid(playerInput))
                 {
                     return playerInput;
                 }
@@ -42,7 +42,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 _gameOutput.OutputGame(inputPromptMessage);
                 var playerInput = _gameInput.GetPlayerInput();
 
-                if (_gameInputValidator.IsGridSetUpInputValid(playerInput, minValue, maxValue))
+                if (_inputValidator.IsGridSetUpInputValid(playerInput, minValue, maxValue))
                 {
                     return playerInput;
                 }

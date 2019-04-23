@@ -3,7 +3,7 @@ using ConwaysGameOfLife.GameHelpers.GameConstants;
 
 namespace ConwaysGameOfLife.GameInput
 {
-    public class GameInputValidator
+    public class InputValidator
     {
         public bool IsGridSetUpInputValid(string input, int minValue, int maxValue)
         {
