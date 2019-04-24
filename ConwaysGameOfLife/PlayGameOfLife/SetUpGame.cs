@@ -13,8 +13,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
         private readonly GameGrid _gameGrid;
-        private int _gridHeight;
-        private int _gridWidth;
+        private GridDimensions _gridDimensions;
 
         public SetUpGame(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
         {
@@ -23,7 +22,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameGrid = gameGrid;
         }
 
-        public bool IsGridGenerationCompleted()
+        public bool IsGridGenerationInterrupted()
         {
             var gridHeight = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
@@ -33,32 +32,31 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
             if (gridWidth == ContinueGameInputConstants.Quit) return true;
 
-            _gridHeight = int.Parse(gridHeight);
-            _gridWidth = int.Parse(gridWidth);
+            _gridDimensions = new GridDimensions {Height = int.Parse(gridHeight), Width = int.Parse(gridWidth)};
 
-            GenerateGrid(_gridHeight, _gridWidth);
+            GenerateGrid();
             _gameOutput.Output(OutputMessages.AddInitialSeed);
 
             return false;
         }
 
-        public bool IsAddLiveCellCompleted()
+        public bool IsAddLiveCellInterrupted()
         {
             var xCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterXCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridHeight);
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridDimensions.Height);
             if (xCoordinate == ContinueGameInputConstants.Quit) return true;
 
             var yCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterYCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridWidth);
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridDimensions.Width);
             if (yCoordinate == ContinueGameInputConstants.Quit) return true;
 
             UpdateGrid(new Coordinate {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
             return false;
         }
 
-        private void GenerateGrid(int gridHeight, int gridWidth)
+        private void GenerateGrid()
         {
-            _gameGrid.GenerateGrid(gridHeight, gridWidth);
+            _gameGrid.GenerateGrid(_gridDimensions);
             _gameOutput.Output(OutputMessages.PrintGrid + _gameGrid.ConvertGridToOutput());
         }
 

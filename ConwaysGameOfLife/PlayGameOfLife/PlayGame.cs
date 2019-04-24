@@ -50,11 +50,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var endOfSeedInput = false;
             _gameOutput.Output(OutputMessages.Welcome);
 
-            var gameEnd = _setUpGame.IsGridGenerationCompleted();
+            var gameEnd = _setUpGame.IsGridGenerationInterrupted();
 
             while (!endOfSeedInput && !gameEnd)
             {
-                gameEnd = _setUpGame.IsAddLiveCellCompleted();
+                gameEnd = _setUpGame.IsAddLiveCellInterrupted();
                 if (gameEnd) break;
 
                 (gameEnd, endOfSeedInput) = SeedGenerationStatus();
@@ -62,7 +62,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
             while (!gameEnd)
             {
-                gameEnd = _playNextGeneration.SeeGenerationStatus(_gameGrid);
+                gameEnd = _playNextGeneration.IsSeeGenerationInterrupted(_gameGrid);
             }
 
             _gameOutput.Output(OutputMessages.PrintGameEnd);

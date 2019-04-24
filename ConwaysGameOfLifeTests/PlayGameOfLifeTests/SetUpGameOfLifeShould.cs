@@ -24,7 +24,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3"};
-            _setUpGame.IsGridGenerationCompleted();
+            _setUpGame.IsGridGenerationInterrupted();
             var output = _gameOutput.OutputMessage;
 
             Assert.Equal("Please enter the height of your game grid or quit the game with 'q': \n" +
@@ -43,10 +43,10 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "1"};
-            _setUpGame.IsGridGenerationCompleted();
+            _setUpGame.IsGridGenerationInterrupted();
             _gameOutput.OutputMessage = string.Empty;
 
-            _setUpGame.IsAddLiveCellCompleted();
+            _setUpGame.IsAddLiveCellInterrupted();
             var output = _gameOutput.OutputMessage;
 
             Assert.Equal(

@@ -21,7 +21,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameOutput = gameOutput;
         }
 
-        public bool SeeGenerationStatus(GameGrid gameGrid)
+        public bool IsSeeGenerationInterrupted(GameGrid gameGrid)
         {
             _nextGeneration.CreateGeneration(gameGrid);
             _gameOutput.Output(OutputMessages.PrintNextGeneration + gameGrid.ConvertGridToOutput());

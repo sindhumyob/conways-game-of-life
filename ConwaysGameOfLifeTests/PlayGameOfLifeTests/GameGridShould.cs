@@ -17,10 +17,9 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         [Fact]
         public void Generate_And_Update_Game_Grid_With_Specified_Live_Cells_And_Dead_Cells()
         {
-            const int heightOfGrid = 6;
-            const int widthOfGrid = 6;
+            var gridDimensions = new GridDimensions {Height = 6, Width = 6};
 
-            _gameGrid.GenerateGrid(heightOfGrid, widthOfGrid);
+            _gameGrid.GenerateGrid(gridDimensions);
 
             var liveCellCoordinates = new List<Coordinate>
             {

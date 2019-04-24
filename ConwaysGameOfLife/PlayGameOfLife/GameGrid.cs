@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 
@@ -8,13 +7,13 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     {
         public CellType[,] CurrentGameGrid { get; set; }
 
-        public void GenerateGrid(int heightOfGrid, int widthOfGrid)
+        public void GenerateGrid(GridDimensions gridDimensions)
         {
-            CurrentGameGrid = new CellType[heightOfGrid, widthOfGrid];
-            
-            for (var i = 0; i < CurrentGameGrid.GetLength(0); i++)
+            CurrentGameGrid = new CellType[gridDimensions.Height, gridDimensions.Width];
+
+            for (var i = 0; i < gridDimensions.Height; i++)
             {
-                for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < gridDimensions.Width; j++)
                 {
                     CurrentGameGrid[i, j] = CellType.Dead;
                 }
@@ -33,9 +32,10 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var output = new List<string>();
             var line = string.Empty;
-            for (var i = 0; i < CurrentGameGrid.GetLength(0); i++)
+            var gridDimensions = GetSize();
+            for (var i = 0; i < gridDimensions.Height; i++)
             {
-                for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < gridDimensions.Width; j++)
                 {
                     line += (char) CurrentGameGrid[i, j] + " ";
                 }
@@ -46,10 +46,10 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
             return string.Join("\n", output) + "\n";
         }
-        
-        public (int, int) GetSize()
+
+        public GridDimensions GetSize()
         {
-            return (CurrentGameGrid.GetLength(0), CurrentGameGrid.GetLength(1));
+            return new GridDimensions() {Height = CurrentGameGrid.GetLength(0), Width = CurrentGameGrid.GetLength(1)};
         }
 
         public Coordinate GetGridCoordinate(Coordinate coordinate)

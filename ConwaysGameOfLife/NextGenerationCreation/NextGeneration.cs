@@ -20,9 +20,10 @@ namespace ConwaysGameOfLife.NextGenerationCreation
         {
             var liveCellCoordinates = new List<Coordinate>();
             var deadCellCoordinates = new List<Coordinate>();
-            for (var i = 0; i < gameGrid.CurrentGameGrid.GetLength(0); i++)
+            var gridDimensions = gameGrid.GetSize();
+            for (var i = 0; i < gridDimensions.Height; i++)
             {
-                for (var j = 0; j < gameGrid.CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < gridDimensions.Width; j++)
                 {
                     var currentCellCoordinates = new Coordinate {X = i, Y = j};
                     var cellAndNeighbours = _cellNeighbours.GetNeighbours(gameGrid, currentCellCoordinates);

@@ -5,8 +5,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
 {
     public class NeighboursCoordinates
     {
-        public List<Coordinate> GetCoordinates(Coordinate cellCoordinates, int gridHeight,
-            int gridWidth)
+        public List<Coordinate> GetCoordinates(Coordinate cellCoordinates, GridDimensions gridDimensions)
         {
             var neighboursCoordinates = new List<Coordinate> { };
 
@@ -25,17 +24,18 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
 
             foreach (var coordinate in gridNeighboursCoordinatesToGenerate)
             {
-                neighboursCoordinates.Add(GetGridCoordinate(coordinate, gridHeight, gridWidth));
+                neighboursCoordinates.Add(GetGridCoordinate(coordinate, gridDimensions));
             }
 
             return neighboursCoordinates;
         }
 
-        private Coordinate GetGridCoordinate(Coordinate coordinate, int gridHeight, int gridWidth)
+        private Coordinate GetGridCoordinate(Coordinate coordinate, GridDimensions gridDimensions)
         {
             return new Coordinate
             {
-                X = (coordinate.X + gridHeight) % gridHeight, Y = (coordinate.Y + gridWidth) % gridWidth
+                X = (coordinate.X + gridDimensions.Height) % gridDimensions.Height,
+                Y = (coordinate.Y + gridDimensions.Width) % gridDimensions.Width
             };
         }
     }
