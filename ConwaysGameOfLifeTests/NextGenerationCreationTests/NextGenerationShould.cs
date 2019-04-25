@@ -3,14 +3,14 @@ using ConwaysGameOfLife.NextGenerationCreation;
 using ConwaysGameOfLife.PlayGameOfLife;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
+namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
 {
-    public class NextGenerationCreatorShould
+    public class NextGenerationShould
     {
         private readonly NextGeneration _nextGeneration;
         private readonly GameGrid _gameGrid;
 
-        public NextGenerationCreatorShould()
+        public NextGenerationShould()
         {
             _gameGrid = new GameGrid();
             _nextGeneration = new NextGeneration();
@@ -252,6 +252,70 @@ namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
                 {
                     CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Live,
                     CellType.Dead
+                },
+            };
+
+            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGameGrid);
+        }
+
+        [Fact]
+        public void Create_The_Next_Generation_Where_Dead_Cells_In_All_Corners_Turn_Live()
+        {
+            var testGameGrid = new[,]
+            {
+                {
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Live,
+                    CellType.Dead
+                },
+                {
+                    CellType.Live, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Live,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Live,
+                    CellType.Dead
+                },
+            };
+            _gameGrid.CurrentGameGrid = testGameGrid;
+            _nextGeneration.CreateGeneration(_gameGrid);
+
+            var expectedGameGrid = new[,]
+            {
+                {
+                    CellType.Live, CellType.Live, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Live
+                },
+                {
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead
+                },
+                {
+                    CellType.Live, CellType.Live, CellType.Live, CellType.Dead, CellType.Live, CellType.Live,
+                    CellType.Live
                 },
             };
 

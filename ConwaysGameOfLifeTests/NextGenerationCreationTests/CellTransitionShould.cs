@@ -1,15 +1,14 @@
-using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.NextGenerationCreation;
 using Xunit;
 
-namespace ConwaysGameOfLifeTests.NextGenerationsCreationTests
+namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
 {
-    public class CellTransitionCheckerShould
+    public class CellTransitionShould
     {
         private readonly CellTransition _cellTransition;
 
-        public CellTransitionCheckerShould()
+        public CellTransitionShould()
         {
             _cellTransition = new CellTransition();
         }

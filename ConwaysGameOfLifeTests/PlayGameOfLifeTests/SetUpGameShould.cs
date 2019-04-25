@@ -6,13 +6,13 @@ using Xunit;
 
 namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
-    public class SetUpGameOfLifeShould
+    public class SetUpGameShould
     {
         private readonly GameInput _gameInput;
         private readonly GameOutput _gameOutput;
         private readonly SetUpGame _setUpGame;
 
-        public SetUpGameOfLifeShould()
+        public SetUpGameShould()
         {
             _gameInput = new GameInput();
             _gameOutput = new GameOutput();
