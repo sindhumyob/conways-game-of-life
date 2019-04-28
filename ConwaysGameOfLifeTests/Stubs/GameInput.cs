@@ -7,7 +7,7 @@ namespace ConwaysGameOfLifeTests.Stubs
     {
         public List<string> PlayerInputs { get; set; }
 
-        public string GetInput()
+        public string Input()
         {
             var input = PlayerInputs[0];
             PlayerInputs.RemoveAt(0);

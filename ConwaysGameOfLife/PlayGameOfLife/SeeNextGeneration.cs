@@ -8,24 +8,17 @@ using ConwaysGameOfLife.NextGenerationCreation;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
-    public class PlayNextGeneration
+    public class SeeNextGeneration
     {
-        private readonly NextGeneration _nextGeneration;
         private readonly PlayerInput _playerInput;
-        private readonly IGameOutput _gameOutput;
 
-        public PlayNextGeneration(IGameInput gameInput, IGameOutput gameOutput)
+        public SeeNextGeneration(IGameInput gameInput, IGameOutput gameOutput)
         {
-            _nextGeneration = new NextGeneration();
             _playerInput = new PlayerInput(gameInput, gameOutput);
-            _gameOutput = gameOutput;
         }
 
-        public bool IsSeeGenerationInterrupted(GameGrid gameGrid)
+        public bool IsSeeGenerationInterrupted()
         {
-            _nextGeneration.CreateGeneration(gameGrid);
-            _gameOutput.Output(OutputMessages.PrintNextGeneration + gameGrid.ConvertGridToOutput());
-
             var seeMoreGenerations =
                 _playerInput.GetContinueGameInput(OutputMessages.PrintSeeNextGeneration,
                     OutputMessages.InvalidSeeMoreGenerations);

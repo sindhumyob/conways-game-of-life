@@ -11,14 +11,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     public class SetUpGame
     {
         private readonly PlayerInput _playerInput;
-        private readonly IGameOutput _gameOutput;
         private readonly GameGrid _gameGrid;
         private GridDimensions _gridDimensions;
 
         public SetUpGame(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
         {
             _playerInput = new PlayerInput(gameInput, gameOutput);
-            _gameOutput = gameOutput;
             _gameGrid = gameGrid;
         }
 
@@ -26,16 +24,17 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var gridHeight = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
+
             if (gridHeight == ContinueGameInputConstants.Quit) return true;
 
             var gridWidth = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridWidth,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
+
             if (gridWidth == ContinueGameInputConstants.Quit) return true;
 
             _gridDimensions = new GridDimensions {Height = int.Parse(gridHeight), Width = int.Parse(gridWidth)};
 
-            GenerateGrid();
-            _gameOutput.Output(OutputMessages.AddInitialSeed);
+            _gameGrid.GenerateGrid(_gridDimensions);
 
             return false;
         }
@@ -44,27 +43,40 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var xCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterXCoordinateOfCell,
                 OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridDimensions.Height);
+
             if (xCoordinate == ContinueGameInputConstants.Quit) return true;
 
             var yCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterYCoordinateOfCell,
                 OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridDimensions.Width);
+
             if (yCoordinate == ContinueGameInputConstants.Quit) return true;
 
-            UpdateGrid(new Coordinate {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
+            var coordinate = _gameGrid.GetGridCoordinate(new Coordinate
+                {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
+            
+            _gameGrid.UpdateGrid(new List<Coordinate> {coordinate}, CellType.Live);
+            
             return false;
         }
 
-        private void GenerateGrid()
+        public (bool, bool) SeedGenerationStatus()
         {
-            _gameGrid.GenerateGrid(_gridDimensions);
-            _gameOutput.Output(OutputMessages.PrintGrid + _gameGrid.ConvertGridToOutput());
-        }
+            var gameEnd = false;
+            var endOfSeedInput = false;
+            var addMoreLiveCells =
+                _playerInput.GetContinueGameInput(OutputMessages.AddMoreLiveCells,
+                    OutputMessages.InvalidAddMoreLiveCells);
 
-        private void UpdateGrid(Coordinate inputCoordinate)
-        {
-            var coordinate = _gameGrid.GetGridCoordinate(inputCoordinate);
-            _gameGrid.UpdateGrid(new List<Coordinate> {coordinate}, CellType.Live);
-            _gameOutput.Output(OutputMessages.PrintGrid + _gameGrid.ConvertGridToOutput());
+            if (addMoreLiveCells == ContinueGameInputConstants.Quit)
+            {
+                gameEnd = true;
+            }
+            else if (addMoreLiveCells == ContinueGameInputConstants.No)
+            {
+                endOfSeedInput = true;
+            }
+
+            return (gameEnd, endOfSeedInput);
         }
     }
 }

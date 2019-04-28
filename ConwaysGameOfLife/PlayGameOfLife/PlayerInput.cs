@@ -23,7 +23,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             while (true)
             {
                 _gameOutput.Output(inputPromptMessage);
-                var playerInput = _gameInput.GetInput();
+                var playerInput = _gameInput.Input();
 
                 if (_inputValidator.IsContinueGameInputValid(playerInput))
                 {
@@ -40,7 +40,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             while (true)
             {
                 _gameOutput.Output(inputPromptMessage);
-                var playerInput = _gameInput.GetInput();
+                var playerInput = _gameInput.Input();
 
                 if (_inputValidator.IsGridSetUpInputValid(playerInput, minValue, maxValue))
                 {

@@ -1,71 +1,70 @@
-using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GameHelpers.GameConstants;
-using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
-using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
+using ConwaysGameOfLife.NextGenerationCreation;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class PlayGame
     {
-        private readonly GameGrid _gameGrid;
-        private readonly PlayerInput _playerInput;
+        public readonly GameGrid GameGrid;
         private readonly SetUpGame _setUpGame;
-        private readonly PlayNextGeneration _playNextGeneration;
+        private readonly SeeNextGeneration _seeNextGeneration;
         private readonly IGameOutput _gameOutput;
+        private readonly NextGeneration _nextGeneration;
+        private bool _gameEnd;
+
 
         public PlayGame(IGameInput gameInput, IGameOutput gameOutput)
         {
-            _gameGrid = new GameGrid();
-            _playerInput = new PlayerInput(gameInput, gameOutput);
-            _setUpGame = new SetUpGame(gameInput, gameOutput, _gameGrid);
-            _playNextGeneration = new PlayNextGeneration(gameInput, gameOutput);
+            GameGrid = new GameGrid();
+            _setUpGame = new SetUpGame(gameInput, gameOutput, GameGrid);
+            _seeNextGeneration = new SeeNextGeneration(gameInput, gameOutput);
             _gameOutput = gameOutput;
-        }
-
-        private (bool, bool) SeedGenerationStatus()
-        {
-            var gameEnd = false;
-            var endOfSeedInput = false;
-            var addMoreSeedsInput =
-                _playerInput.GetContinueGameInput(OutputMessages.AddMoreLiveCells,
-                    OutputMessages.InvalidAddMoreLiveCells);
-
-            if (addMoreSeedsInput == ContinueGameInputConstants.Quit)
-            {
-                gameEnd = true;
-            }
-            else if (addMoreSeedsInput == ContinueGameInputConstants.No)
-            {
-                _gameOutput.Output(OutputMessages.StartingGameOfLife);
-                endOfSeedInput = true;
-            }
-
-            return (gameEnd, endOfSeedInput);
+            _nextGeneration = new NextGeneration();
         }
 
         public void Play()
         {
-            var endOfSeedInput = false;
             _gameOutput.Output(OutputMessages.Welcome);
 
-            var gameEnd = _setUpGame.IsGridGenerationInterrupted();
-
-            while (!endOfSeedInput && !gameEnd)
-            {
-                gameEnd = _setUpGame.IsAddLiveCellInterrupted();
-                if (gameEnd) break;
-
-                (gameEnd, endOfSeedInput) = SeedGenerationStatus();
-            }
-
-            while (!gameEnd)
-            {
-                gameEnd = _playNextGeneration.IsSeeGenerationInterrupted(_gameGrid);
-            }
+            GenerateGrid();
+            GenerateSeed();
+            PlayNextGeneration();
 
             _gameOutput.Output(OutputMessages.PrintGameEnd);
+        }
+
+        public void GenerateGrid()
+        {
+            _gameEnd = _setUpGame.IsGridGenerationInterrupted();
+
+            if (_gameEnd) return;
+            _gameOutput.Output(OutputMessages.PrintGrid + GameGrid.ConvertGridToOutput());
+            _gameOutput.Output(OutputMessages.AddInitialSeed);
+        }
+
+        public void GenerateSeed()
+        {
+            var endOfSeedInput = false;
+            while (!endOfSeedInput && !_gameEnd)
+            {
+                _gameEnd = _setUpGame.IsAddLiveCellInterrupted();
+                if (_gameEnd) return;
+                _gameOutput.Output(OutputMessages.PrintGrid + GameGrid.ConvertGridToOutput());
+
+                (_gameEnd, endOfSeedInput) = _setUpGame.SeedGenerationStatus();
+            }
+        }
+
+        public void PlayNextGeneration()
+        {
+            while (!_gameEnd)
+            {
+                _nextGeneration.CreateGeneration(GameGrid);
+                _gameOutput.Output(OutputMessages.PrintNextGeneration + GameGrid.ConvertGridToOutput());
+                _gameEnd = _seeNextGeneration.IsSeeGenerationInterrupted();
+            }
         }
     }
 }
