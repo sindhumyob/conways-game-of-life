@@ -55,6 +55,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
                 (_gameEnd, endOfSeedInput) = _setUpGame.SeedGenerationStatus();
             }
+            _gameOutput.Output(OutputMessages.StartingGameOfLife);
         }
 
         public void PlayNextGeneration()
