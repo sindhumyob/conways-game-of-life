@@ -16,15 +16,13 @@ namespace ConwaysGameOfLife.GameHelpers.GameConstants
         public const string AddInitialSeed = "It's now time to add the seed of the system:\n";
 
         public const string AddMoreLiveCells =
-            "Would you like to add more live cells? (y/n) or quit the game with 'q': ";
+            "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': ";
 
         public const string InvalidAddMoreLiveCells =
             "Please enter a valid input consisting of either 'y' for adding more cells or 'n' for starting game or 'q' for quitting\n";
 
         public const string InvalidSeeMoreGenerations =
             "Please enter a valid input consisting of either 'y' for seeing more generations or 'n' or 'q' for quitting\n";
-
-        public const string StartingGameOfLife = "It's now time to start the game of life!\n";
 
         public const string PrintGameEnd = "Thanks for Playing!";
 

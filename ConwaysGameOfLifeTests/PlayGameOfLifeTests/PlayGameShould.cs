@@ -58,8 +58,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 " \n" +
                 (char) Dead + " " + (char) Dead + " " + (char) Dead +
                 " \n\n" +
-                "Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
-                "It's now time to start the game of life!\n\n", output);
+                "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n", output);
         }
 
         [Fact]
@@ -83,7 +82,6 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             var output = _gameOutput.Message;
 
             Assert.Equal("Here's the next generation:\n" +
-                         
                          (char) Dead + " " + (char) Dead + " " + (char) Dead +
                          " \n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Dead +
@@ -120,7 +118,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Dead +
                          " \n\n" +
-                         "Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
+                         "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n" +
                          "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': \n" +
                          "Please enter the Y coordinate of the cell in the seed between 1 and max grid width or quit the game with 'q': \n" +
                          "Perfect, here is the grid:\n" +
@@ -130,8 +128,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Live +
                          " \n\n" +
-                         "Would you like to add more live cells? (y/n) or quit the game with 'q': \n" +
-                         "It's now time to start the game of life!\n\n" +
+                         "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n" +
                          "Here's the next generation:\n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Dead +
                          " \n" +
