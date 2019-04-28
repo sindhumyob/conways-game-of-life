@@ -1,39 +1,37 @@
 using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
-using ConwaysGameOfLife.NextGenerationsCreation;
+using ConwaysGameOfLife.NextGenerationCreation;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class PlayNextGeneration
     {
-        private readonly NextGenerationCreator _nextGenerationCreator;
-        private readonly GameInputValidator _gameInputValidator;
-        private readonly GameOutputMessages _gameOutputMessages;
+        private readonly NextGeneration _nextGeneration;
         private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
 
         public PlayNextGeneration(IGameInput gameInput, IGameOutput gameOutput)
         {
-            _nextGenerationCreator = new NextGenerationCreator();
-            _gameInputValidator = new GameInputValidator();
-            _gameOutputMessages = new GameOutputMessages();
+            _nextGeneration = new NextGeneration();
             _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameOutput = gameOutput;
         }
 
-        public bool NextGeneration(GameGrid gameGrid)
+        public bool IsSeeGenerationInterrupted(GameGrid gameGrid)
         {
-            _nextGenerationCreator.CreateNextGeneration(gameGrid);
-            _gameOutput.OutputGame(_gameOutputMessages.PrintNextGenerationGridMessage(gameGrid.CurrentGameGrid));
+            _nextGeneration.CreateGeneration(gameGrid);
+            _gameOutput.Output(OutputMessages.PrintNextGeneration + gameGrid.ConvertGridToOutput());
 
-            var seeMoreTransitions =
-                _playerInput.GetPlayerInput(_gameOutputMessages.PrintSeeNextGenerationMessage(),
-                    _gameOutputMessages.InvalidSeeMoreGenerationsMessage(),
-                    _gameInputValidator.IsContinueGameResponseValid);
-            return seeMoreTransitions == GameConstants.QuitInput || seeMoreTransitions == GameConstants.NoInput;
+            var seeMoreGenerations =
+                _playerInput.GetContinueGameInput(OutputMessages.PrintSeeNextGeneration,
+                    OutputMessages.InvalidSeeMoreGenerations);
+
+            return seeMoreGenerations == ContinueGameInputConstants.Quit ||
+                   seeMoreGenerations == ContinueGameInputConstants.No;
         }
     }
 }

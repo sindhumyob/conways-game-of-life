@@ -4,11 +4,11 @@ namespace ConwaysGameOfLifeTests.Stubs
 {
     public class GameOutput : IGameOutput
     {
-        public string Output { get; set; }
+        public string OutputMessage { get; set; }
 
-        public void OutputGame(string gameOutput)
+        public void Output(string gameOutput)
         {
-            Output += gameOutput + "\n";
+            OutputMessage += gameOutput + "\n";
         }
     }
 }

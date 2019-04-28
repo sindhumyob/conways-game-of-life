@@ -5,27 +5,58 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class GameGrid
     {
-        public char[,] CurrentGameGrid { get; set; }
+        public CellType[,] CurrentGameGrid { get; set; }
 
-        public void GenerateInitialGrid(int heightOfGrid, int widthOfGrid)
+        public void GenerateGrid(GridDimensions gridDimensions)
         {
-            CurrentGameGrid = new char[heightOfGrid, widthOfGrid];
+            CurrentGameGrid = new CellType[gridDimensions.Height, gridDimensions.Width];
 
-            for (var i = 0; i < CurrentGameGrid.GetLength(0); i++)
+            for (var i = 0; i < gridDimensions.Height; i++)
             {
-                for (var j = 0; j < CurrentGameGrid.GetLength(1); j++)
+                for (var j = 0; j < gridDimensions.Width; j++)
                 {
-                    CurrentGameGrid[i, j] = (char) CellType.Dead;
+                    CurrentGameGrid[i, j] = CellType.Dead;
                 }
             }
         }
 
-        public void UpdateGameGridCells(List<Coordinate> cellCoordinates, CellType cellType)
+        public void UpdateGrid(List<Coordinate> cellCoordinates, CellType cellType)
         {
             foreach (var coordinate in cellCoordinates)
             {
-                CurrentGameGrid[coordinate.XCoordinate, coordinate.YCoordinate] = (char) cellType;
+                CurrentGameGrid[coordinate.X, coordinate.Y] = cellType;
             }
+        }
+
+        public string ConvertGridToOutput()
+        {
+            var output = new List<string>();
+            var line = string.Empty;
+            var gridDimensions = GetSize();
+            for (var i = 0; i < gridDimensions.Height; i++)
+            {
+                for (var j = 0; j < gridDimensions.Width; j++)
+                {
+                    line += (char) CurrentGameGrid[i, j] + " ";
+                }
+
+                output.Add(line);
+                line = string.Empty;
+            }
+
+            return string.Join("\n", output) + "\n";
+        }
+
+        public GridDimensions GetSize()
+        {
+            return new GridDimensions() {Height = CurrentGameGrid.GetLength(0), Width = CurrentGameGrid.GetLength(1)};
+        }
+
+        public Coordinate GetGridCoordinate(Coordinate coordinate)
+        {
+            coordinate.X += -1;
+            coordinate.Y += -1;
+            return coordinate;
         }
     }
 }

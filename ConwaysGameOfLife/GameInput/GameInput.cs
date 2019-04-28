@@ -5,7 +5,7 @@ namespace ConwaysGameOfLife.GameInput
 {
     public class GameInput : IGameInput
     {
-        public string GetPlayerInput()
+        public string GetInput()
         {
             return Console.ReadLine();
         }

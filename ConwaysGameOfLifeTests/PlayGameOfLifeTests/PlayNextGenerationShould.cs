@@ -27,19 +27,19 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             _gameGrid.CurrentGameGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead
                 }
             };
             _gameInput.PlayerInputs = new List<string> {"n"};
 
-            _playNextGeneration.NextGeneration(_gameGrid);
-            var output = _gameOutput.Output;
+            _playNextGeneration.IsSeeGenerationInterrupted(_gameGrid);
+            var output = _gameOutput.OutputMessage;
 
             Assert.Equal("Here's the next generation:\n" +
                          (char) CellType.Dead + " " + (char) CellType.Dead + " " + (char) CellType.Dead +

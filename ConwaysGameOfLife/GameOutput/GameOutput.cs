@@ -5,7 +5,7 @@ namespace ConwaysGameOfLife.GameOutput
 {
     public class GameOutput : IGameOutput
     {
-        public void OutputGame(string gameOutput)
+        public void Output(string gameOutput)
         {
             Console.Write(gameOutput);
         }

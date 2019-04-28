@@ -2,7 +2,7 @@ namespace ConwaysGameOfLife.GameHelpers
 {
     public class Coordinate
     {
-        public int XCoordinate { get; set; }
-        public int YCoordinate { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }

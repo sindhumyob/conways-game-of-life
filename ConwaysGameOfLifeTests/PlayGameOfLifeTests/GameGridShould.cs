@@ -15,82 +15,57 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_Game_Grid_With_Dimensions_That_Resembles_Input_Grid_Size()
+        public void Generate_And_Update_Game_Grid_With_Specified_Live_Cells_And_Dead_Cells()
         {
-            const int heightOfGrid = 3;
-            const int widthOfGrid = 3;
+            var gridDimensions = new GridDimensions {Height = 6, Width = 6};
 
-            _gameGrid.GenerateInitialGrid(heightOfGrid, widthOfGrid);
-
-            var expectedGrid = new[,]
-            {
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                },
-                {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead
-                }
-            };
-
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
-        }
-
-        [Fact]
-        public void Update_Game_Grid_With_Specified_Live_Cells_And_Dead_Cells()
-        {
-            const int heightOfGrid = 6;
-            const int widthOfGrid = 6;
-
-            _gameGrid.GenerateInitialGrid(heightOfGrid, widthOfGrid);
+            _gameGrid.GenerateGrid(gridDimensions);
 
             var liveCellCoordinates = new List<Coordinate>
             {
-                new Coordinate {XCoordinate = 3, YCoordinate = 1},
-                new Coordinate {XCoordinate = 3, YCoordinate = 2},
-                new Coordinate {XCoordinate = 3, YCoordinate = 3},
-                new Coordinate {XCoordinate = 2, YCoordinate = 2},
-                new Coordinate {XCoordinate = 2, YCoordinate = 3},
-                new Coordinate {XCoordinate = 2, YCoordinate = 4}
+                new Coordinate {X = 3, Y = 1},
+                new Coordinate {X = 3, Y = 2},
+                new Coordinate {X = 3, Y = 3},
+                new Coordinate {X = 2, Y = 2},
+                new Coordinate {X = 2, Y = 3},
+                new Coordinate {X = 2, Y = 4}
             };
-            _gameGrid.UpdateGameGridCells(liveCellCoordinates, CellType.Live);
+            _gameGrid.UpdateGrid(liveCellCoordinates, CellType.Live);
 
             var deadCellCoordinates = new List<Coordinate>
             {
-                new Coordinate {XCoordinate = 3, YCoordinate = 2},
-                new Coordinate {XCoordinate = 3, YCoordinate = 3},
-                new Coordinate {XCoordinate = 2, YCoordinate = 2},
-                new Coordinate {XCoordinate = 2, YCoordinate = 3}
+                new Coordinate {X = 3, Y = 2},
+                new Coordinate {X = 3, Y = 3},
+                new Coordinate {X = 2, Y = 2},
+                new Coordinate {X = 2, Y = 3}
             };
-            _gameGrid.UpdateGameGridCells(deadCellCoordinates, CellType.Dead);
+            _gameGrid.UpdateGrid(deadCellCoordinates, CellType.Dead);
 
             var expectedGrid = new[,]
             {
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Live, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Live, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Live, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Live, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
                 {
-                    (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead, (char) CellType.Dead,
-                    (char) CellType.Dead, (char) CellType.Dead
+                    CellType.Dead, CellType.Dead, CellType.Dead, CellType.Dead,
+                    CellType.Dead, CellType.Dead
                 },
             };
 

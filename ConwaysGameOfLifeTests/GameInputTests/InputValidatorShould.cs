@@ -1,15 +1,17 @@
+using ConwaysGameOfLife.GameHelpers;
+using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameInput;
 using Xunit;
 
 namespace ConwaysGameOfLifeTests.GameInputTests
 {
-    public class GameInputValidatorShould
+    public class InputValidatorShould
     {
-        private readonly GameInputValidator _gameInputValidator;
+        private readonly InputValidator _inputValidator;
 
-        public GameInputValidatorShould()
+        public InputValidatorShould()
         {
-            _gameInputValidator = new GameInputValidator();
+            _inputValidator = new InputValidator();
         }
 
         [Theory]
@@ -20,7 +22,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [InlineData("Q")]
         public void Return_True_When_Grid_Size_Response_Is_Valid(string input)
         {
-            var returned = _gameInputValidator.IsGridSizeResponseValid(input);
+            var returned = _inputValidator.IsGridSetUpInputValid(input,GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
             Assert.True(returned);
         }
 
@@ -34,7 +36,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [InlineData("$%#$#")]
         public void Return_False_When_Grid_Size_Response_Is_Not_Valid(string input)
         {
-            var returned = _gameInputValidator.IsGridSizeResponseValid(input);
+            var returned = _inputValidator.IsGridSetUpInputValid(input,GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
             Assert.False(returned);
         }
 
@@ -46,7 +48,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         public void Return_True_When_Input_Coordinate_For_Cell_In_Seed_Is_Valid(string input)
         {
             var maxCoordinateValue = 15;
-            var returned = _gameInputValidator.IsCoordinateResponseValid(input, maxCoordinateValue);
+            var returned = _inputValidator.IsGridSetUpInputValid(input, GridInputConstants.MinCoordinateValue, maxCoordinateValue);
             Assert.True(returned);
         }
 
@@ -60,7 +62,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         public void Return_False_When_Input_Coordinate_For_Cell_In_Seed_Is_Not_Valid(string input)
         {
             var maxCoordinateValue = 15;
-            var returned = _gameInputValidator.IsCoordinateResponseValid(input, maxCoordinateValue);
+            var returned = _inputValidator.IsGridSetUpInputValid(input, GridInputConstants.MinCoordinateValue, maxCoordinateValue);
             Assert.False(returned);
         }
 
@@ -73,7 +75,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [InlineData("Q")]
         public void Return_True_When_Continue_Game_Input_Is_Valid(string input)
         {
-            var returned = _gameInputValidator.IsContinueGameResponseValid(input);
+            var returned = _inputValidator.IsContinueGameInputValid(input);
             Assert.True(returned);
         }
 
@@ -86,7 +88,7 @@ namespace ConwaysGameOfLifeTests.GameInputTests
         [InlineData("3")]
         public void Return_False_When_Continue_Game_Input_Is_Not_Valid(string input)
         {
-            var returned = _gameInputValidator.IsContinueGameResponseValid(input);
+            var returned = _inputValidator.IsContinueGameInputValid(input);
             Assert.False(returned);
         }
     }
