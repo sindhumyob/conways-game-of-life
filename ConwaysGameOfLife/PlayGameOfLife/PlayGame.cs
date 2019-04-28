@@ -8,7 +8,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     public class PlayGame
     {
         public readonly GameGrid GameGrid;
-        private readonly SetUpGame _setUpGame;
+        private readonly GridMaker _gridMaker;
         private readonly SeeNextGeneration _seeNextGeneration;
         private readonly IGameOutput _gameOutput;
         private readonly NextGeneration _nextGeneration;
@@ -18,7 +18,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public PlayGame(IGameInput gameInput, IGameOutput gameOutput)
         {
             GameGrid = new GameGrid();
-            _setUpGame = new SetUpGame(gameInput, gameOutput, GameGrid);
+            _gridMaker = new GridMaker(gameInput, gameOutput, GameGrid);
             _seeNextGeneration = new SeeNextGeneration(gameInput, gameOutput);
             _gameOutput = gameOutput;
             _nextGeneration = new NextGeneration();
@@ -37,7 +37,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public void GenerateGrid()
         {
-            _gameEnd = _setUpGame.IsGridGenerationInterrupted();
+            _gameEnd = _gridMaker.IsGenerationInterrupted();
 
             if (_gameEnd) return;
             _gameOutput.Output(OutputMessages.PrintGrid + GameGrid.ConvertGridToOutput());
@@ -49,11 +49,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var endOfSeedInput = false;
             while (!endOfSeedInput && !_gameEnd)
             {
-                _gameEnd = _setUpGame.IsAddLiveCellInterrupted();
+                _gameEnd = _gridMaker.IsAddLiveCellInterrupted();
                 if (_gameEnd) return;
                 _gameOutput.Output(OutputMessages.PrintGrid + GameGrid.ConvertGridToOutput());
 
-                (_gameEnd, endOfSeedInput) = _setUpGame.SeedGenerationStatus();
+                (_gameEnd, endOfSeedInput) = _gridMaker.SeedGenerationStatus();
             }
         }
 

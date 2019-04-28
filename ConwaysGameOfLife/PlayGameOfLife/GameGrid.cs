@@ -7,7 +7,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     {
         public CellType[,] CurrentGameGrid { get; set; }
 
-        public void GenerateGrid(GridDimensions gridDimensions)
+        public void Generate(GridDimensions gridDimensions)
         {
             CurrentGameGrid = new CellType[gridDimensions.Height, gridDimensions.Width];
 
@@ -20,7 +20,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
         }
 
-        public void UpdateGrid(List<Coordinate> cellCoordinates, CellType cellType)
+        public void Update(List<Coordinate> cellCoordinates, CellType cellType)
         {
             foreach (var coordinate in cellCoordinates)
             {

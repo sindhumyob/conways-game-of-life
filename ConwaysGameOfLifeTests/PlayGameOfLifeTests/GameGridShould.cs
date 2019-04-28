@@ -19,7 +19,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         {
             var gridDimensions = new GridDimensions {Height = 6, Width = 6};
 
-            _gameGrid.GenerateGrid(gridDimensions);
+            _gameGrid.Generate(gridDimensions);
 
             var liveCellCoordinates = new List<Coordinate>
             {
@@ -30,7 +30,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 new Coordinate {X = 2, Y = 3},
                 new Coordinate {X = 2, Y = 4}
             };
-            _gameGrid.UpdateGrid(liveCellCoordinates, CellType.Live);
+            _gameGrid.Update(liveCellCoordinates, CellType.Live);
 
             var deadCellCoordinates = new List<Coordinate>
             {
@@ -39,7 +39,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 new Coordinate {X = 2, Y = 2},
                 new Coordinate {X = 2, Y = 3}
             };
-            _gameGrid.UpdateGrid(deadCellCoordinates, CellType.Dead);
+            _gameGrid.Update(deadCellCoordinates, CellType.Dead);
 
             var expectedGrid = new[,]
             {

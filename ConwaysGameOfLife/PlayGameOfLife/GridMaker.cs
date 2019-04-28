@@ -8,33 +8,33 @@ using ConwaysGameOfLife.GameOutput.Interfaces;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
-    public class SetUpGame
+    public class GridMaker
     {
         private readonly PlayerInput _playerInput;
         private readonly GameGrid _gameGrid;
-        private GridDimensions _gridDimensions;
+        private GridDimensions _dimensions;
 
-        public SetUpGame(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
+        public GridMaker(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
         {
             _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameGrid = gameGrid;
         }
 
-        public bool IsGridGenerationInterrupted()
+        public bool IsGenerationInterrupted()
         {
-            var gridHeight = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridHeight,
+            var height = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
 
-            if (gridHeight == ContinueGameInputConstants.Quit) return true;
+            if (height == ContinueGameInputConstants.Quit) return true;
 
-            var gridWidth = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridWidth,
+            var width = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridWidth,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
 
-            if (gridWidth == ContinueGameInputConstants.Quit) return true;
+            if (width == ContinueGameInputConstants.Quit) return true;
 
-            _gridDimensions = new GridDimensions {Height = int.Parse(gridHeight), Width = int.Parse(gridWidth)};
+            _dimensions = new GridDimensions {Height = int.Parse(height), Width = int.Parse(width)};
 
-            _gameGrid.GenerateGrid(_gridDimensions);
+            _gameGrid.Generate(_dimensions);
 
             return false;
         }
@@ -42,19 +42,19 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public bool IsAddLiveCellInterrupted()
         {
             var xCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterXCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridDimensions.Height);
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _dimensions.Height);
 
             if (xCoordinate == ContinueGameInputConstants.Quit) return true;
 
             var yCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterYCoordinateOfCell,
-                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _gridDimensions.Width);
+                OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _dimensions.Width);
 
             if (yCoordinate == ContinueGameInputConstants.Quit) return true;
 
             var coordinate = _gameGrid.GetGridCoordinate(new Coordinate
                 {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
             
-            _gameGrid.UpdateGrid(new List<Coordinate> {coordinate}, CellType.Live);
+            _gameGrid.Update(new List<Coordinate> {coordinate}, CellType.Live);
             
             return false;
         }

@@ -39,8 +39,8 @@ namespace ConwaysGameOfLife.NextGenerationCreation
                 }
             }
 
-            gameGrid.UpdateGrid(liveCellCoordinates, CellType.Live);
-            gameGrid.UpdateGrid(deadCellCoordinates, CellType.Dead);
+            gameGrid.Update(liveCellCoordinates, CellType.Live);
+            gameGrid.Update(deadCellCoordinates, CellType.Dead);
         }
     }
 }
