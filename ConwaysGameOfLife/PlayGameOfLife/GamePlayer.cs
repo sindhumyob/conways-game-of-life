@@ -5,7 +5,7 @@ using ConwaysGameOfLife.NextGenerationCreation;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
-    public class PlayGame
+    public class GamePlayer
     {
         public readonly GameGrid GameGrid;
         private readonly GridMaker _gridMaker;
@@ -15,7 +15,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         private bool _gameEnd;
 
 
-        public PlayGame(IGameInput gameInput, IGameOutput gameOutput)
+        public GamePlayer(IGameInput gameInput, IGameOutput gameOutput)
         {
             GameGrid = new GameGrid();
             _gridMaker = new GridMaker(gameInput, gameOutput, GameGrid);

@@ -22,12 +22,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public bool IsGenerationInterrupted()
         {
-            var height = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridHeight,
+            var height = _playerInput.GridSetup(OutputMessages.EnterGridHeight,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
 
             if (height == ContinueGameInputConstants.Quit) return true;
 
-            var width = _playerInput.GetGridSetUpInput(OutputMessages.EnterGridWidth,
+            var width = _playerInput.GridSetup(OutputMessages.EnterGridWidth,
                 OutputMessages.InvalidGridSize, GridInputConstants.MinGridSize, GridInputConstants.MaxGridSize);
 
             if (width == ContinueGameInputConstants.Quit) return true;
@@ -41,12 +41,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public bool IsAddLiveCellInterrupted()
         {
-            var xCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterXCoordinateOfCell,
+            var xCoordinate = _playerInput.GridSetup(OutputMessages.EnterXCoordinateOfCell,
                 OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _dimensions.Height);
 
             if (xCoordinate == ContinueGameInputConstants.Quit) return true;
 
-            var yCoordinate = _playerInput.GetGridSetUpInput(OutputMessages.EnterYCoordinateOfCell,
+            var yCoordinate = _playerInput.GridSetup(OutputMessages.EnterYCoordinateOfCell,
                 OutputMessages.InvalidCoordinate, GridInputConstants.MinCoordinateValue, _dimensions.Width);
 
             if (yCoordinate == ContinueGameInputConstants.Quit) return true;
@@ -64,7 +64,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             var gameEnd = false;
             var endOfSeedInput = false;
             var addMoreLiveCells =
-                _playerInput.GetContinueGameInput(OutputMessages.AddMoreLiveCells,
+                _playerInput.ContinueGame(OutputMessages.AddMoreLiveCells,
                     OutputMessages.InvalidAddMoreLiveCells);
 
             if (addMoreLiveCells == ContinueGameInputConstants.Quit)

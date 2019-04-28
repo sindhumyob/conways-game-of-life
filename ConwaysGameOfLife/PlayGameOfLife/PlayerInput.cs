@@ -18,7 +18,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _inputValidator = new InputValidator();
         }
 
-        public string GetContinueGameInput(string inputPromptMessage, string invalidInputMessage)
+        public string ContinueGame(string inputPromptMessage, string invalidInputMessage)
         {
             while (true)
             {
@@ -34,7 +34,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
         }
 
-        public string GetGridSetUpInput(string inputPromptMessage, string invalidInputMessage, int minValue,
+        public string GridSetup(string inputPromptMessage, string invalidInputMessage, int minValue,
             int maxValue)
         {
             while (true)

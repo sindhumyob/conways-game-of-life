@@ -10,20 +10,20 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
     {
         private readonly GameInput _gameInput;
         private readonly GameOutput _gameOutput;
-        private readonly PlayGame _playGame;
+        private readonly GamePlayer _gamePlayer;
 
         public PlayGameShould()
         {
             _gameInput = new GameInput();
             _gameOutput = new GameOutput();
-            _playGame = new PlayGame(_gameInput, _gameOutput);
+            _gamePlayer = new GamePlayer(_gameInput, _gameOutput);
         }
 
         [Fact]
         public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3"};
-            _playGame.GenerateGrid();
+            _gamePlayer.GenerateGrid();
             var output = _gameOutput.Message;
 
             Assert.Equal("Please enter the height of your game grid or quit the game with 'q': \n" +
@@ -42,10 +42,10 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "1", "n"};
-            _playGame.GenerateGrid();
+            _gamePlayer.GenerateGrid();
             _gameOutput.Message = string.Empty;
 
-            _playGame.GenerateSeed();
+            _gamePlayer.GenerateSeed();
             var output = _gameOutput.Message;
 
             Assert.Equal(
@@ -64,7 +64,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         [Fact]
         public void Generate_Output_For_Next_Generation_According_To_Player_Input()
         {
-            _playGame.GameGrid.CurrentGameGrid = new[,]
+            _gamePlayer.GameGrid.CurrentGameGrid = new[,]
             {
                 {
                     Dead, Dead, Dead
@@ -78,7 +78,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             };
             _gameInput.PlayerInputs = new List<string> {"n"};
 
-            _playGame.PlayNextGeneration();
+            _gamePlayer.PlayNextGeneration();
             var output = _gameOutput.Message;
 
             Assert.Equal("Here's the next generation:\n" +
@@ -95,7 +95,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         public void Generate_Output_For_Entire_Play_Game_Scenario()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
-            _playGame.Play();
+            _gamePlayer.Play();
             var output = _gameOutput.Message;
 
             Assert.Equal("Welcome to Conway's Game of Life!\n\n" +

@@ -20,7 +20,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public bool IsSeeGenerationInterrupted()
         {
             var seeMoreGenerations =
-                _playerInput.GetContinueGameInput(OutputMessages.PrintSeeNextGeneration,
+                _playerInput.ContinueGame(OutputMessages.PrintSeeNextGeneration,
                     OutputMessages.InvalidSeeMoreGenerations);
 
             return seeMoreGenerations == ContinueGameInputConstants.Quit ||
