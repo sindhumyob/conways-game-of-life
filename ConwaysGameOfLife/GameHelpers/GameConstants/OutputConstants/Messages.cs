@@ -1,6 +1,6 @@
-namespace ConwaysGameOfLife.GameHelpers.GameConstants
+namespace ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants
 {
-    public static class OutputMessages
+    public static class Messages
     {
         public const string Welcome = "Welcome to Conway's Game of Life!\n";
 

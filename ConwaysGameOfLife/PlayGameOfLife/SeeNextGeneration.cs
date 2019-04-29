@@ -1,5 +1,7 @@
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.GameHelpers.GameConstants;
+using ConwaysGameOfLife.GameHelpers.GameConstants.InputConstants;
+using ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput;
@@ -20,11 +22,11 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public bool IsSeeGenerationInterrupted()
         {
             var seeMoreGenerations =
-                _playerInput.ContinueGame(OutputMessages.PrintSeeNextGeneration,
-                    OutputMessages.InvalidSeeMoreGenerations);
+                _playerInput.ContinueGame(Messages.PrintSeeNextGeneration,
+                    Messages.InvalidSeeMoreGenerations);
 
-            return seeMoreGenerations == ContinueGameInputConstants.Quit ||
-                   seeMoreGenerations == ContinueGameInputConstants.No;
+            return seeMoreGenerations == ContinueGameConstants.Quit ||
+                   seeMoreGenerations == ContinueGameConstants.No;
         }
     }
 }

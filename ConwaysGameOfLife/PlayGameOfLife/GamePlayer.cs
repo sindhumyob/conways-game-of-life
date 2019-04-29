@@ -1,4 +1,5 @@
 using ConwaysGameOfLife.GameHelpers.GameConstants;
+using ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput.Interfaces;
 using ConwaysGameOfLife.NextGenerationCreation;
@@ -26,13 +27,13 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public void Play()
         {
-            _gameOutput.Output(OutputMessages.Welcome);
+            _gameOutput.Output(Messages.Welcome);
 
             GenerateGrid();
             GenerateSeed();
             PlayNextGeneration();
 
-            _gameOutput.Output(OutputMessages.PrintGameEnd);
+            _gameOutput.Output(Messages.PrintGameEnd);
         }
 
         public void GenerateGrid()
@@ -40,8 +41,8 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameEnd = _gridMaker.IsGenerationInterrupted();
 
             if (_gameEnd) return;
-            _gameOutput.Output(OutputMessages.PrintGrid + GameGrid.ConvertGridToOutput());
-            _gameOutput.Output(OutputMessages.AddInitialSeed);
+            _gameOutput.Output(Messages.PrintGrid + GameGrid.ConvertGridToOutput());
+            _gameOutput.Output(Messages.AddInitialSeed);
         }
 
         public void GenerateSeed()
@@ -51,7 +52,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             {
                 _gameEnd = _gridMaker.IsAddLiveCellInterrupted();
                 if (_gameEnd) return;
-                _gameOutput.Output(OutputMessages.PrintGrid + GameGrid.ConvertGridToOutput());
+                _gameOutput.Output(Messages.PrintGrid + GameGrid.ConvertGridToOutput());
 
                 (_gameEnd, endOfSeedInput) = _gridMaker.SeedGenerationStatus();
             }
@@ -62,7 +63,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             while (!_gameEnd)
             {
                 _nextGeneration.CreateGeneration(GameGrid);
-                _gameOutput.Output(OutputMessages.PrintNextGeneration + GameGrid.ConvertGridToOutput());
+                _gameOutput.Output(Messages.PrintNextGeneration + GameGrid.ConvertGridToOutput());
                 _gameEnd = _seeNextGeneration.IsSeeGenerationInterrupted();
             }
         }
