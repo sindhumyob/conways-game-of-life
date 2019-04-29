@@ -1,3 +1,5 @@
+using System;
+using ConwaysGameOfLife.GameHelpers.GameConstants.InputConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput.Interfaces;
@@ -9,7 +11,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
     {
         public readonly GameGrid GameGrid;
         private readonly GridMaker _gridMaker;
-        private readonly SeeNextGeneration _seeNextGeneration;
+        private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
         private readonly NextGeneration _nextGeneration;
         private bool _gameEnd;
@@ -19,7 +21,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             GameGrid = new GameGrid();
             _gridMaker = new GridMaker(gameInput, gameOutput, GameGrid);
-            _seeNextGeneration = new SeeNextGeneration(gameInput, gameOutput);
+            _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameOutput = gameOutput;
             _nextGeneration = new NextGeneration();
         }
@@ -53,7 +55,9 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 if (_gameEnd) return;
                 _gameOutput.Output(Messages.SeeGrid + GameGrid.ConvertGridToOutput());
 
-                (_gameEnd, endOfSeedInput) = _gridMaker.SeedGenerationStatus();
+                var status = _gridMaker.SeedGenerationStatus();
+                _gameEnd = status.GameEnd;
+                endOfSeedInput = status.EndOfSeedInput;
             }
         }
 
@@ -63,7 +67,15 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             {
                 _nextGeneration.CreateGeneration(GameGrid);
                 _gameOutput.Output(Messages.NextGeneration + GameGrid.ConvertGridToOutput());
-                _gameEnd = _seeNextGeneration.IsSeeGenerationInterrupted();
+
+                var seeNextGenerations = _playerInput.ContinueGame(Messages.SeeNextGeneration,
+                    Messages.InvalidSeeNextGeneration);
+
+                if (seeNextGenerations == ContinueGameConstants.Quit ||
+                    seeNextGenerations == ContinueGameConstants.No)
+                {
+                    _gameEnd = true;
+                }
             }
         }
     }

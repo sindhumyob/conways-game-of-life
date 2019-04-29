@@ -1,11 +1,8 @@
 using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.InputConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants;
-using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
-using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
@@ -60,7 +57,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             return false;
         }
 
-        public (bool, bool) SeedGenerationStatus()
+        public SeedingStatus SeedGenerationStatus()
         {
             var gameEnd = false;
             var endOfSeedInput = false;
@@ -77,7 +74,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
                 endOfSeedInput = true;
             }
 
-            return (gameEnd, endOfSeedInput);
+            return new SeedingStatus {GameEnd = gameEnd, EndOfSeedInput = endOfSeedInput};
         }
     }
 }
