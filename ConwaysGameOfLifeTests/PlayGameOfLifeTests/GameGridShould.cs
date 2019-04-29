@@ -15,7 +15,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_And_Update_Game_Grid_With_Specified_Live_Cells_And_Dead_Cells()
+        public void Generate_And_Update_GameGrid_With_Specified_LiveCells_And_DeadCells()
         {
             var gridDimensions = new GridDimensions {Height = 6, Width = 6};
 
@@ -69,7 +69,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 },
             };
 
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
+            Assert.Equal(expectedGrid, _gameGrid.CurrentGrid);
         }
     }
 }

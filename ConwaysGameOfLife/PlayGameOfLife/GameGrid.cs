@@ -5,17 +5,17 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class GameGrid
     {
-        public CellType[,] CurrentGameGrid { get; set; }
+        public CellType[,] CurrentGrid { get; set; }
 
         public void Generate(GridDimensions gridDimensions)
         {
-            CurrentGameGrid = new CellType[gridDimensions.Height, gridDimensions.Width];
+            CurrentGrid = new CellType[gridDimensions.Height, gridDimensions.Width];
 
             for (var i = 0; i < gridDimensions.Height; i++)
             {
                 for (var j = 0; j < gridDimensions.Width; j++)
                 {
-                    CurrentGameGrid[i, j] = CellType.Dead;
+                    CurrentGrid[i, j] = CellType.Dead;
                 }
             }
         }
@@ -24,7 +24,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             foreach (var coordinate in cellCoordinates)
             {
-                CurrentGameGrid[coordinate.X, coordinate.Y] = cellType;
+                CurrentGrid[coordinate.X, coordinate.Y] = cellType;
             }
         }
 
@@ -37,7 +37,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             {
                 for (var j = 0; j < gridDimensions.Width; j++)
                 {
-                    line += (char) CurrentGameGrid[i, j] + " ";
+                    line += (char) CurrentGrid[i, j] + " ";
                 }
 
                 output.Add(line);
@@ -49,7 +49,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public GridDimensions GetSize()
         {
-            return new GridDimensions() {Height = CurrentGameGrid.GetLength(0), Width = CurrentGameGrid.GetLength(1)};
+            return new GridDimensions() {Height = CurrentGrid.GetLength(0), Width = CurrentGrid.GetLength(1)};
         }
 
         public Coordinate GetGridCoordinate(Coordinate coordinate)

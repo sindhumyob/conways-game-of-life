@@ -6,13 +6,13 @@ using static ConwaysGameOfLife.GameHelpers.CellType;
 
 namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
 {
-    public class PlayGameShould
+    public class GamePlayerShould
     {
         private readonly GameInput _gameInput;
         private readonly GameOutput _gameOutput;
         private readonly GamePlayer _gamePlayer;
 
-        public PlayGameShould()
+        public GamePlayerShould()
         {
             _gameInput = new GameInput();
             _gameOutput = new GameOutput();
@@ -20,7 +20,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_Output_For_Initial_Grid_Generation_According_To_Player_Input()
+        public void Generate_Output_For_GridGeneration_According_To_PlayerInput()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3"};
             _gamePlayer.GenerateGrid();
@@ -39,7 +39,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_Output_For_Initial_Seed_Creation_According_To_Player_Input()
+        public void Generate_Output_For_SeedGeneration_According_To_PlayerInput()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "1", "n"};
             _gamePlayer.GenerateGrid();
@@ -62,9 +62,9 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_Output_For_Next_Generation_According_To_Player_Input()
+        public void Generate_Output_For_NextGeneration_According_To_PlayerInput()
         {
-            _gamePlayer.GameGrid.CurrentGameGrid = new[,]
+            _gamePlayer.GameGrid.CurrentGrid = new[,]
             {
                 {
                     Dead, Dead, Dead
@@ -92,7 +92,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_Output_For_Entire_Play_Game_Scenario()
+        public void Generate_Output_For_EntirePlayGameScenario()
         {
             _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "3", "y", "3", "3", "n", "y", "n"};
             _gamePlayer.Play();
