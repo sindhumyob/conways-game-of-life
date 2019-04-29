@@ -58,7 +58,8 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 " \n" +
                 (char) Dead + " " + (char) Dead + " " + (char) Dead +
                 " \n\n" +
-                "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n", output);
+                "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n",
+                output);
         }
 
         [Fact]

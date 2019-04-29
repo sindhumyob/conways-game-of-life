@@ -16,8 +16,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
         public CellType[,] GetNeighbours(GameGrid gameGrid, Coordinate cellCoordinates)
         {
             var gridDimensions = gameGrid.GetSize();
-            var neighboursCoordinates =
-                _neighboursCoordinates.GetCoordinates(cellCoordinates, gridDimensions);
+            var neighboursCoordinates = _neighboursCoordinates.GetCoordinates(cellCoordinates, gridDimensions);
 
             var cellAndNeighbours = new CellType[CellNeighboursArraySize, CellNeighboursArraySize];
             var rowIndex = 0;

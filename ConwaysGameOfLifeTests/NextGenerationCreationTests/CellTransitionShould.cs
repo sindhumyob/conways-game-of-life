@@ -14,8 +14,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_True_When_ConditionsForLiving_Are_Met_For_LiveCell_With_TwoLiveNeighbours()
+        public void Return_True_When_ConditionsForLiving_Are_Met_For_LiveCell_With_TwoLiveNeighbours()
         {
             var cellAndNeighbours = new[,]
             {
@@ -28,8 +27,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_True_When_ConditionsForLiving_Are_Met_For_LiveCell_With_ThreeLiveNeighbours()
+        public void Return_True_When_ConditionsForLiving_Are_Met_For_LiveCell_With_ThreeLiveNeighbours()
         {
             var cellAndNeighbours = new[,]
             {
@@ -42,8 +40,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_True_When_ConditionsForLiving_Are_Met_For_DeadCell_With_ThreeLiveNeighbours()
+        public void Return_True_When_ConditionsForLiving_Are_Met_For_DeadCell_With_ThreeLiveNeighbours()
         {
             var cellAndNeighbours = new[,]
             {
@@ -56,8 +53,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_False_When_ConditionsForOverpopulation_Are_Met_For_LiveCell()
+        public void Return_False_When_ConditionsForOverpopulation_Are_Met_For_LiveCell()
         {
             var cellAndNeighbours = new[,]
             {
@@ -70,8 +66,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_False_When_ConditionsForUnderpopulation_Are_Met_For_LiveCell()
+        public void Return_False_When_ConditionsForUnderpopulation_Are_Met_For_LiveCell()
         {
             var cellAndNeighbours = new[,]
             {
@@ -84,8 +79,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_False_When_ConditionsForLiving_Are_Not_Met_For_DeadCell_With_LessThanThree_LiveNeighbours()
+        public void Return_False_When_ConditionsForLiving_Are_Not_Met_For_DeadCell_With_LessThanThree_LiveNeighbours()
         {
             var cellAndNeighbours = new[,]
             {
@@ -98,8 +92,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
         }
 
         [Fact]
-        public void
-            Return_False_When_ConditionsForLiving_Are_Not_Met_For_DeadCell_With_MoreThanThree_LiveNeighbours()
+        public void Return_False_When_ConditionsForLiving_Are_Not_Met_For_DeadCell_With_MoreThanThree_LiveNeighbours()
         {
             var cellAndNeighbours = new[,]
             {
