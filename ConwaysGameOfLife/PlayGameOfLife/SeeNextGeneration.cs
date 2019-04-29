@@ -1,12 +1,7 @@
-using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.InputConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants;
-using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
-using ConwaysGameOfLife.GameOutput;
 using ConwaysGameOfLife.GameOutput.Interfaces;
-using ConwaysGameOfLife.NextGenerationCreation;
 
 namespace ConwaysGameOfLife.PlayGameOfLife
 {
@@ -21,12 +16,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public bool IsSeeGenerationInterrupted()
         {
-            var seeMoreGenerations =
-                _playerInput.ContinueGame(Messages.PrintSeeNextGeneration,
-                    Messages.InvalidSeeMoreGenerations);
+            var seeNextGenerations =
+                _playerInput.ContinueGame(Messages.SeeNextGeneration,
+                    Messages.InvalidSeeNextGeneration);
 
-            return seeMoreGenerations == ContinueGameConstants.Quit ||
-                   seeMoreGenerations == ContinueGameConstants.No;
+            return seeNextGenerations == ContinueGameConstants.Quit ||
+                   seeNextGenerations == ContinueGameConstants.No;
         }
     }
 }

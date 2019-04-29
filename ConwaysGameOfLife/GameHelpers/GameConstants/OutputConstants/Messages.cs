@@ -21,23 +21,23 @@ namespace ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants
         public const string InvalidAddMoreLiveCells =
             "Please enter a valid input consisting of either 'y' for adding more cells or 'n' for starting game or 'q' for quitting\n";
 
-        public const string InvalidSeeMoreGenerations =
-            "Please enter a valid input consisting of either 'y' for seeing more generations or 'n' or 'q' for quitting\n";
+        public const string InvalidSeeNextGeneration =
+            "Please enter a valid input consisting of either 'y' for seeing next generation or 'n' or 'q' for quitting\n";
 
-        public const string PrintGameEnd = "Thanks for Playing!";
+        public const string GameEnd = "Thanks for Playing!";
 
-        public const string PrintSeeNextGeneration =
+        public const string SeeNextGeneration =
             "Would you like to see the next generation? 'y' or quit the game with 'n' or 'q': ";
 
-        public const string PrintNextGeneration = "Here's the next generation:\n";
+        public const string NextGeneration = "Here's the next generation:\n";
 
 
-        public const string PrintGrid = "Perfect, here is the grid:\n";
+        public const string SeeGrid = "Perfect, here is the grid:\n";
 
-        public const string EnterXCoordinateOfCell =
+        public const string EnterXCoordinate =
             "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': ";
 
-        public const string EnterYCoordinateOfCell =
+        public const string EnterYCoordinate =
             "Please enter the Y coordinate of the cell in the seed between 1 and max grid width or quit the game with 'q': ";
     }
 }

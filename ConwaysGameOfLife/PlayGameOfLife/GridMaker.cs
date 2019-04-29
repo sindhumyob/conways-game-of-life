@@ -42,12 +42,12 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             var maxInputValues = _gameGrid.GetSize();
 
-            var xCoordinate = _playerInput.GridSetup(Messages.EnterXCoordinateOfCell,
+            var xCoordinate = _playerInput.GridSetup(Messages.EnterXCoordinate,
                 Messages.InvalidCoordinate, GridConstants.MinCoordinateValue, maxInputValues.Height);
 
             if (xCoordinate == ContinueGameConstants.Quit) return true;
 
-            var yCoordinate = _playerInput.GridSetup(Messages.EnterYCoordinateOfCell,
+            var yCoordinate = _playerInput.GridSetup(Messages.EnterYCoordinate,
                 Messages.InvalidCoordinate, GridConstants.MinCoordinateValue, maxInputValues.Width);
 
             if (yCoordinate == ContinueGameConstants.Quit) return true;

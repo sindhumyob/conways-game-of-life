@@ -1,4 +1,3 @@
-using System;
 using ConwaysGameOfLife.GameInput;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput.Interfaces;
@@ -34,8 +33,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             }
         }
 
-        public string GridSetup(string inputPromptMessage, string invalidInputMessage, int minValue,
-            int maxValue)
+        public string GridSetup(string inputPromptMessage, string invalidInputMessage, int minValue, int maxValue)
         {
             while (true)
             {

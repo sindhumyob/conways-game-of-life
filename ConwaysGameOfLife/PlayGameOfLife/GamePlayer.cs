@@ -1,4 +1,3 @@
-using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.OutputConstants;
 using ConwaysGameOfLife.GameInput.Interfaces;
 using ConwaysGameOfLife.GameOutput.Interfaces;
@@ -33,7 +32,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             GenerateSeed();
             PlayNextGeneration();
 
-            _gameOutput.Output(Messages.PrintGameEnd);
+            _gameOutput.Output(Messages.GameEnd);
         }
 
         public void GenerateGrid()
@@ -41,7 +40,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameEnd = _gridMaker.IsGenerationInterrupted();
 
             if (_gameEnd) return;
-            _gameOutput.Output(Messages.PrintGrid + GameGrid.ConvertGridToOutput());
+            _gameOutput.Output(Messages.SeeGrid + GameGrid.ConvertGridToOutput());
             _gameOutput.Output(Messages.AddInitialSeed);
         }
 
@@ -52,7 +51,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             {
                 _gameEnd = _gridMaker.IsAddLiveCellInterrupted();
                 if (_gameEnd) return;
-                _gameOutput.Output(Messages.PrintGrid + GameGrid.ConvertGridToOutput());
+                _gameOutput.Output(Messages.SeeGrid + GameGrid.ConvertGridToOutput());
 
                 (_gameEnd, endOfSeedInput) = _gridMaker.SeedGenerationStatus();
             }
@@ -63,7 +62,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             while (!_gameEnd)
             {
                 _nextGeneration.CreateGeneration(GameGrid);
-                _gameOutput.Output(Messages.PrintNextGeneration + GameGrid.ConvertGridToOutput());
+                _gameOutput.Output(Messages.NextGeneration + GameGrid.ConvertGridToOutput());
                 _gameEnd = _seeNextGeneration.IsSeeGenerationInterrupted();
             }
         }

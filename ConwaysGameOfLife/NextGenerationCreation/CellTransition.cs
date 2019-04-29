@@ -6,19 +6,12 @@ namespace ConwaysGameOfLife.NextGenerationCreation
     {
         public bool IsCellLive(CellType[,] cellAndNeighbours)
         {
-            var cellIsLive = false;
-
             var currentCell = cellAndNeighbours[1, 1];
             var numberOfLiveNeighbours = GetLiveNeighbourCount(cellAndNeighbours);
 
-            if ((currentCell == CellType.Live && numberOfLiveNeighbours == 2) ||
-                (currentCell == CellType.Live && numberOfLiveNeighbours == 3) ||
-                (currentCell == CellType.Dead && numberOfLiveNeighbours == 3))
-            {
-                cellIsLive = true;
-            }
-
-            return cellIsLive;
+            return (currentCell == CellType.Live && numberOfLiveNeighbours == 2) ||
+                   (currentCell == CellType.Live && numberOfLiveNeighbours == 3) ||
+                   (currentCell == CellType.Dead && numberOfLiveNeighbours == 3);
         }
 
         private int GetLiveNeighbourCount(CellType[,] cellAndNeighbours)

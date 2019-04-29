@@ -49,7 +49,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public GridDimensions GetSize()
         {
-            return new GridDimensions() {Height = CurrentGrid.GetLength(0), Width = CurrentGrid.GetLength(1)};
+            return new GridDimensions {Height = CurrentGrid.GetLength(0), Width = CurrentGrid.GetLength(1)};
         }
 
         public Coordinate GetGridCoordinate(Coordinate coordinate)

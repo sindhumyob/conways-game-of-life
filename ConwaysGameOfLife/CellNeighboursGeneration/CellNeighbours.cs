@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using ConwaysGameOfLife.GameHelpers;
 using ConwaysGameOfLife.PlayGameOfLife;
 

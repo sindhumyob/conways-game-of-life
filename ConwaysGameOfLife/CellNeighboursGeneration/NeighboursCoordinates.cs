@@ -9,7 +9,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
         {
             var neighboursCoordinates = new List<Coordinate> { };
 
-            var gridNeighboursCoordinatesToGenerate = new List<Coordinate>
+            var coordinatesToGenerate = new List<Coordinate>
             {
                 new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y - 1},
                 new Coordinate {X = cellCoordinates.X - 1, Y = cellCoordinates.Y},
@@ -22,7 +22,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
                 new Coordinate {X = cellCoordinates.X + 1, Y = cellCoordinates.Y + 1}
             };
 
-            foreach (var coordinate in gridNeighboursCoordinatesToGenerate)
+            foreach (var coordinate in coordinatesToGenerate)
             {
                 neighboursCoordinates.Add(GetGridCoordinate(coordinate, gridDimensions));
             }

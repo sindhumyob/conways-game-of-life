@@ -1,5 +1,3 @@
-using ConwaysGameOfLife.GameHelpers;
-using ConwaysGameOfLife.GameHelpers.GameConstants;
 using ConwaysGameOfLife.GameHelpers.GameConstants.InputConstants;
 
 namespace ConwaysGameOfLife.GameInput
