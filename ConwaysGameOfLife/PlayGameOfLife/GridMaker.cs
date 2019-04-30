@@ -12,9 +12,9 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         private readonly PlayerInput _playerInput;
         private readonly GameGrid _gameGrid;
 
-        public GridMaker(IGameInput gameInput, IGameOutput gameOutput, GameGrid gameGrid)
+        public GridMaker(PlayerInput playerInput, GameGrid gameGrid)
         {
-            _playerInput = new PlayerInput(gameInput, gameOutput);
+            _playerInput = playerInput;
             _gameGrid = gameGrid;
         }
 

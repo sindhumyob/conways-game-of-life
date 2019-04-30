@@ -19,8 +19,8 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public GamePlayer(IGameInput gameInput, IGameOutput gameOutput)
         {
             _gameGrid = new GameGrid();
-            _gridMaker = new GridMaker(gameInput, gameOutput, _gameGrid);
             _playerInput = new PlayerInput(gameInput, gameOutput);
+            _gridMaker = new GridMaker(_playerInput, _gameGrid);
             _gameOutput = gameOutput;
             _nextGeneration = new NextGeneration();
         }
