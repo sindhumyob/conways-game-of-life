@@ -69,7 +69,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 },
             };
 
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGrid, _gameGrid.Grid);
         }
     }
 }

@@ -24,7 +24,7 @@ namespace ConwaysGameOfLife.CellNeighboursGeneration
             foreach (var neighbourCoordinate in neighboursCoordinates)
             {
                 cellAndNeighbours[rowIndex, columnIndex] =
-                    gameGrid.CurrentGrid[neighbourCoordinate.X, neighbourCoordinate.Y];
+                    gameGrid.Grid[neighbourCoordinate.X, neighbourCoordinate.Y];
                 columnIndex++;
 
                 if (columnIndex != 3) continue;

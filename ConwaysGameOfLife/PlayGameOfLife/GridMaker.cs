@@ -49,10 +49,10 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
             if (yCoordinate == ContinueGameConstants.Quit) return true;
 
-            var coordinate = _gameGrid.GetGridCoordinate(new Coordinate
+            var cellCoordinate = _gameGrid.GetGridCoordinate(new Coordinate
                 {X = int.Parse(xCoordinate), Y = int.Parse(yCoordinate)});
 
-            _gameGrid.Update(new List<Coordinate> {coordinate}, CellType.Live);
+            _gameGrid.Update(new List<Coordinate> {cellCoordinate}, CellType.Live);
 
             return false;
         }
@@ -60,21 +60,20 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         public SeedingStatus SeedGenerationStatus()
         {
             var gameEnd = false;
-            var endOfSeedInput = false;
-            var addMoreLiveCells =
-                _playerInput.ContinueGame(Messages.AddMoreLiveCells,
-                    Messages.InvalidAddMoreLiveCells);
+            var endOfSeeding = false;
+            var addLiveCell = _playerInput.ContinueGame(Messages.AddAnotherLiveCell,
+                Messages.InvalidAddAnotherLiveCell);
 
-            if (addMoreLiveCells == ContinueGameConstants.Quit)
+            if (addLiveCell == ContinueGameConstants.Quit)
             {
                 gameEnd = true;
             }
-            else if (addMoreLiveCells == ContinueGameConstants.No)
+            else if (addLiveCell == ContinueGameConstants.No)
             {
-                endOfSeedInput = true;
+                endOfSeeding = true;
             }
 
-            return new SeedingStatus {GameEnd = gameEnd, EndOfSeedInput = endOfSeedInput};
+            return new SeedingStatus {GameEnd = gameEnd, EndOfSeeding = endOfSeeding};
         }
     }
 }

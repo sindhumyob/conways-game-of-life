@@ -8,7 +8,7 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 {
     public class GamePlayer
     {
-        public readonly GameGrid GameGrid;
+        private readonly GameGrid _gameGrid;
         private readonly GridMaker _gridMaker;
         private readonly PlayerInput _playerInput;
         private readonly IGameOutput _gameOutput;
@@ -18,8 +18,8 @@ namespace ConwaysGameOfLife.PlayGameOfLife
 
         public GamePlayer(IGameInput gameInput, IGameOutput gameOutput)
         {
-            GameGrid = new GameGrid();
-            _gridMaker = new GridMaker(gameInput, gameOutput, GameGrid);
+            _gameGrid = new GameGrid();
+            _gridMaker = new GridMaker(gameInput, gameOutput, _gameGrid);
             _playerInput = new PlayerInput(gameInput, gameOutput);
             _gameOutput = gameOutput;
             _nextGeneration = new NextGeneration();
@@ -41,23 +41,23 @@ namespace ConwaysGameOfLife.PlayGameOfLife
             _gameEnd = _gridMaker.IsGenerationInterrupted();
 
             if (_gameEnd) return;
-            _gameOutput.Output(Messages.SeeGrid + GameGrid.ConvertGridToOutput());
+            _gameOutput.Output(Messages.SeeGrid + _gameGrid.ConvertGridToOutput());
             _gameOutput.Output(Messages.AddInitialSeed);
         }
 
         public void GenerateSeed()
         {
-            var endOfSeedInput = false;
-            while (!endOfSeedInput && !_gameEnd)
+            var endOfSeeding = false;
+            while (!endOfSeeding && !_gameEnd)
             {
                 _gameEnd = _gridMaker.IsAddLiveCellInterrupted();
                 if (_gameEnd) return;
 
-                _gameOutput.Output(Messages.SeeGrid + GameGrid.ConvertGridToOutput());
+                _gameOutput.Output(Messages.SeeGrid + _gameGrid.ConvertGridToOutput());
 
                 var seedingStatus = _gridMaker.SeedGenerationStatus();
                 _gameEnd = seedingStatus.GameEnd;
-                endOfSeedInput = seedingStatus.EndOfSeedInput;
+                endOfSeeding = seedingStatus.EndOfSeeding;
             }
         }
 
@@ -65,8 +65,8 @@ namespace ConwaysGameOfLife.PlayGameOfLife
         {
             while (!_gameEnd)
             {
-                _nextGeneration.CreateGeneration(GameGrid);
-                _gameOutput.Output(Messages.NextGeneration + GameGrid.ConvertGridToOutput());
+                _nextGeneration.CreateGeneration(_gameGrid);
+                _gameOutput.Output(Messages.NextGeneration + _gameGrid.ConvertGridToOutput());
 
                 var seeNextGeneration = _playerInput.ContinueGame(Messages.SeeNextGeneration,
                     Messages.InvalidSeeNextGeneration);

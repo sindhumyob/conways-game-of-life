@@ -58,27 +58,18 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 " \n" +
                 (char) Dead + " " + (char) Dead + " " + (char) Dead +
                 " \n\n" +
-                "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n",
+                "Would you like to add another live cell? 'y' or start the game with 'n' or quit the game with 'q': \n",
                 output);
         }
 
         [Fact]
         public void Generate_Output_For_NextGeneration_According_To_PlayerInput()
         {
-            _gamePlayer.GameGrid.CurrentGrid = new[,]
-            {
-                {
-                    Dead, Dead, Dead
-                },
-                {
-                    Dead, Live, Dead
-                },
-                {
-                    Dead, Dead, Dead
-                }
-            };
-            _gameInput.PlayerInputs = new List<string> {"n"};
-
+            _gameInput.PlayerInputs = new List<string> {"3", "3", "2", "3", "n", "n"};
+            _gamePlayer.GenerateGrid();
+            _gamePlayer.GenerateSeed();
+            _gameOutput.Message = string.Empty;
+            
             _gamePlayer.PlayNextGeneration();
             var output = _gameOutput.Message;
 
@@ -119,7 +110,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Dead +
                          " \n\n" +
-                         "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n" +
+                         "Would you like to add another live cell? 'y' or start the game with 'n' or quit the game with 'q': \n" +
                          "Please enter the X coordinate of the cell in the seed between 1 and max grid height or quit the game with 'q': \n" +
                          "Please enter the Y coordinate of the cell in the seed between 1 and max grid width or quit the game with 'q': \n" +
                          "Perfect, here is the grid:\n" +
@@ -129,7 +120,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                          " \n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Live +
                          " \n\n" +
-                         "Would you like to add more live cells? 'y' or start the game with 'n' or quit the game with 'q': \n" +
+                         "Would you like to add another live cell? 'y' or start the game with 'n' or quit the game with 'q': \n" +
                          "Here's the next generation:\n" +
                          (char) Dead + " " + (char) Dead + " " + (char) Dead +
                          " \n" +

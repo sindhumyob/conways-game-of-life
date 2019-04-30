@@ -47,7 +47,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            _gameGrid.CurrentGrid = initialGameGrid;
+            _gameGrid.Grid = initialGameGrid;
             _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
@@ -72,7 +72,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGameGrid, _gameGrid.Grid);
         }
 
         [Fact]
@@ -96,7 +96,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                     CellType.Live, CellType.Dead, CellType.Dead, CellType.Live
                 }
             };
-            _gameGrid.CurrentGrid = initialGameGrid;
+            _gameGrid.Grid = initialGameGrid;
             _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
@@ -118,7 +118,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGameGrid, _gameGrid.Grid);
         }
 
         [Fact]
@@ -155,7 +155,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                     CellType.Dead, CellType.Dead, CellType.Dead
                 }
             };
-            _gameGrid.CurrentGrid = initialGameGrid;
+            _gameGrid.Grid = initialGameGrid;
             _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
@@ -190,7 +190,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGameGrid, _gameGrid.Grid);
         }
 
 
@@ -224,7 +224,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                     CellType.Live
                 }
             };
-            _gameGrid.CurrentGrid = initialGameGrid;
+            _gameGrid.Grid = initialGameGrid;
             _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
@@ -255,7 +255,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGameGrid, _gameGrid.Grid);
         }
 
         [Fact]
@@ -288,7 +288,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                     CellType.Dead
                 }
             };
-            _gameGrid.CurrentGrid = initialGameGrid;
+            _gameGrid.Grid = initialGameGrid;
             _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
@@ -319,7 +319,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGameGrid, _gameGrid.Grid);
         }
 
         [Fact]
@@ -337,7 +337,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                     CellType.Live, CellType.Dead, CellType.Dead
                 }
             };
-            _gameGrid.CurrentGrid = initialGameGrid;
+            _gameGrid.Grid = initialGameGrid;
             _nextGeneration.CreateGeneration(_gameGrid);
 
             var expectedGameGrid = new[,]
@@ -353,7 +353,7 @@ namespace ConwaysGameOfLifeTests.NextGenerationCreationTests
                 }
             };
 
-            Assert.Equal(expectedGameGrid, _gameGrid.CurrentGrid);
+            Assert.Equal(expectedGameGrid, _gameGrid.Grid);
         }
     }
 }
