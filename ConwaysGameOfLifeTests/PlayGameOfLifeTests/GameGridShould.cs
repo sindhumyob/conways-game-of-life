@@ -15,11 +15,11 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
         }
 
         [Fact]
-        public void Generate_And_Update_Game_Grid_With_Specified_Live_Cells_And_Dead_Cells()
+        public void Generate_And_Update_GameGrid_With_Specified_LiveCells_And_DeadCells()
         {
             var gridDimensions = new GridDimensions {Height = 6, Width = 6};
 
-            _gameGrid.GenerateGrid(gridDimensions);
+            _gameGrid.Generate(gridDimensions);
 
             var liveCellCoordinates = new List<Coordinate>
             {
@@ -30,7 +30,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 new Coordinate {X = 2, Y = 3},
                 new Coordinate {X = 2, Y = 4}
             };
-            _gameGrid.UpdateGrid(liveCellCoordinates, CellType.Live);
+            _gameGrid.Update(liveCellCoordinates, CellType.Live);
 
             var deadCellCoordinates = new List<Coordinate>
             {
@@ -39,7 +39,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 new Coordinate {X = 2, Y = 2},
                 new Coordinate {X = 2, Y = 3}
             };
-            _gameGrid.UpdateGrid(deadCellCoordinates, CellType.Dead);
+            _gameGrid.Update(deadCellCoordinates, CellType.Dead);
 
             var expectedGrid = new[,]
             {
@@ -69,7 +69,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
                 },
             };
 
-            Assert.Equal(expectedGrid, _gameGrid.CurrentGameGrid);
+            Assert.Equal(expectedGrid, _gameGrid.Grid);
         }
     }
 }

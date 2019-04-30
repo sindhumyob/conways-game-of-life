@@ -1,6 +1,6 @@
-namespace ConwaysGameOfLife.GameHelpers.GameConstants
+namespace ConwaysGameOfLife.GameHelpers.GameConstants.InputConstants
 {
-    public static class GridInputConstants
+    public static class GridConstants
     {
         public const int MinGridSize = 3;
         public const int MaxGridSize = 100;
