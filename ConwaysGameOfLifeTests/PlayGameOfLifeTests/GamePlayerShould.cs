@@ -69,7 +69,7 @@ namespace ConwaysGameOfLifeTests.PlayGameOfLifeTests
             _gamePlayer.GenerateGrid();
             _gamePlayer.GenerateSeed();
             _gameOutput.Message = string.Empty;
-            
+
             _gamePlayer.PlayNextGeneration();
             var output = _gameOutput.Message;
 
