@@ -1,3 +1,37 @@
+
+# Changes Since Last Review:
+### Tests
+- For feedback: Focus more on behaviour tests, rather than testing implementation
+  - Removed game output messages return checking (they are now constants)
+  - Removed cell neighbour generation testing since it was being tested in next generation creation
+  - Added test cases to next generation creation to account for the cell neighbour generation tests being removed
+
+### Small
+- Reduced coupling between game play classes (play game, set up and play next generation) and player input and game output.
+	- Moved game output logic from set up and play next generation to game player
+	- Removed play next generation class and moved it’s logic into game player
+	- Moved add live cell logic from game player to set up game
+
+### Reveal intent
+- For feedback: Method names that return things but no indication of them doing so
+	- Renamed methods throughout the code but most significant changes are for the communication between game player and grid maker (used to be called set up game) classes. Method names reflect that they are returning a boolean for the game status
+	- Created classes grid dimensions and seeding status to indicate more clearly what methods are returning
+- For feedback: Renaming names so there isn’t repeating of words
+	- Renaming throughout code again but within game player removed the repetition of the words ‘input’ and ‘output’ by changing method and class names
+
+### DRY
+- For feedback: -1 seen in many parts of code
+	- Changed the neighbour coordinates generation logic
+	- Created a method to get the grid coordinate within game grid so the -1 only exists in one location
+- For feedback: Char and Enums used to represent cell
+	- Removed the use of char to just be enum of cell type. Char is now only used for output
+
+### Encapsulation
+   - For feedback: Abstract concepts away so we don’t have to know about the data types that are used within concepts
+	   - Added methods get grid coordinate and get grid size to the game grid class so that details about these data types are abstracted away
+
+
+
 # Conway's Game of Life - Quorum Review
 
 From the original Conway's Game of Life kata written by Mark (https://github.com/MYOB-Technology/General_Developer/blob/master/katas/kata-conways-game-of-life/kata-conways-game-of-life.md):
